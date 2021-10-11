@@ -1,24 +1,16 @@
 package com.climbtogether.app.entity;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import static javax.persistence.GenerationType.IDENTITY;
 
-@Entity
-@Table(name = "escuelas", uniqueConstraints = { @UniqueConstraint(columnNames = "id") })
 public class Escuela implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1983144306474401999L;
+	private static final long serialVersionUID = 2351451415512875940L;
+
 	private Integer id;
 	private String nombre;
 	

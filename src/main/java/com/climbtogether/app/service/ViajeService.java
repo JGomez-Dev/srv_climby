@@ -59,7 +59,7 @@ public class ViajeService {
 		try {
 			Date auxFecha = form.parse(anno + "-" + viaje.getFechasalidaString().split("/")[1] + "-"
 					+ viaje.getFechasalidaString().split("/")[0] + " " + horaZona);
-			viaje.setFechasalida(auxFecha);
+			//viaje.setFechasalida(auxFecha);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
