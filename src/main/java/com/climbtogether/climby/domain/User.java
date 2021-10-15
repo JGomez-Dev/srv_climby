@@ -1,6 +1,7 @@
 package com.climbtogether.climby.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -39,7 +40,7 @@ public class User implements Serializable {
 	@SequenceGenerator(name = "idUserSeqGenerator", sequenceName = "sc_user", allocationSize = 1)
 	@GeneratedValue(generator = "idUserSeqGenerator")
 	@Column(name = "id_user",unique = true, nullable = false)
-	private String id;
+	private Integer id;
 	
 	@Column(name = "full_name", nullable = false)
 	private String fullName;
@@ -47,8 +48,8 @@ public class User implements Serializable {
 	@Column(name = "experience", nullable = false)
 	private Integer experience;
 	
-	@Column(name = "position")
-	private Integer position;
+//	@Column(name = "position")
+//	private Integer position;
 	
 	@Column(name = "phone", nullable = false)
 	private String phone;
@@ -57,7 +58,7 @@ public class User implements Serializable {
 	private String email;
 	
 	@Column(name = "score")
-	private Double score;
+	private BigDecimal score;
 	
 	@Column(name = "outputs")
 	private Integer outputs;

@@ -54,7 +54,7 @@ public class ProvinceController {
 					example =  "1")
 			@PathVariable
 			String id){
-		return new DataDTO<>(provinceService.getProvinceById(id));
+		return new DataDTO<>(provinceService.getProvinceById(id.toString()));
 	}
 	
 	@ApiOperation(

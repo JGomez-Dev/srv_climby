@@ -41,7 +41,7 @@ public class ProvinceServiceImpl implements ProvinceService {
 	@Override
 	public ConsultationProvinceResponseDTO getProvinceById(String id) {
 		
-		Optional<Province> province = provinceRepository.findById(id);
+		Optional<Province> province = provinceRepository.findById(id.toString());
 
 		return provinceMapper.provinceToConsultationProvinceResponseDTO(province.get());
 	}
@@ -59,8 +59,7 @@ public class ProvinceServiceImpl implements ProvinceService {
 		
 		Province attachedProvince = provinceRepository.save(province);
 		
-		return provinceMapper.provinceToprovinceDTO(attachedProvince)
-				;
+		return provinceMapper.provinceToprovinceDTO(attachedProvince);
 	}
 
 	@Override

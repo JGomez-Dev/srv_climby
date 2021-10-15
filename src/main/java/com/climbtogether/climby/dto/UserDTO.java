@@ -23,7 +23,7 @@ public class UserDTO implements Serializable {
 	
 	@ApiModelProperty(required = true, value = "Identificador usuario", example = "1")
 	@NotNull
-	private String idUsuario;
+	private Integer idUsuario;
 	
 	
 	@ApiModelProperty(required = true, value = "Nombre completo", example = "Eduardo Gomez")
@@ -32,8 +32,8 @@ public class UserDTO implements Serializable {
 	@ApiModelProperty(value = "Experiencia", example="5")
 	private Integer experience; 
 	
-	@ApiModelProperty(value = "Posicion", example = "1")
-	private Integer position;
+//	@ApiModelProperty(value = "Posicion", example = "1")
+//	private Integer position;
 
 	@ApiModelProperty(required = true, value = "Telefono", example = "691675453")
 	private String phone;

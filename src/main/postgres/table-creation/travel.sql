@@ -1,8 +1,10 @@
 set schema 'core';
 
+create sequence sc_travel as integer;
+
 create table core.tb_travel(
-	id_travel varchar not null,
-	id_driver varchar,
+	id_travel integer not null default nextval('core.sc_travel'),
+	id_driver integer,
 	site varchar,
 	type varchar,
 	available_places integer,
@@ -14,3 +16,5 @@ create table core.tb_travel(
 	constraint fk_core_id_driver foreign key (id_driver) references tb_user(id_user),
 	constraint fk_core_province foreign key (province) references tb_province(id_province)
 );
+
+	alter sequence sc_travel owned by tb_travel.id_travel;

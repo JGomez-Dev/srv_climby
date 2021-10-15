@@ -20,6 +20,7 @@ public interface ProvinceMapper {
 	@Mapping(target="id",source = "id")
 	ProvinceDTO provinceToprovinceDTO(Province province);
 	
+	@Mapping(source = "id", target="id")
 	ConsultationProvinceResponseDTO provinceToConsultationProvinceResponseDTO (Province province);
 	
 	Province createProvinceDTOToProvince (CreateProvinceDTO createProvinceDTO);

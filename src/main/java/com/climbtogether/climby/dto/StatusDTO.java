@@ -2,6 +2,8 @@ package com.climbtogether.climby.dto;
 
 import java.io.Serializable;
 
+import com.sun.istack.NotNull;
+
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,6 +17,10 @@ import lombok.NoArgsConstructor;
 public class StatusDTO implements Serializable {
 	
 	private static final long serialVersionUID = -1168005760903904233L;
+	
+	@ApiModelProperty(required = true, value = "Identificador estado", example = "1")
+	@NotNull
+	private Integer idStatus;
 	
 	@ApiModelProperty(value = "Estado de la reserva", example = "true")
 	private Boolean reservationStatus;

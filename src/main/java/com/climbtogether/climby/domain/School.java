@@ -32,7 +32,7 @@ public class School implements Serializable {
 	@SequenceGenerator(name = "idSchoolSeqGenerator", sequenceName = "sc_school", allocationSize = 1)
 	@GeneratedValue(generator = "idSchoolSeqGenerator")
 	@Column(name = "id_school",unique = true, nullable = false)
-	private String id;
+	private Integer id;
 	
 	@Column(name = "name_school", unique = true, nullable = false, length = 50)
 	private String name;

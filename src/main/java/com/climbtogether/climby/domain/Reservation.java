@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -36,19 +37,21 @@ public class Reservation implements Serializable {
 	@SequenceGenerator(name = "idReservationSeqGenerator", sequenceName = "sc_reservation", allocationSize = 1)
 	@GeneratedValue(generator = "idReservationSeqGenerator")
 	@Column(name = "id_reservation",unique = true, nullable = false)
-	private String id;
+	private Integer id;
 
 	@ManyToOne
-	@JoinColumn(name = "id_user", foreignKey = @ForeignKey(name = "fk_passenger"))
+	@JoinColumn(name = "id_user", foreignKey = @ForeignKey(name = "fk_core_id_user"))
 	private User passenger;
 
 	@ManyToOne
-	@JoinColumn(name = "id_travel", foreignKey = @ForeignKey(name = "fk_travel"))
+	@JoinColumn(name = "id_travel", foreignKey = @ForeignKey(name = "fk_core_id_travel"))
 	private Travel travel;
-
-	@Column(name = "id_status", nullable = false)
+	
+	@OneToOne
+	@JoinColumn(name = "id_status")
 	private Status status;
 
+	
 	@Column(name = "date_reservation", nullable = false)
 	private LocalDateTime reservationDate;
 

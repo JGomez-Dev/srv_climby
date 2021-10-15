@@ -1,6 +1,7 @@
 package com.climbtogether.climby.domain;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -42,7 +44,7 @@ public class Travel  implements Serializable {
 	@SequenceGenerator(name = "idTravelSeqGenerator", sequenceName = "sc_travel", allocationSize = 1)
 	@GeneratedValue(generator = "idTravelSeqGenerator")
 	@Column(name = "id_travel",unique = true, nullable = false)
-	private String id;
+	private Integer id;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_driver", foreignKey = @ForeignKey(name = "fk_driver"))
@@ -62,9 +64,10 @@ public class Travel  implements Serializable {
 	private String departureDateString;
 	
 	@Column(name = "departure_date", nullable = false)
-	private Integer departureDate;
+	private LocalDateTime departureDate;
 	
-	@Column(name = "province", nullable = false)
+	@OneToOne
+	@JoinColumn(name = "province", nullable = false)
 	private Province province;
 	
 
