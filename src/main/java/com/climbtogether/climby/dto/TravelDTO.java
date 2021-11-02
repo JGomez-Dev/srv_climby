@@ -24,6 +24,7 @@ public class TravelDTO   implements Serializable {
 	
 	private static final long serialVersionUID = 5284342065783311826L;
 	
+	
 	@ApiModelProperty(required = true, value = "Identificador del viaje", example = "1")
 	private String id;
 	

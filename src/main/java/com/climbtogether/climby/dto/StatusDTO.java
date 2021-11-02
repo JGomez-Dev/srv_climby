@@ -20,7 +20,7 @@ public class StatusDTO implements Serializable {
 	
 	@ApiModelProperty(required = true, value = "Identificador estado", example = "1")
 	@NotNull
-	private Integer idStatus;
+	private Integer id;
 	
 	@ApiModelProperty(value = "Estado de la reserva", example = "true")
 	private Boolean reservationStatus;

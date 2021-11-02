@@ -25,7 +25,7 @@ public class ReservationDTO implements Serializable {
 	
 	@ApiModelProperty(required = true, value = "Identificador Reserva", example = "1")
 	@NotNull
-	private String idReservation;
+	private String id;
 	
 	@ApiModelProperty(value = "User")
 	@JsonProperty(value = "user")
@@ -36,7 +36,7 @@ public class ReservationDTO implements Serializable {
 	private TravelDTO travelDTO;
 	
 	@ApiModelProperty(value = "Status")
-	@JsonProperty(value = "Status")
+	@JsonProperty(value = "status")
 	private StatusDTO statusDTO;
 	
 	@ApiModelProperty(required = true, value = "Customer date" , example = "2000-01-01 01:01:01")

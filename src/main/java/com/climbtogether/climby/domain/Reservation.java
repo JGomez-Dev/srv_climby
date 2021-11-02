@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -34,12 +35,12 @@ public class Reservation implements Serializable {
 	private static final long serialVersionUID = 6936124757433460309L;
 
 	@Id
-	@SequenceGenerator(name = "idReservationSeqGenerator", sequenceName = "sc_reservation", allocationSize = 1)
-	@GeneratedValue(generator = "idReservationSeqGenerator")
+//	@SequenceGenerator(name = "idReservationSeqGenerator", sequenceName = "sc_reservation", allocationSize = 1)
+//	@GeneratedValue(generator = "idReservationSeqGenerator")
 	@Column(name = "id_reservation",unique = true, nullable = false)
-	private Integer id;
+	private String id;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_user", foreignKey = @ForeignKey(name = "fk_core_id_user"))
 	private User passenger;
 
@@ -48,7 +49,7 @@ public class Reservation implements Serializable {
 	private Travel travel;
 	
 	@OneToOne
-	@JoinColumn(name = "id_status")
+	@JoinColumn(name = "id_status", foreignKey = @ForeignKey(name = "fk_core_id_status"))
 	private Status status;
 
 	

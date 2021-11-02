@@ -19,6 +19,8 @@ import com.climbtogether.climby.dto.CreateProvinceDTO;
 import com.climbtogether.climby.dto.DataDTO;
 import com.climbtogether.climby.dto.ModifiedProvinceDTO;
 import com.climbtogether.climby.dto.ProvinceDTO;
+import com.climbtogether.climby.exceptions.ProvinceExistsConflicExcepcion;
+import com.climbtogether.climby.exceptions.ProvinceNotFoundException;
 import com.climbtogether.climby.service.ProvinceService;
 
 import io.swagger.annotations.Api;
@@ -40,7 +42,7 @@ public class ProvinceController {
 	
 	@ApiResponses(
 			value = {
-					@ApiResponse(code = 201, message = "success"),
+					@ApiResponse(code = 200, message = "success"),
 					@ApiResponse(code = 409, message = "conflict")
 			})
 	@ResponseStatus(HttpStatus.OK)
@@ -53,8 +55,8 @@ public class ProvinceController {
 					required = true,
 					example =  "1")
 			@PathVariable
-			String id){
-		return new DataDTO<>(provinceService.getProvinceById(id.toString()));
+			String id) throws ProvinceNotFoundException{
+		return new DataDTO<>(provinceService.getProvinceById(id));
 	}
 	
 	@ApiOperation(
@@ -67,7 +69,7 @@ public class ProvinceController {
 			})
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping
-	public DataDTO<ProvinceDTO> registerProvince(@Validated @RequestBody CreateProvinceDTO createProvinceDTO){
+	public DataDTO<ProvinceDTO> registerProvince(@Validated @RequestBody CreateProvinceDTO createProvinceDTO) throws ProvinceExistsConflicExcepcion{
 		return new DataDTO<>(provinceService.resgisterProvince(createProvinceDTO));
 	}
 	
@@ -89,7 +91,7 @@ public class ProvinceController {
 			required = true)
 	@RequestBody
 	@Validated
-	ModifiedProvinceDTO modifiedProvinceDTO){
+	ModifiedProvinceDTO modifiedProvinceDTO) throws ProvinceNotFoundException{
 		return new DataDTO<>(provinceService.modifyProvince(modifiedProvinceDTO));
 	}
 	
@@ -104,7 +106,7 @@ public class ProvinceController {
 						required = true,
 						example = "1")
 			@PathVariable
-			String id){
+			String id) throws ProvinceNotFoundException{
 		provinceService.removeProvince(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

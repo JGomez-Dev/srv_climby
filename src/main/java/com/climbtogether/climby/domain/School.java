@@ -29,10 +29,8 @@ public class School implements Serializable {
 	private static final long serialVersionUID = 2351451415512875940L;
 	
 	@Id
-	@SequenceGenerator(name = "idSchoolSeqGenerator", sequenceName = "sc_school", allocationSize = 1)
-	@GeneratedValue(generator = "idSchoolSeqGenerator")
 	@Column(name = "id_school",unique = true, nullable = false)
-	private Integer id;
+	private String id;
 	
 	@Column(name = "name_school", unique = true, nullable = false, length = 50)
 	private String name;

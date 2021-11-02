@@ -4,17 +4,20 @@ import com.climbtogether.climby.dto.ConsultationProvinceResponseDTO;
 import com.climbtogether.climby.dto.CreateProvinceDTO;
 import com.climbtogether.climby.dto.ModifiedProvinceDTO;
 import com.climbtogether.climby.dto.ProvinceDTO;
+import com.climbtogether.climby.exceptions.ProvinceExistsConflicExcepcion;
+import com.climbtogether.climby.exceptions.ProvinceNotFoundException;
 
 
 public interface ProvinceService {
 
-	ProvinceDTO resgisterProvince(CreateProvinceDTO createprovinceDTO);
+
+	ConsultationProvinceResponseDTO getProvinceById(String id) throws ProvinceNotFoundException;
 	
-	ProvinceDTO modifyProvince(ModifiedProvinceDTO modifyProvinceDTO);
+	ProvinceDTO resgisterProvince(CreateProvinceDTO createprovinceDTO) throws ProvinceExistsConflicExcepcion;
 	
-	ConsultationProvinceResponseDTO getProvinceById(String id);
+	ProvinceDTO modifyProvince(ModifiedProvinceDTO modifyProvinceDTO) throws ProvinceNotFoundException;
 	
-	void removeProvince(String id);
+	void removeProvince(String id) throws ProvinceNotFoundException;
 	
 	
 

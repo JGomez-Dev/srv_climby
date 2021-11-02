@@ -8,10 +8,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Fetch;
@@ -37,10 +36,10 @@ public class User implements Serializable {
 	private static final long serialVersionUID = -985853124316450362L;
 
 	@Id
-	@SequenceGenerator(name = "idUserSeqGenerator", sequenceName = "sc_user", allocationSize = 1)
-	@GeneratedValue(generator = "idUserSeqGenerator")
+//	@SequenceGenerator(name = "idUserSeqGenerator", sequenceName = "sc_user", allocationSize = 1)
+//	@GeneratedValue(generator = "idUserSeqGenerator")
 	@Column(name = "id_user",unique = true, nullable = false)
-	private Integer id;
+	private String id;
 	
 	@Column(name = "full_name", nullable = false)
 	private String fullName;
@@ -67,13 +66,14 @@ public class User implements Serializable {
 	private String userPhoto;
 	
 	
-	@OneToMany(mappedBy = "passenger",fetch = FetchType.EAGER, cascade = {CascadeType.ALL},orphanRemoval = true)
+	@OneToMany(mappedBy = "passenger",fetch = FetchType.LAZY)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Reservation> reservation;
 	
-	@OneToMany(mappedBy = "driver",fetch = FetchType.EAGER, cascade = {CascadeType.ALL},orphanRemoval = true)
+	@OneToMany(mappedBy = "driver",fetch = FetchType.LAZY)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private  List<Travel> travel;
+	
 	
 	
 	

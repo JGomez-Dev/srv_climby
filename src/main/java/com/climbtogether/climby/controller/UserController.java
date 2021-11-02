@@ -83,7 +83,7 @@ public class UserController {
 			})
 	@ResponseStatus(HttpStatus.OK)
 	@PutMapping
-	public DataDTO<UserDTO> modifyProvince(
+	public DataDTO<UserDTO> modifyUser(
 		@ApiParam (	name = "User",
 			type = "User",
 			value = "User type entity",

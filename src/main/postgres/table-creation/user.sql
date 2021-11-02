@@ -1,9 +1,9 @@
 set schema 'core';
 
-create sequence sc_user as integer;
+--create sequence sc_user as integer;
 
 create table core.tb_user(
-	id_user  integer not null default nextval('core.sc_user'),
+	id_user  varchar, --integer not null default nextval('core.sc_user'),
 	full_name varchar,
 	experience integer,
 	id_position integer,
@@ -18,4 +18,4 @@ create table core.tb_user(
 	constraint fk_core_id_posicion foreign key (id_position) references tb_position(id_position)
 );
 
-alter sequence sc_user owned by tb_user.id_user;
+--alter sequence sc_user owned by tb_user.id_user;
