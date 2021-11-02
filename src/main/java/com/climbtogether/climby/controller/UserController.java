@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.climbtogether.climby.dto.ConsultationUserResponseDTO;
-import com.climbtogether.climby.dto.CreateUserDTO;
 import com.climbtogether.climby.dto.DataDTO;
-import com.climbtogether.climby.dto.ModifiedUserDTO;
 import com.climbtogether.climby.dto.UserDTO;
 import com.climbtogether.climby.service.UserService;
 
@@ -46,7 +43,7 @@ public class UserController {
 			})
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(value = "/{id}", headers = "Accept=application/json")
-	public DataDTO<ConsultationUserResponseDTO> getUserById(
+	public DataDTO<UserDTO> getUserById(
 			@ApiParam(
 					name = "id",
 					type = "String",
@@ -68,7 +65,7 @@ public class UserController {
 			})
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping
-	public DataDTO<UserDTO> registerUser(@Validated @RequestBody CreateUserDTO createUserDTO){
+	public DataDTO<UserDTO> registerUser(@Validated @RequestBody UserDTO createUserDTO){
 		return new DataDTO<>(userService.resgisterUser(createUserDTO));
 	}
 	
@@ -90,7 +87,7 @@ public class UserController {
 			required = true)
 	@RequestBody
 	@Validated
-	ModifiedUserDTO modifiedUserDTO){
+	UserDTO modifiedUserDTO){
 		return new DataDTO<>(userService.modifyUser(modifiedUserDTO));
 	}
 	

@@ -43,10 +43,6 @@ public class Travel  implements Serializable {
 	@Column(name = "id_travel",unique = true, nullable = false)
 	private String id;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_driver", foreignKey = @ForeignKey(name = "fk_driver"))
-	private User driver;
-	
 	@Column(name = "site", nullable = false)
 	private String site;
 	
@@ -56,9 +52,8 @@ public class Travel  implements Serializable {
 	@Column(name = "available_places", nullable = false)
 	private Integer availablePlaces;
 
-	
-	@Column(name = "departure_date_string", nullable = false)
-	private String departureDateString;
+//	@Column(name = "departure_date_string", nullable = false)
+//	private String departureDateString;
 	
 	@Column(name = "departure_date", nullable = false)
 	private LocalDateTime departureDate;
@@ -67,10 +62,14 @@ public class Travel  implements Serializable {
 	@JoinColumn(name = "province", nullable = false)
 	private Province province;
 	
-
-	@OneToMany(mappedBy = "passenger",fetch = FetchType.EAGER, cascade = {CascadeType.ALL},orphanRemoval = true)
-	@Fetch(value = FetchMode.SUBSELECT)
-	private List<Reservation> reservation;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_driver", foreignKey = @ForeignKey(name = "fk_driver"))
+	private User driver;
+	
+//
+//	@OneToMany(mappedBy = "passenger",fetch = FetchType.EAGER, cascade = {CascadeType.ALL},orphanRemoval = true)
+//	@Fetch(value = FetchMode.SUBSELECT)
+//	private List<Reservation> reservation;
 	
 	
 }

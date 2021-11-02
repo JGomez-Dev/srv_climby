@@ -51,13 +51,13 @@ public class UserDTO implements Serializable {
 	@ApiModelProperty(required = true, value = "Foto", example = "7")
 	private String userPhoto;
 
-	@ApiModelProperty(value = "Reservation")
-	@JsonProperty(value = "Reservation")
-	private List<ReservationDTO> ReservationDTO;
-	
-	@ApiModelProperty(value = "Travel")
-	@JsonProperty(value = "Travel")
-	private List<TravelDTO> TravelDTO;
+//	@ApiModelProperty(value = "Reservation")
+//	@JsonProperty(value = "Reservation")
+//	private List<ReservationDTO> reservationDTO;
+//	
+//	@ApiModelProperty(value = "Travel")
+//	@JsonProperty(value = "Travel")
+//	private List<TravelDTO> travelDTO;
 	
 	
 	

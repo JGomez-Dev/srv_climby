@@ -3,7 +3,6 @@ package com.climbtogether.climby.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.climbtogether.climby.dto.ConsultationReservationResponseDTO;
-import com.climbtogether.climby.dto.CreateReservationDTO;
 import com.climbtogether.climby.dto.DataDTO;
-import com.climbtogether.climby.dto.ModifiedReservationDTO;
 import com.climbtogether.climby.dto.ReservationDTO;
 import com.climbtogether.climby.service.ReservationService;
 
@@ -47,7 +43,7 @@ public class ReservationController {
 			})
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(value = "/{id}", headers = "Accept=application/json")
-	public DataDTO<ConsultationReservationResponseDTO> getReservationById(
+	public DataDTO<ReservationDTO> getReservationById(
 			@ApiParam(
 					name = "id",
 					type = "String",
@@ -69,7 +65,7 @@ public class ReservationController {
 			})
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping
-	public DataDTO<ReservationDTO> registerReservation(@Validated @RequestBody CreateReservationDTO createReservationDTO){
+	public DataDTO<ReservationDTO> registerReservation(@Validated @RequestBody ReservationDTO createReservationDTO){
 		return new DataDTO<>(reservationService.resgisterReservation(createReservationDTO));
 	}
 	
@@ -91,7 +87,7 @@ public class ReservationController {
 			required = true)
 	@RequestBody
 	@Validated
-	ModifiedReservationDTO modifiedReservationDTO){
+	ReservationDTO modifiedReservationDTO){
 		return new DataDTO<>(reservationService.modifyReservation(modifiedReservationDTO));
 	}
 	

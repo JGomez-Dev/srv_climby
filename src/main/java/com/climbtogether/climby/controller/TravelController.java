@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.climbtogether.climby.dto.ConsultationTravelResponseDTO;
-import com.climbtogether.climby.dto.CreateTravelDTO;
 import com.climbtogether.climby.dto.DataDTO;
-import com.climbtogether.climby.dto.ModifiedTravelDTO;
 import com.climbtogether.climby.dto.TravelDTO;
 import com.climbtogether.climby.service.TravelService;
 
@@ -47,7 +44,7 @@ public class TravelController {
 			})
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(value = "/{id}", headers = "Accept=application/json")
-	public DataDTO<ConsultationTravelResponseDTO> getTravelById(
+	public DataDTO<TravelDTO> getTravelById(
 			@ApiParam(
 					name = "id",
 					type = "String",
@@ -69,7 +66,7 @@ public class TravelController {
 			})
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping
-	public DataDTO<TravelDTO> registerTravel(@Validated @RequestBody CreateTravelDTO createTravelDTO){
+	public DataDTO<TravelDTO> registerTravel(@Validated @RequestBody TravelDTO createTravelDTO){
 		return new DataDTO<>(travelService.resgisterTravel(createTravelDTO));
 	}
 	
@@ -91,7 +88,7 @@ public class TravelController {
 			required = true)
 	@RequestBody
 	@Validated
-	ModifiedTravelDTO modifiedTravelDTO){
+	TravelDTO modifiedTravelDTO){
 		return new DataDTO<>(travelService.modifyTravel(modifiedTravelDTO));
 	}
 	

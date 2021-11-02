@@ -66,13 +66,9 @@ public class User implements Serializable {
 	private String userPhoto;
 	
 	
-	@OneToMany(mappedBy = "passenger",fetch = FetchType.LAZY)
-	@Fetch(value = FetchMode.SUBSELECT)
-	private List<Reservation> reservation;
-	
-	@OneToMany(mappedBy = "driver",fetch = FetchType.LAZY)
-	@Fetch(value = FetchMode.SUBSELECT)
-	private  List<Travel> travel;
+//	private List<String> reservation;
+//	
+//	private  List<String> travel;
 	
 	
 	

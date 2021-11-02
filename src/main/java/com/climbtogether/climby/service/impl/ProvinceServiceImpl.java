@@ -7,9 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.climbtogether.climby.domain.Province;
-import com.climbtogether.climby.dto.ConsultationProvinceResponseDTO;
-import com.climbtogether.climby.dto.CreateProvinceDTO;
-import com.climbtogether.climby.dto.ModifiedProvinceDTO;
 import com.climbtogether.climby.dto.ProvinceDTO;
 import com.climbtogether.climby.exceptions.ProvinceExistsConflicExcepcion;
 import com.climbtogether.climby.exceptions.ProvinceNotFoundException;
@@ -28,7 +25,7 @@ public class ProvinceServiceImpl implements ProvinceService {
 	private ProvinceMapper provinceMapper;
 	
 	@Override
-	public ConsultationProvinceResponseDTO getProvinceById(String id) throws ProvinceNotFoundException {
+	public ProvinceDTO getProvinceById(String id) throws ProvinceNotFoundException {
 		
 		Optional<Province> province = provinceRepository.findById(id);
 		
@@ -36,15 +33,15 @@ public class ProvinceServiceImpl implements ProvinceService {
 			throw new ProvinceNotFoundException(String.format(MESSAGE_PROVINCE_NOT_FOUND ,id));
 		}
 		
-		return provinceMapper.provinceToConsultationProvinceResponseDTO(province.get());
+		return provinceMapper.provinceToprovinceDTO(province.get());
 	}
 	
 	
 	@Override
 	@Transactional(rollbackFor = ProvinceExistsConflicExcepcion.class)
-	public ProvinceDTO resgisterProvince(CreateProvinceDTO createprovinceDTO) throws ProvinceExistsConflicExcepcion {
+	public ProvinceDTO resgisterProvince(ProvinceDTO createprovinceDTO) throws ProvinceExistsConflicExcepcion {
 		
-		Province province = provinceMapper.createProvinceDTOToProvince(createprovinceDTO);
+		Province province = provinceMapper.provinceDTOToprovince(createprovinceDTO);
 		
 		if(provinceRepository.existsById(province.getId())) {
 			throw new ProvinceExistsConflicExcepcion("Province id \""+province.getId()+"\" already exitst");
@@ -60,9 +57,9 @@ public class ProvinceServiceImpl implements ProvinceService {
 
 	@Override
 	@Transactional(rollbackFor = ProvinceNotFoundException.class)
-	public ProvinceDTO modifyProvince(ModifiedProvinceDTO modifyProvinceDTO) throws ProvinceNotFoundException {
+	public ProvinceDTO modifyProvince(ProvinceDTO modifyProvinceDTO) throws ProvinceNotFoundException {
 		
-		Province province = provinceMapper.modifiedProvinceDTOToProvince(modifyProvinceDTO);
+		Province province = provinceMapper.provinceDTOToprovince(modifyProvinceDTO);
 		String id = province.getId();
 		if(!provinceRepository.existsById(id)) {
 			throw new ProvinceNotFoundException(String.format(MESSAGE_PROVINCE_NOT_FOUND ,id));

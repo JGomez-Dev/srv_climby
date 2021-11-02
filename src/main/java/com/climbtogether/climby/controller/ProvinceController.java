@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.climbtogether.climby.dto.ConsultationProvinceResponseDTO;
-import com.climbtogether.climby.dto.CreateProvinceDTO;
 import com.climbtogether.climby.dto.DataDTO;
-import com.climbtogether.climby.dto.ModifiedProvinceDTO;
 import com.climbtogether.climby.dto.ProvinceDTO;
 import com.climbtogether.climby.exceptions.ProvinceExistsConflicExcepcion;
 import com.climbtogether.climby.exceptions.ProvinceNotFoundException;
@@ -47,7 +44,7 @@ public class ProvinceController {
 			})
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(value = "/{id}", headers = "Accept=application/json")
-	public DataDTO<ConsultationProvinceResponseDTO> getProvinceById(
+	public DataDTO<ProvinceDTO> getProvinceById(
 			@ApiParam(
 					name = "id",
 					type = "String",
@@ -69,7 +66,7 @@ public class ProvinceController {
 			})
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping
-	public DataDTO<ProvinceDTO> registerProvince(@Validated @RequestBody CreateProvinceDTO createProvinceDTO) throws ProvinceExistsConflicExcepcion{
+	public DataDTO<ProvinceDTO> registerProvince(@Validated @RequestBody ProvinceDTO createProvinceDTO) throws ProvinceExistsConflicExcepcion{
 		return new DataDTO<>(provinceService.resgisterProvince(createProvinceDTO));
 	}
 	
@@ -91,7 +88,7 @@ public class ProvinceController {
 			required = true)
 	@RequestBody
 	@Validated
-	ModifiedProvinceDTO modifiedProvinceDTO) throws ProvinceNotFoundException{
+	ProvinceDTO modifiedProvinceDTO) throws ProvinceNotFoundException{
 		return new DataDTO<>(provinceService.modifyProvince(modifiedProvinceDTO));
 	}
 	

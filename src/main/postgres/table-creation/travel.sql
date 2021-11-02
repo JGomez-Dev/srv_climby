@@ -8,7 +8,6 @@ create table core.tb_travel(
 	site varchar,
 	type varchar,
 	available_places integer,
-	departure_date_string varchar,
 	departure_date timestamp,
 	province varchar,
 	

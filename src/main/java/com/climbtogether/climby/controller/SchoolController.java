@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.climbtogether.climby.dto.ConsultationSchoolResponseDTO;
-import com.climbtogether.climby.dto.CreateSchoolDTO;
 import com.climbtogether.climby.dto.DataDTO;
-import com.climbtogether.climby.dto.ModifiedSchoolDTO;
 import com.climbtogether.climby.dto.SchoolDTO;
 import com.climbtogether.climby.service.SchoolService;
 
@@ -45,7 +42,7 @@ public class SchoolController {
 			})
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(value = "/{id}", headers = "Accept=application/json")
-	public DataDTO<ConsultationSchoolResponseDTO> getSchoolById(
+	public DataDTO<SchoolDTO> getSchoolById(
 			@ApiParam(
 					name = "id",
 					type = "String",
@@ -67,7 +64,7 @@ public class SchoolController {
 			})
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping
-	public DataDTO<SchoolDTO> registerSchool(@Validated @RequestBody CreateSchoolDTO createSchoolDTO) {
+	public DataDTO<SchoolDTO> registerSchool(@Validated @RequestBody SchoolDTO createSchoolDTO) {
 		return new DataDTO<>(schoolService.resgisterSchool(createSchoolDTO));
 	}
 	
@@ -89,7 +86,7 @@ public class SchoolController {
 			required = true)
 	@RequestBody
 	@Validated
-	ModifiedSchoolDTO modifiedSchoolDTO){
+	SchoolDTO modifiedSchoolDTO){
 		return new DataDTO<>(schoolService.modifySchool(modifiedSchoolDTO));
 	}
 	
