@@ -7,12 +7,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -44,9 +42,9 @@ public class Reservation implements Serializable {
 	@JoinColumn(name = "id_user", foreignKey = @ForeignKey(name = "fk_core_id_user"))
 	private User passenger;
 
-	@ManyToOne
-	@JoinColumn(name = "id_travel", foreignKey = @ForeignKey(name = "fk_core_id_travel"))
-	private Travel travel;
+//	@ManyToOne
+//	@JoinColumn(name = "id_travel", foreignKey = @ForeignKey(name = "fk_core_id_travel"))
+//	private Travel travel;
 	
 	@OneToOne
 	@JoinColumn(name = "id_status", foreignKey = @ForeignKey(name = "fk_core_id_status"))
