@@ -2,19 +2,13 @@ package com.climbtogether.climby.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,10 +30,10 @@ public class User implements Serializable {
 	private static final long serialVersionUID = -985853124316450362L;
 
 	@Id
-//	@SequenceGenerator(name = "idUserSeqGenerator", sequenceName = "sc_user", allocationSize = 1)
-//	@GeneratedValue(generator = "idUserSeqGenerator")
+	@SequenceGenerator(name = "idUserSeqGenerator", sequenceName = "sc_user", allocationSize = 1)
+	@GeneratedValue(generator = "idUserSeqGenerator")
 	@Column(name = "id_user",unique = true, nullable = false)
-	private String id;
+	private Integer id;
 	
 	@Column(name = "full_name", nullable = false)
 	private String fullName;

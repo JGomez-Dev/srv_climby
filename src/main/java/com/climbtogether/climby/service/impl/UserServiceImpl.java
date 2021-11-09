@@ -36,9 +36,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserDTO getUserById(String id) {
+	public UserDTO getUserById(Integer id) {
 		
-		Optional<User> user = userRepository.findById(id.toString());
+		Optional<User> user = userRepository.findById(id);
 
 		return userMapper.userToUserDTO(user.get());
 	}
@@ -46,21 +46,21 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserDTO modifyUser(UserDTO modifyUserDTO) {
 		
-		User user = userMapper.userDTOToUser(modifyUserDTO);
-		String id = user.getId();
-		Assert.notNull(id,MESSAGE_PROVINCE_ID_NULL);
-		if(!userRepository.existsById(id.toString())) {
-			//Hay que meter una excepcion
-			return null;
-		}
+//		User user = userMapper.userDTOToUser(modifyUserDTO);
+//		String id = user.getId();
+//		Assert.notNull(id,MESSAGE_PROVINCE_ID_NULL);
+//		if(!userRepository.existsById(id.toString())) {
+//			//Hay que meter una excepcion
+//			return null;
+//		}
+//		
+//		User attachedUser = userRepository.save(user);
 		
-		User attachedUser = userRepository.save(user);
-		
-		return userMapper.userToUserDTO(attachedUser);
+		return null;//userMapper.userToUserDTO(attachedUser);
 	}
 
 	@Override
-	public void removeUser(String id) {
+	public void removeUser(Integer id) {
 		Assert.notNull(id,MESSAGE_PROVINCE_ID_NULL);
 		Optional<User> attachedUser = userRepository.findById(id);
 		if(attachedUser.isEmpty()) {

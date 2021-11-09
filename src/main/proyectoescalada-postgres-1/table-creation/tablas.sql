@@ -19,10 +19,10 @@ create table core.tb_province(
 );
 
 
---create sequence sc_user as integer;
+create sequence sc_user as integer;
 
 create table core.tb_user(
-	id_user  varchar, --integer not null default nextval('core.sc_user'),
+	id_user  integer not null default nextval('core.sc_user'),
 	full_name varchar,
 	experience integer,
 	id_position integer,
@@ -37,24 +37,24 @@ create table core.tb_user(
 	
 );
 
---alter sequence sc_user owned by tb_user.id_user;
+alter sequence sc_user owned by tb_user.id_user;
 
 
 --create sequence sc_travel as integer;
-
-create table core.tb_travel(
-	id_travel varchar, -- integer not null default nextval('core.sc_travel'),
-	id_driver varchar,
-	site varchar,
-	type varchar,
-	available_places integer,
-	departure_date timestamp,
-	province varchar,
-	
-	constraint pk_core_travel primary key (id_travel),
-	constraint fk_core_id_driver foreign key (id_driver) references tb_user(id_user),
-	constraint fk_core_province foreign key (province) references tb_province(id_province)
-);
+-- 
+-- create table core.tb_travel(
+-- 	id_travel varchar, -- integer not null default nextval('core.sc_travel'),
+-- 	id_driver varchar,
+-- 	site varchar,
+-- 	type varchar,
+-- 	available_places integer,
+-- 	departure_date timestamp,
+-- 	province varchar,
+-- 	
+-- 	constraint pk_core_travel primary key (id_travel),
+-- 	constraint fk_core_id_driver foreign key (id_driver) references tb_user(id_user),
+-- 	constraint fk_core_province foreign key (province) references tb_province(id_province)
+-- );
 
 	--alter sequence sc_travel owned by tb_travel.id_travel;
 	
@@ -73,18 +73,18 @@ create table core.tb_status(
 
 --create sequence sc_reservation as integer;
 
-create table core.tb_reservation(
-	id_reservation varchar,-- not null default nextval('core.sc_reservation'),
-	id_user varchar not null,
-	id_travel varchar not null,
-	id_status varchar not null,
-	date_reservation timestamp not null,
-	
-	constraint pk_core_reservation primary key (id_reservation),
-	constraint fk_core_id_user foreign key (id_user) references tb_user(id_user),
-	constraint fk_core_id_travel foreign key (id_travel) references tb_travel(id_travel),
-	constraint fk_core_id_status foreign key (id_status) references tb_status(id_status)
-	);
+-- create table core.tb_reservation(
+-- 	id_reservation varchar,-- not null default nextval('core.sc_reservation'),
+-- 	id_user varchar not null,
+-- 	id_travel varchar not null,
+-- 	id_status varchar not null,
+-- 	date_reservation timestamp not null,
+-- 	
+-- 	constraint pk_core_reservation primary key (id_reservation),
+-- 	constraint fk_core_id_user foreign key (id_user) references tb_user(id_user),
+-- 	constraint fk_core_id_travel foreign key (id_travel) references tb_travel(id_travel),
+-- 	constraint fk_core_id_status foreign key (id_status) references tb_status(id_status)
+-- 	);
 	
 	--alter sequence sc_reservation owned by tb_reservation.id_reservation;
 

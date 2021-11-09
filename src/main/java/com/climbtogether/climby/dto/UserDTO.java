@@ -21,10 +21,9 @@ public class UserDTO implements Serializable {
 
 	private static final long serialVersionUID = 1076577097267741731L;
 	
-	@ApiModelProperty(required = true, value = "Identificador usuario", example = "1")
-	@NotNull
-	private String id;
-	
+//	@ApiModelProperty(required = true, value = "Identificador usuario", example = "1")
+//	@NotNull
+//	private String id;
 	
 	@ApiModelProperty(required = true, value = "Nombre completo", example = "Eduardo Gomez")
 	private String fullName;

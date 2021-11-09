@@ -51,7 +51,7 @@ public class UserController {
 					required = true,
 					example =  "1")
 			@PathVariable
-			String id){
+			Integer id){
 		return new DataDTO<>(userService.getUserById(id));
 	}
 	
@@ -102,7 +102,7 @@ public class UserController {
 						required = true,
 						example = "1")
 			@PathVariable
-			String id){
+			Integer id){
 		userService.removeUser(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
