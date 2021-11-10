@@ -35,37 +35,41 @@ public class UserController {
 	@ApiOperation(
 			value = "Get user by id",
 			notes = "Return the user information")
-	
+
 	@ApiResponses(
 			value = {
-					@ApiResponse(code = 201, message = "success"),
-					@ApiResponse(code = 409, message = "conflict")
+					@ApiResponse(code = 200, message = "Ok"),	
+					@ApiResponse(code = 400, message = "Bad request"),	@ApiResponse(code = 401, message = "Unathorized"),
+					@ApiResponse(code = 403, message = "Forbidden"),    @ApiResponse(code = 404, message = "Not found"),
+					@ApiResponse(code = 500, message = "Error")
 			})
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(value = "/{id}", headers = "Accept=application/json")
 	public DataDTO<UserDTO> getUserById(
 			@ApiParam(
 					name = "id",
-					type = "String",
+					type = "Integer",
 					value = "Intake code or CIO that identifies a province",
 					required = true,
 					example =  "1")
 			@PathVariable
-			Integer id){
+			Integer id) throws Exception{
 		return new DataDTO<>(userService.getUserById(id));
 	}
 	
 	@ApiOperation(
-			value = "Province creation",
-			notes = "Province creation operation required for the creation of available province")
+			value = "User creation",
+			notes = "User creation operation required for the creation of available user")
 	@ApiResponses(
 			value = {
-					@ApiResponse(code = 201, message = "created"),
-					@ApiResponse(code = 409, message = "conflict")
+					@ApiResponse(code = 201, message = "Created"),	
+					@ApiResponse(code = 400, message = "Bad request"),	@ApiResponse(code = 401, message = "Unathorized"),
+					@ApiResponse(code = 403, message = "Forbidden"),    @ApiResponse(code = 409, message = "Conflic"),
+					@ApiResponse(code = 500, message = "Error")
 			})
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping
-	public DataDTO<UserDTO> registerUser(@Validated @RequestBody UserDTO createUserDTO){
+	public DataDTO<UserDTO> registerUser(@Validated @RequestBody UserDTO createUserDTO) throws Exception {
 		return new DataDTO<>(userService.resgisterUser(createUserDTO));
 	}
 	

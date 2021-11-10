@@ -26,14 +26,15 @@ create table core.tb_user(
 	full_name varchar,
 	experience integer,
 	id_position integer,
-	phone varchar,
+	phone varchar(9),
 	email varchar,
 	score numeric(18,11),
 	outputs integer,
 	user_photo varchar,
 	
 	constraint pk_core_user primary key (id_user),
-	constraint fk_core_id_posicion foreign key (id_position) references tb_position(id_position)
+	constraint fk_core_id_posicion foreign key (id_position) references tb_position(id_position),
+	constraint chk_phone check (phone not like '%[^0-9]%')
 	
 );
 
