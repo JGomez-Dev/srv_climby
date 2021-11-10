@@ -41,23 +41,23 @@ create table core.tb_user(
 alter sequence sc_user owned by tb_user.id_user;
 
 
---create sequence sc_travel as integer;
--- 
--- create table core.tb_travel(
--- 	id_travel varchar, -- integer not null default nextval('core.sc_travel'),
--- 	id_driver varchar,
--- 	site varchar,
--- 	type varchar,
--- 	available_places integer,
--- 	departure_date timestamp,
--- 	province varchar,
--- 	
--- 	constraint pk_core_travel primary key (id_travel),
--- 	constraint fk_core_id_driver foreign key (id_driver) references tb_user(id_user),
--- 	constraint fk_core_province foreign key (province) references tb_province(id_province)
--- );
+create sequence sc_travel as integer;
 
-	--alter sequence sc_travel owned by tb_travel.id_travel;
+create table core.tb_travel(
+	id_travel integer not null default nextval('core.sc_travel'),
+	id_driver integer,
+	site varchar,
+	type varchar,
+	available_places integer,
+	departure_date timestamp,
+	province varchar,
+	
+	constraint pk_core_travel primary key (id_travel),
+	constraint fk_core_id_driver foreign key (id_driver) references tb_user(id_user),
+	constraint fk_core_province foreign key (province) references tb_province(id_province)
+);
+
+alter sequence sc_travel owned by tb_travel.id_travel;
 	
 --create sequence sc_status as integer;
 

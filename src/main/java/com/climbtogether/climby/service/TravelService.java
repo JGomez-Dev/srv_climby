@@ -1,17 +1,21 @@
-//package com.climbtogether.climby.service;
-//
-//import com.climbtogether.climby.dto.TravelDTO;
-//
-//public interface TravelService {
-//
-//	TravelDTO resgisterTravel(TravelDTO createTravelDTO);
-//	
-//	TravelDTO modifyTravel(TravelDTO modifyTravelDTO);
-//	
-//	TravelDTO getTravelById(String id);
-//	
-//	void removeTravel(String id);
-//	
-//	
-//
-//}
+package com.climbtogether.climby.service;
+
+import java.util.List;
+
+import com.climbtogether.climby.dto.TravelDTO;
+
+public interface TravelService {
+
+	TravelDTO resgisterTravel(TravelDTO createTravelDTO);
+	
+	TravelDTO modifyTravel(TravelDTO modifyTravelDTO);
+	
+	void removeTravel(Integer id);
+
+	TravelDTO getTravelById(Integer id);
+	
+	List<TravelDTO> getTravelFindAll();
+	
+	
+
+}
