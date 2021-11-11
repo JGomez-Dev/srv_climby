@@ -69,8 +69,8 @@ public class UserController {
 			})
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping
-	public DataDTO<UserDTO> registerUser(@Validated @RequestBody UserDTO createUserDTO) throws Exception {
-		return new DataDTO<>(userService.resgisterUser(createUserDTO));
+	public UserDTO registerUser(@Validated @RequestBody UserDTO createUserDTO) throws Exception {
+		return new DataDTO<>(userService.resgisterUser(createUserDTO)).getData();
 	}
 	
 	@ApiOperation(
