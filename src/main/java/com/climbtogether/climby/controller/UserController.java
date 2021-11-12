@@ -45,7 +45,7 @@ public class UserController {
 			})
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(value = "/{id}", headers = "Accept=application/json")
-	public DataDTO<UserDTO> getUserById(
+	public UserDTO getUserById(
 			@ApiParam(
 					name = "id",
 					type = "Integer",
@@ -54,7 +54,7 @@ public class UserController {
 					example =  "1")
 			@PathVariable
 			Integer id) throws Exception{
-		return new DataDTO<>(userService.getUserById(id));
+		return new DataDTO<>(userService.getUserById(id)).getData();
 	}
 	
 	@ApiOperation(
@@ -84,7 +84,7 @@ public class UserController {
 			})
 	@ResponseStatus(HttpStatus.OK)
 	@PutMapping
-	public DataDTO<UserDTO> modifyUser(
+	public UserDTO modifyUser(
 		@ApiParam (	name = "User",
 			type = "User",
 			value = "User type entity",
@@ -92,7 +92,7 @@ public class UserController {
 	@RequestBody
 	@Validated
 	UserDTO modifiedUserDTO){
-		return new DataDTO<>(userService.modifyUser(modifiedUserDTO));
+		return new DataDTO<>(userService.modifyUser(modifiedUserDTO)).getData();
 	}
 	
 	@ApiOperation(value = "User deletion",notes = "Return user information deleted")
