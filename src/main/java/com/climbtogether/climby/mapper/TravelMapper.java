@@ -14,12 +14,12 @@ public interface TravelMapper {
 	
 	
 	
-	@Mapping(target ="driver.id",source= "userDTO")
+	@Mapping(target ="driver.id",source= "userDTO.id")
 	@Mapping(target ="province.id",source= "provinceDTO")
 	Travel travelDTOToTravel(TravelDTO travelDTO);
 	
 	@Mapping(source ="id_travel",target= "id")
-	@Mapping(source ="driver.id",target= "userDTO")
+	@Mapping(source ="driver.id",target= "userDTO.id")
 	@Mapping(source ="province.id",target= "provinceDTO")
 	TravelDTO  travelToTravelDTO(Travel  travel);
 

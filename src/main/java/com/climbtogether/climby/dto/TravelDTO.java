@@ -28,34 +28,34 @@ public class TravelDTO   implements Serializable {
 //	@JsonProperty(value = "Identificador del viaje")
 	private Integer id;
 	
-	@ApiModelProperty(required = true, value = "Sitio", example = "Albarracin")
-	@JsonProperty(value = "Sitio del viaje")
+	@ApiModelProperty(required = true, value = "Travel site", example = "Albarracin")
+	@JsonProperty(value = "travelSite")
 	private String site;
 	
-	@ApiModelProperty(required = true, value = "Tipo", example = "Cuerda")
-	@JsonProperty(value = "Tipo de viaje")
+	@ApiModelProperty(required = true, value = "Travel type", example = "Cuerda")
+	@JsonProperty(value = "travelType")
 	private String type;
 	
-	@ApiModelProperty(value = "Numero de plazas", example="3")
-	@JsonProperty(value = "Numero de plazas")
+	@ApiModelProperty(value = "Number of seats", example="3")
+	@JsonProperty(value = "numberSeats")
 	private Integer availablePlaces; 
 	
-	@ApiModelProperty(required = true, value = "Fecha salida en numeros", example = "2000-01-01 01:01:01")
+	@ApiModelProperty(required = true, value = "Date", example = "2000-01-01 01:01:01")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	@PastOrPresent
-	@JsonProperty(value = "Fecha salida")
+	@JsonProperty(value = "Date")
 	private LocalDateTime departureDate;
 	
 	@ApiModelProperty(value = "Province",example="1")
-	@JsonProperty(value = "ID-Provincia")
+	@JsonProperty(value = "idProvince")
 	private String provinceDTO;
 	
 	@ApiModelProperty(value = "Driver",example="1")
-	@JsonProperty(value = "ID-Conductor")
-	private String userDTO;
+	@JsonProperty(value = "driver")
+	private  UserDTO userDTO;
 	
 	@ApiModelProperty(required = false,value = "Reservation")
-	@JsonProperty(value = "Informacion reserva")
+	@JsonProperty(value = "reservation")
 	private ReservationDTO reservationDTO;
 	
 	
