@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
 	public UserDTO modifyUser(UserDTO modifyUserDTO) {
 
 		User user = userMapper.userDTOToUser(modifyUserDTO);
-		Integer id = user.getId();
+		Integer id = user.getId_user();
 		Assert.notNull(id, MESSAGE_PROVINCE_ID_NULL);
 		if (!userRepository.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User Not Found");

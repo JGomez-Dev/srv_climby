@@ -2,10 +2,6 @@ package com.climbtogether.climby.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.sun.istack.NotNull;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -21,7 +17,7 @@ public class UserDTO implements Serializable {
 
 	private static final long serialVersionUID = 1076577097267741731L;
 	
-	@ApiModelProperty(required = true, value = "Identificador usuario", example = "1")
+//	@ApiModelProperty(required = true, value = "Identificador usuario", example = "1")
 //	@NotNull
 	private Integer id;
 	

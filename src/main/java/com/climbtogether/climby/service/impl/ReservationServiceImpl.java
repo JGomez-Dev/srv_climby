@@ -35,7 +35,7 @@ public class ReservationServiceImpl implements ReservationService {
 	@Override
 	public ReservationDTO modifyReservation(ReservationDTO modifyReservationDTO) {
 		Reservation reservation = reservationMapper.reservationDTOToreservation(modifyReservationDTO);
-		Integer id = reservation.getId();
+		Integer id = reservation.getId_reservation();
 		if(!reservationRepository.existsById(id)) {
 			
 		}

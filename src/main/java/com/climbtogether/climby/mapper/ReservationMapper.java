@@ -14,7 +14,8 @@ import com.climbtogether.climby.dto.ReservationDTO;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface ReservationMapper {
 
-	@Mapping(target= "passenger.id",source = "userDTO")
+	
+	@Mapping(target= "passenger.id_user",source = "userDTO.id")
 	@Mapping(target= "travel.id_travel",source = "travelDTO")
 	@Mapping(target= "reservationDate",source = "customerDate")
 	Reservation reservationDTOToreservation(ReservationDTO reservationDTO);
@@ -28,7 +29,8 @@ public interface ReservationMapper {
 //		
 //        return reservaId;              
 //    }
-	@Mapping(source= "passenger.id",target = "userDTO")
+	@Mapping(source= "id_reservation",target = "id")
+	@Mapping(source= "passenger.id_user",target = "userDTO.id")
 	@Mapping(source= "travel.id_travel",target = "travelDTO")
 	@Mapping(source= "reservationDate",target = "customerDate")
 	ReservationDTO reservationToReservationDTO(Reservation reservation);

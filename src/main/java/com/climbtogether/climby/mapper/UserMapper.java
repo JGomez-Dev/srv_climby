@@ -1,6 +1,7 @@
 package com.climbtogether.climby.mapper;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
 import com.climbtogether.climby.domain.User;
@@ -11,7 +12,7 @@ import com.climbtogether.climby.dto.UserDTO;
 public interface UserMapper {
 	
 
-	//@Mapping(target ="reservation",source= "reservationDTO", qualifiedByName="mapearReservas")
+	@Mapping(target ="id_user",source= "id")
 	User userDTOToUser(UserDTO userDTO);
 	
 //	@Named("mapearReservas")
@@ -23,7 +24,7 @@ public interface UserMapper {
 //		
 //        return reservaId;              
 //    }
-	
+	@Mapping(source ="id_user",target= "id")
 	UserDTO userToUserDTO(User user);
 
 		

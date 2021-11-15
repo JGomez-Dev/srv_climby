@@ -39,8 +39,7 @@ public class Reservation implements Serializable {
 	@Id
 	@SequenceGenerator(name = "idReservationSeqGenerator", sequenceName = "sc_reservation", allocationSize = 1)
 	@GeneratedValue(generator = "idReservationSeqGenerator")
-	@Column(name = "id_reservation",unique = true, nullable = false)
-	private Integer id;
+	private Integer id_reservation;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_user", foreignKey = @ForeignKey(name = "fk_core_id_user"))
