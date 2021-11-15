@@ -59,35 +59,35 @@ create table core.tb_travel(
 
 alter sequence sc_travel owned by tb_travel.id_travel;
 	
---create sequence sc_status as integer;
+create sequence sc_status as integer;
 
 create table core.tb_status(
-	id_status varchar ,--integer not null default nextval('core.sc_status'),
+	id_status integer not null default nextval('core.sc_status'),
 	status_reservation boolean,
 	status_valuation boolean,
 	
 	constraint pk_core_status primary key (id_status)
 );
 
-	--alter sequence sc_status owned by tb_status.id_status;
+alter sequence sc_status owned by tb_status.id_status;
 	
 
---create sequence sc_reservation as integer;
+create sequence sc_reservation as integer;
 
--- create table core.tb_reservation(
--- 	id_reservation varchar,-- not null default nextval('core.sc_reservation'),
--- 	id_user varchar not null,
--- 	id_travel varchar not null,
--- 	id_status varchar not null,
--- 	date_reservation timestamp not null,
--- 	
--- 	constraint pk_core_reservation primary key (id_reservation),
--- 	constraint fk_core_id_user foreign key (id_user) references tb_user(id_user),
--- 	constraint fk_core_id_travel foreign key (id_travel) references tb_travel(id_travel),
--- 	constraint fk_core_id_status foreign key (id_status) references tb_status(id_status)
--- 	);
+ create table core.tb_reservation(
+	id_reservation integer not null default nextval('core.sc_reservation'),
+	id_user integer,
+	id_travel integer,
+	id_status integer,
+	date_reservation timestamp,
 	
-	--alter sequence sc_reservation owned by tb_reservation.id_reservation;
+	constraint pk_core_reservation primary key (id_reservation),
+	constraint fk_core_id_user foreign key (id_user) references tb_user(id_user),
+	constraint fk_core_id_travel foreign key (id_travel) references tb_travel(id_travel),
+	constraint fk_core_id_status foreign key (id_status) references tb_status(id_status)
+	);
+ 	
+	alter sequence sc_reservation owned by tb_reservation.id_reservation;
 
 --create sequence sc_school as integer;
 
@@ -99,6 +99,7 @@ create table core.tb_school(
 );
 
 --alter sequence sc_school owned by tb_school.id_school;
+
 
 
 --CARGADE DATOS

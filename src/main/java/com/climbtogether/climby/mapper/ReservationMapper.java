@@ -1,32 +1,40 @@
-//package com.climbtogether.climby.mapper;
-//
-//import org.mapstruct.Mapper;
-//import org.mapstruct.Mapping;
-//import org.mapstruct.ReportingPolicy;
-//
-//import com.climbtogether.climby.domain.Reservation;
-//import com.climbtogether.climby.dto.ReservationDTO;
-//
-//@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
-//public interface ReservationMapper {
-//
-////	@Mapping(target= "passenger.id",source = "userDTO.id")
-////	Reservation reservationDTOToreservation(ReservationDTO reservationDTO);
-//
-////	@Named("mapearPasajeros")
-////    default List<String> mapeoIdReserva(List<ReservationDTO> mapearReservas) {
-////		List<String> reservaId = new ArrayList<String>();
-////		for (ReservationDTO id : mapearReservas){
-////			reservaId.add(id.getId());
-////		}
-////		
-////        return reservaId;              
-////    }
-//
-//	
-//	
-////	@Mapping(target= " userDTO",source = "passenger.id", qualifiedByName="Pasajeros")
-//	ReservationDTO reservationToReservationDTO(Reservation reservation);
-//
-//	
-//}
+package com.climbtogether.climby.mapper;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
+import org.mapstruct.ReportingPolicy;
+
+import com.climbtogether.climby.domain.Reservation;
+import com.climbtogether.climby.dto.ReservationDTO;
+
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+public interface ReservationMapper {
+
+	@Mapping(target= "passenger.id",source = "userDTO")
+	@Mapping(target= "travel.id_travel",source = "travelDTO")
+	@Mapping(target= "reservationDate",source = "customerDate")
+	Reservation reservationDTOToreservation(ReservationDTO reservationDTO);
+
+//	@Named("mapearPasajeros")
+//    default List<String> mapeoIdReserva(List<ReservationDTO> mapearReservas) {
+//		List<String> reservaId = new ArrayList<String>();
+//		for (ReservationDTO id : mapearReservas){
+//			reservaId.add(id.getId());
+//		}
+//		
+//        return reservaId;              
+//    }
+	@Mapping(source= "passenger.id",target = "userDTO")
+	@Mapping(source= "travel.id_travel",target = "travelDTO")
+	@Mapping(source= "reservationDate",target = "customerDate")
+	ReservationDTO reservationToReservationDTO(Reservation reservation);
+	
+	
+	
+
+	
+}

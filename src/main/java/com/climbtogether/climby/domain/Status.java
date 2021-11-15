@@ -32,7 +32,7 @@ public class Status  implements Serializable {
 //	@SequenceGenerator(name = "idStatusSeqGenerator", sequenceName = "sc_status", allocationSize = 1)
 //	@GeneratedValue(generator = "idStatusSeqGenerator")
 	@Column(name = "id_status",unique = true, nullable = false)
-	private String id;
+	private Integer id;
 	
 	@Column(name = "status_reservation")
 	private boolean reservationStatus;

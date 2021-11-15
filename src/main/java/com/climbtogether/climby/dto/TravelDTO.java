@@ -48,7 +48,7 @@ public class TravelDTO   implements Serializable {
 	
 	@ApiModelProperty(value = "Province",example="1")
 	@JsonProperty(value = "idProvince")
-	private String provinceDTO;
+	private ProvinceDTO provinceDTO;
 	
 	@ApiModelProperty(value = "Driver",example="1")
 	@JsonProperty(value = "driver")
@@ -56,12 +56,9 @@ public class TravelDTO   implements Serializable {
 	
 	@ApiModelProperty(required = false,value = "Reservation")
 	@JsonProperty(value = "reservation")
-	private ReservationDTO reservationDTO;
+	private List<ReservationDTO> reservationDTO;
 	
-	
-//	@ApiModelProperty(value = "Reservation")
-//	@JsonProperty(value = "Reservation")
-//	private List<ReservationDTO> Reservation;
+
 	
 	
 	

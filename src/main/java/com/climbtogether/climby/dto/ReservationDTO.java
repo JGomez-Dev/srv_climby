@@ -25,27 +25,25 @@ public class ReservationDTO implements Serializable {
 
 	private static final long serialVersionUID = -3086160475938675275L;
 	
-	@ApiModelProperty(required = true, value = "Identificador Reserva", example = "1")
-	@NotNull
-	@JsonProperty(value = "Identificador de la reserva")
-	private String id;
+	//@ApiModelProperty(required = true, value = "Id reservation", example = "1")
+	//private Integer id;
 	
 	@ApiModelProperty(value = "User", example = "1")
-	@JsonProperty(value = "IDs-Pasajeros reserva")
-	private UserDTO userDTO;
+	@JsonProperty(value = "userId")
+	private Integer userDTO;
 	
-//	@ApiModelProperty(value = "Travel", example = "1")
-//	@JsonProperty(value = "Travel")
-//	private String travelDTO;
+	@ApiModelProperty(value = "Travel", example = "1")
+	@JsonProperty(value = "idTravel")
+	private Integer travelDTO;
 	
-	@ApiModelProperty(value = "Status")
-	@JsonProperty(value = "Estado")
-	private StatusDTO statusDTO;
+//	@ApiModelProperty(value = "Status")
+//	@JsonProperty(value = "status")
+//	private Integer statusDTO;
 	
 	@ApiModelProperty(required = true, value = "Customer date" , example = "2000-01-01 01:01:01")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	@PastOrPresent
-	@JsonProperty(value = "Fecha de la reserva")
+	@JsonProperty(value = "date")
 	private LocalDateTime customerDate;
 
 }
