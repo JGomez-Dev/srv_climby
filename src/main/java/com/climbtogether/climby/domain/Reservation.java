@@ -1,6 +1,7 @@
 package com.climbtogether.climby.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -49,9 +50,11 @@ public class Reservation implements Serializable {
 	@JoinColumn(name = "id_travel", foreignKey = @ForeignKey(name = "fk_core_id_travel"))
 	private Travel travel;
 	
-//	@OneToOne
-//	@JoinColumn(name = "id_status", foreignKey = @ForeignKey(name = "fk_core_id_status"))
-//	private Status status;
+	@Column(name = "reservationStatus")
+	private Boolean reservationStatus;
+	
+	@Column(name = "valuationStatus")
+	private Boolean valuationStatus;
 	
 	@Column(name = "date_reservation", nullable = false)
 	private LocalDateTime reservationDate;

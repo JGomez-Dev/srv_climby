@@ -2,6 +2,12 @@ package com.climbtogether.climby.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+import javax.validation.constraints.PastOrPresent;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -21,38 +27,37 @@ public class UserDTO implements Serializable {
 //	@NotNull
 	private Integer id;
 	
-	@ApiModelProperty(required = true, value = "Nombre completo", example = "Eduardo Gomez")
+	@ApiModelProperty(required = true, value = "Full name", example = "Eduardo Gomez")
 	private String fullName;
 	
-	@ApiModelProperty(value = "Experiencia", example="5")
+	@ApiModelProperty(value = "Experience", example="5")
 	private Integer experience; 
 	
 //	@ApiModelProperty(value = "Posicion", example = "1")
 //	private Integer position;
 
-	@ApiModelProperty(required = true, value = "Telefono", example = "691675453")
+	@ApiModelProperty(required = true, value = "Phone", example = "691675453")
 	private String phone;
 	
 	@ApiModelProperty(required = true, value = "Email", example = "edu21061991@gmail.com")
 	private String email;
 	
-	@ApiModelProperty(required = true, value = "Puntuacion", example = "8")
+	@ApiModelProperty(required = true, value = "Score", example = "8")
 	private BigDecimal score;
 	
 
-	@ApiModelProperty(value = "Salidas", example="5")
+	@ApiModelProperty(value = "Outpust", example="5")
 	private Integer outputs; 
 	
-	@ApiModelProperty(required = true, value = "Foto", example = "7")
+	@ApiModelProperty(required = true, value = "Photo", example = "7")
 	private String userPhoto;
-
-//	@ApiModelProperty(value = "Reservation")
-//	@JsonProperty(value = "Reservation")
-//	private List<ReservationDTO> reservationDTO;
-//	
-//	@ApiModelProperty(value = "Travel")
-//	@JsonProperty(value = "Travel")
-//	private List<TravelDTO> travelDTO;
+	
+	@ApiModelProperty(required = true, value = "Registration Date", example = "2000-01-01 01:01:01")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+	@PastOrPresent
+	@JsonProperty(value = "Registration Date")
+	private LocalDateTime registrationDate;
+	
 	
 	
 	

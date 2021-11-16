@@ -1,5 +1,6 @@
 package com.climbtogether.climby.service.impl;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +36,9 @@ public class UserServiceImpl implements UserService {
 
 		if (!regularExpression.checkPhone(createUserDTO.getPhone())) {
 			throw new ResponseStatusException(HttpStatus.CONFLICT, "Wrong phone number");
-		}
-		;
+		};
+		
+		createUserDTO.setRegistrationDate(LocalDateTime.now());
 
 		User user = userMapper.userDTOToUser(createUserDTO);
 

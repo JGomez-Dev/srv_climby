@@ -36,9 +36,13 @@ public class ReservationDTO implements Serializable {
 	@JsonProperty(value = "idTravel")
 	private Integer travelDTO;
 	
-//	@ApiModelProperty(value = "Status")
-//	@JsonProperty(value = "status")
-//	private Integer statusDTO;
+	@ApiModelProperty(value = "Reservation Status", example = "true")
+	@JsonProperty(value = "reservationStatus")
+	private Boolean reservationStatus;
+	
+	@ApiModelProperty(value = "Valuation Status", example = "true")
+	@JsonProperty(value = "valuationStatus")
+	private Boolean valuationStatus;
 	
 	@ApiModelProperty(required = true, value = "Customer date" , example = "2000-01-01 01:01:01")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")

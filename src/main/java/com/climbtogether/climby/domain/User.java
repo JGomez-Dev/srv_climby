@@ -2,6 +2,7 @@ package com.climbtogether.climby.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -57,6 +58,9 @@ public class User implements Serializable {
 	
 	@Column(name = "user_photo", nullable = false)
 	private String userPhoto;
+	
+	@Column(name = "registration_date", nullable = false)
+	private LocalDateTime registrationDate;
 	
 	
 //	private List<String> reservation;

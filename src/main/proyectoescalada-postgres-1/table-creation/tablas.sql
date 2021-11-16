@@ -35,6 +35,8 @@ create table core.tb_user(
 	score numeric(18,11),
 	outputs integer,
 	user_photo varchar,
+	registration_date timestamp,
+	
 	
 	constraint pk_core_user primary key (id_user),
 	constraint fk_core_id_posicion foreign key (id_position) references tb_position(id_position),
@@ -65,15 +67,15 @@ alter sequence sc_travel owned by tb_travel.id_travel;
 	
 create sequence sc_status as integer;
 
-create table core.tb_status(
-	id_status integer not null default nextval('core.sc_status'),
-	status_reservation boolean,
-	status_valuation boolean,
+--create table core.tb_status(
+--	id_status integer not null default nextval('core.sc_status'),
+--	status_reservation boolean,
+--	status_valuation boolean,
 	
-	constraint pk_core_status primary key (id_status)
-);
+--	constraint pk_core_status primary key (id_status)
+--);
 
-alter sequence sc_status owned by tb_status.id_status;
+--alter sequence sc_status owned by tb_status.id_status;
 	
 
 create sequence sc_reservation as integer;
@@ -82,13 +84,13 @@ create sequence sc_reservation as integer;
 	id_reservation integer not null default nextval('core.sc_reservation'),
 	id_user integer,
 	id_travel integer,
-	id_status integer,
 	date_reservation timestamp,
+	reservation_status Boolean,
+	valuation_status Boolean,
 	
 	constraint pk_core_reservation primary key (id_reservation),
 	constraint fk_core_id_user foreign key (id_user) references tb_user(id_user),
-	constraint fk_core_id_travel foreign key (id_travel) references tb_travel(id_travel),
-	constraint fk_core_id_status foreign key (id_status) references tb_status(id_status)
+	constraint fk_core_id_travel foreign key (id_travel) references tb_travel(id_travel)
 	);
  	
 	alter sequence sc_reservation owned by tb_reservation.id_reservation;
@@ -160,13 +162,20 @@ VALUES
 	('Valencia/València'),
 	('Valladolid'),
 	('Zamora'),
-	('Zaragoza');
+	('Zaragoza');	
 	
-INSERT INTO tb_status
-VALUES
-	('1',true,true),
-	('2',true,false),
-	('3',false,false),
-	('4',false,true);
+	
+INSERT INTO tb_user(full_name,experience,phone,email,score,outputs,user_photo,registration_date)
+VALUES ('Eduardo Gomez',5,'691675453','edu21061991@gmail.com',8,5,'7','2000-01-01 01:01:01');
+	
+
+INSERT INTO tb_travel(id_driver,site,type,available_places,departure_date,province)
+VALUES (1,'Albarracin','Cuerda',3,'2000-01-01 01:01:01',1);
+--INSERT INTO tb_status
+--VALUES
+--	('1',true,true),
+--	('2',true,false),
+--	('3',false,false),
+--	('4',false,true);
 
 	
