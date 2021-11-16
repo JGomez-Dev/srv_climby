@@ -27,8 +27,9 @@ public class Province implements Serializable {
 	private static final long serialVersionUID = -985853124316450362L;
 
 	@Id
-	@Column(name = "id_province",unique = true, nullable = false)
-	private String id;
+	@SequenceGenerator(name = "idProvinceSeqGenerator", sequenceName = "sc_province", allocationSize = 1)
+	@GeneratedValue(generator = "idProvinceSeqGenerator")
+	private Integer id_province;
 	
 	@Column(name = "name_province", unique = true, nullable = false, length = 50)
 	private String name;

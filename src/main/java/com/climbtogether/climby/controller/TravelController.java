@@ -37,7 +37,7 @@ public class TravelController {
 @Autowired private TravelService travelService;
 	
 	@ApiOperation(
-			value = "Get travel by id",
+			value = "Get travel",
 			notes = "Return the travel information")
 	
 	@ApiResponses(

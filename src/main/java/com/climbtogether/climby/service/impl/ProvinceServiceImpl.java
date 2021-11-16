@@ -1,29 +1,35 @@
-//package com.climbtogether.climby.service.impl;
-//
-//import java.util.Optional;
-//
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//import org.springframework.transaction.annotation.Transactional;
-//
-//import com.climbtogether.climby.domain.Province;
-//import com.climbtogether.climby.dto.ProvinceDTO;
-//import com.climbtogether.climby.exceptions.ProvinceExistsConflicExcepcion;
-//import com.climbtogether.climby.exceptions.ProvinceNotFoundException;
-//import com.climbtogether.climby.mapper.ProvinceMapper;
-//import com.climbtogether.climby.repository.ProvinceRepository;
-//import com.climbtogether.climby.service.ProvinceService;
-//
-//
-//@Service
-//public class ProvinceServiceImpl implements ProvinceService {
-//		
-//	private static final String MESSAGE_PROVINCE_NOT_FOUND = "Province id \"%s\" not found";
-//	@Autowired private ProvinceRepository provinceRepository;
-//	
-//	@Autowired
-//	private ProvinceMapper provinceMapper;
-//	
+package com.climbtogether.climby.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.climbtogether.climby.domain.Province;
+import com.climbtogether.climby.dto.ProvinceDTO;
+import com.climbtogether.climby.mapper.ProvinceMapper;
+import com.climbtogether.climby.repository.ProvinceRepository;
+import com.climbtogether.climby.service.ProvinceService;
+
+
+@Service
+public class ProvinceServiceImpl implements ProvinceService {
+		
+	private static final String MESSAGE_PROVINCE_NOT_FOUND = "Province id \"%s\" not found";
+	@Autowired private ProvinceRepository provinceRepository;
+	
+	@Autowired
+	private ProvinceMapper provinceMapper;
+	
+	@Override
+	public List<ProvinceDTO> getProvinceFindAll() {
+
+		List<Province> province = provinceRepository.findAll();
+
+		return provinceMapper.listProvinceToListProvinceDTO(province);
+	}
+	
+	
 //	@Override
 //	public ProvinceDTO getProvinceById(String id) throws ProvinceNotFoundException {
 //		
@@ -35,8 +41,9 @@
 //		
 //		return provinceMapper.provinceToprovinceDTO(province.get());
 //	}
-//	
-//	
+	
+	
+	
 //	@Override
 //	@Transactional(rollbackFor = ProvinceExistsConflicExcepcion.class)
 //	public ProvinceDTO resgisterProvince(ProvinceDTO createprovinceDTO) throws ProvinceExistsConflicExcepcion {
@@ -52,8 +59,8 @@
 //		return provinceMapper.provinceToprovinceDTO(AttachedProvince);
 //		
 //	}
-//
-//
+
+
 //
 //	@Override
 //	@Transactional(rollbackFor = ProvinceNotFoundException.class)
@@ -69,7 +76,7 @@
 //		
 //		return provinceMapper.provinceToprovinceDTO(attachedProvince);
 //	}
-//
+
 //	@Override
 //	@Transactional(rollbackFor = ProvinceNotFoundException.class)
 //	public void removeProvince(String id) throws ProvinceNotFoundException {
@@ -83,5 +90,5 @@
 //		
 //		
 //	}
-//
-//}
+
+}
