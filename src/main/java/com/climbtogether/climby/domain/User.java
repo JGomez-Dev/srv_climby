@@ -39,7 +39,7 @@ public class User implements Serializable {
 	private String fullName;
 	
 	@Column(name = "experience", nullable = false)
-	private Integer experience;
+	private String experience;
 	
 //	@Column(name = "position")
 //	private Integer position;

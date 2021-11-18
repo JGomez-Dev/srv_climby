@@ -28,7 +28,7 @@ create sequence sc_user as integer;
 create table core.tb_user(
 	id_user  integer not null default nextval('core.sc_user'),
 	full_name varchar,
-	experience integer,
+	experience varchar,
 	id_position integer,
 	phone varchar(9),
 	email varchar,

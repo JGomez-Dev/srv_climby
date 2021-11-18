@@ -31,7 +31,7 @@ public class UserDTO implements Serializable {
 	private String fullName;
 	
 	@ApiModelProperty(value = "Experience", example="5")
-	private Integer experience; 
+	private String experience; 
 	
 //	@ApiModelProperty(value = "Posicion", example = "1")
 //	private Integer position;
