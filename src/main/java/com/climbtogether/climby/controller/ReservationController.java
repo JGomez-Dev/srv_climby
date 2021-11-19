@@ -43,7 +43,7 @@ public class ReservationController {
 			})
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(value = "/{id}", headers = "Accept=application/json")
-	public DataDTO<ReservationDTO> getReservationById(
+	public ReservationDTO getReservationById(
 			@ApiParam(
 					name = "id",
 					type = "String",
@@ -52,7 +52,7 @@ public class ReservationController {
 					example =  "1")
 			@PathVariable
 			Integer id){
-		return new DataDTO<>(reservationService.getReservationById(id));
+		return new DataDTO<>(reservationService.getReservationById(id)).getData();
 	}
 	
 	@ApiOperation(
@@ -65,8 +65,8 @@ public class ReservationController {
 			})
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping
-	public DataDTO<ReservationDTO> registerReservation(@Validated @RequestBody ReservationDTO createReservationDTO){
-		return new DataDTO<>(reservationService.resgisterReservation(createReservationDTO));
+	public ReservationDTO registerReservation(@Validated @RequestBody ReservationDTO createReservationDTO){
+		return new DataDTO<>(reservationService.resgisterReservation(createReservationDTO)).getData();
 	}
 	
 	@ApiOperation(
