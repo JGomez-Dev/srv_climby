@@ -23,7 +23,7 @@ public class UserDTO implements Serializable {
 
 	private static final long serialVersionUID = 1076577097267741731L;
 	
-//	@ApiModelProperty(required = true, value = "Identificador usuario", example = "1")
+	@ApiModelProperty(required = true, value = "Identificador usuario", example = "1")
 //	@NotNull
 	private Integer id;
 	

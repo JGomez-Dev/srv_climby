@@ -36,7 +36,6 @@ public interface ReservationMapper {
 	ReservationDTO reservationToReservationDTO(Reservation reservation);
 	
 	
-	
 
 	
 }

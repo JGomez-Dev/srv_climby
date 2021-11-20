@@ -31,7 +31,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
 				.groupName("core")
 				.apiInfo(apiInfo())
 				.select()
-				.apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.climbtogether.climby.controller"))
 				.paths(PathSelectors.any())
 				.build();
 				
