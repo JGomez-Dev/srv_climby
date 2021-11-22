@@ -17,12 +17,9 @@ import lombok.NoArgsConstructor;
 public class SchoolDTO implements Serializable {
 
 	private static final long serialVersionUID = -9008106369861307152L;
-	
-	@ApiModelProperty(required = true, value = "Identificador escuela", example = "1")
-	@NotNull
-	private String idSchool;
-	
+
 	@ApiModelProperty(required = true, value = "Nombre escuela", example = "Albarracin")
+	@NotNull
 	private String name;
 
 }

@@ -10,6 +10,7 @@ import org.mapstruct.ReportingPolicy;
 
 import com.climbtogether.climby.domain.Reservation;
 import com.climbtogether.climby.domain.Travel;
+import com.climbtogether.climby.domain.User;
 import com.climbtogether.climby.dto.ReservationDTO;
 import com.climbtogether.climby.dto.TravelDTO;
 import com.climbtogether.climby.dto.UserDTO;
@@ -19,17 +20,21 @@ public interface TravelMapper {
 
 	@Mapping(target = "driver.id_user", source = "userDTO.id")
 	@Mapping(target = "id_travel", source = "id")
+	@Mapping(target = "school", source = "schoolDTO.name")
 	@Mapping(target = "province.id_province", source = "provinceDTO.id")
+	@Mapping(target = "reservation", source = "reservationDTO")
 	Travel travelDTOToTravel(TravelDTO travelDTO);
+	
 
 	@Mapping(source = "driver.id_user", target = "userDTO.id")
 	@Mapping(source = "id_travel", target = "id")
+	@Mapping(source = "school", target = "schoolDTO.name")
 	@Mapping(source = "province.id_province", target = "provinceDTO.id")
-	@Mapping(source = "reservation", target = "reservationDTO", qualifiedByName = "mapearReservas")
+	@Mapping(source = "reservation", target = "reservationDTO", qualifiedByName = "mapearReservasReservationToReservationDTO")
 	TravelDTO travelToTravelDTO(Travel travel);
 
-	@Named("mapearReservas")
-	default List<ReservationDTO> mapearReservas(List<Reservation> mapearReservas) {
+	@Named("mapearReservasReservationToReservationDTO")
+	default List<ReservationDTO> mapearReservasReservationToReservationDTO(List<Reservation> mapearReservas) {
 		List<ReservationDTO> list = new ArrayList<>();
 		if(mapearReservas != null) {
 			for (Reservation reservation : mapearReservas) {

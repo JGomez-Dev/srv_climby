@@ -23,6 +23,16 @@ create table core.tb_province(
 alter sequence sc_province owned by tb_province.id_province;
 
 
+--create sequence sc_school as integer;
+
+create table core.tb_school(
+	name_school varchar(50) not null,
+	
+	constraint pk_core_school primary key (name_school)
+);
+
+--alter sequence sc_school owned by tb_school.id_school;
+
 create sequence sc_user as integer;
 
 create table core.tb_user(
@@ -52,7 +62,7 @@ create sequence sc_travel as integer;
 create table core.tb_travel(
 	id_travel integer not null default nextval('core.sc_travel'),
 	id_driver integer,
-	site varchar,
+	school varchar,
 	type varchar,
 	available_places integer,
 	departure_date timestamp,
@@ -60,7 +70,8 @@ create table core.tb_travel(
 	
 	constraint pk_core_travel primary key (id_travel),
 	constraint fk_core_id_driver foreign key (id_driver) references tb_user(id_user),
-	constraint fk_core_province foreign key (province) references tb_province(id_province)
+	constraint fk_core_province foreign key (province) references tb_province(id_province),
+	constraint fk_core_school foreign key (school) references tb_school(name_school)
 );
 
 alter sequence sc_travel owned by tb_travel.id_travel;
@@ -94,18 +105,6 @@ create sequence sc_reservation as integer;
 	);
  	
 	alter sequence sc_reservation owned by tb_reservation.id_reservation;
-
---create sequence sc_school as integer;
-
-create table core.tb_school(
-	id_school varchar, --not null default nextval('core.sc_school'),
-	name_school varchar(50) not null,
-	
-	constraint pk_core_school primary key (id_school)
-);
-
---alter sequence sc_school owned by tb_school.id_school;
-
 
 
 --CARGADE DATOS
@@ -170,8 +169,8 @@ INSERT INTO tb_user(full_name,experience,phone,email,score,outputs,user_photo,re
 VALUES ('Eduardo Gomez',5,'691675453','edu21061991@gmail.com',8,5,'7','2000-01-01 01:01:01');
 	
 
-INSERT INTO tb_travel(id_driver,site,type,available_places,departure_date,province)
-VALUES (1,'Albarracin','Cuerda',3,'2000-01-01 01:01:01',1);
+INSERT INTO tb_travel(id_driver,type,available_places,departure_date,province)
+VALUES (1,'Cuerda',3,'2000-01-01 01:01:01',1);
 --INSERT INTO tb_status
 --VALUES
 --	('1',true,true),

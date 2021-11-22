@@ -47,8 +47,8 @@ public class Travel  implements Serializable {
 	@GeneratedValue(generator = "idTravelSeqGenerator")
 	private Integer id_travel;
 	
-	@Column(name = "site", nullable = false)
-	private String site;
+	@Column(name = "school", nullable = false)
+	private String school;
 	
 	@Column(name = "type", nullable = false)
 	private String type;

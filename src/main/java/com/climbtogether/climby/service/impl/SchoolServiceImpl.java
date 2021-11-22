@@ -42,34 +42,31 @@ public class SchoolServiceImpl implements SchoolService {
 		return schoolMapper.schoolToSchoolDTO(school.get());
 	}
 
-	@Override
-	public SchoolDTO modifySchool(SchoolDTO modifySchoolDTO) {
-		
-		School school = schoolMapper.schoolDTOToSchool(modifySchoolDTO);
-		String id = school.getId();
-		Assert.notNull(id,MESSAGE_SCHOOL_ID_NULL);
-		if(!schoolRepository.existsById(id.toString())) {
-			//Hay que meter una excepcion
-			return null;
-		}
-		
-		School attachedSchool = schoolRepository.save(school);
-		
-		return schoolMapper.schoolToSchoolDTO(attachedSchool);
-	}
-
-	@Override
-	public void removeSchool(String id) {
-		Assert.notNull(id,MESSAGE_SCHOOL_ID_NULL);
-		Optional<School> attachedSchool = schoolRepository.findById(id);
-		if(attachedSchool.isEmpty()) {
-			//Excepcion
-		}
-		schoolRepository.deleteById(id);
-		
-		
-		
-		
-	}
+//	@Override
+//	public SchoolDTO modifySchool(SchoolDTO modifySchoolDTO) {
+//		
+//		School school = schoolMapper.schoolDTOToSchool(modifySchoolDTO);
+//		String id = school.getId();
+//		Assert.notNull(id,MESSAGE_SCHOOL_ID_NULL);
+//		if(!schoolRepository.existsById(id.toString())) {
+//			//Hay que meter una excepcion
+//			return null;
+//		}
+//		
+//		School attachedSchool = schoolRepository.save(school);
+//		
+//		return schoolMapper.schoolToSchoolDTO(attachedSchool);
+//	}
+//
+//	@Override
+//	public void removeSchool(String id) {
+//		Assert.notNull(id,MESSAGE_SCHOOL_ID_NULL);
+//		Optional<School> attachedSchool = schoolRepository.findById(id);
+//		if(attachedSchool.isEmpty()) {
+//			//Excepcion
+//		}
+//		schoolRepository.deleteById(id);
+//		
+//	}
 
 }

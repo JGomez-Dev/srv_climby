@@ -7,11 +7,11 @@ public interface SchoolService {
 
 	SchoolDTO resgisterSchool(SchoolDTO createSchoolDTO);
 	
-	SchoolDTO modifySchool(SchoolDTO modifySchoolDTO);
+	SchoolDTO getSchoolById(String name);
 	
-	SchoolDTO getSchoolById(String id);
+	//SchoolDTO modifySchool(SchoolDTO modifySchoolDTO);
 	
-	void removeSchool(String id);
+	//void removeSchool(String id);
 	
 }
 	
