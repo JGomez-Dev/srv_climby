@@ -111,6 +111,7 @@ create table core.tb_school(
 --CARGADE DATOS
 INSERT INTO tb_province(name_province)
 VALUES
+	('Elige tu provincia'),
 	('Albacete'),
 	('Alicante/Alacant'),
 	('Almería'),
