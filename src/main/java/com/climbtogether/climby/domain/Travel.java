@@ -56,8 +56,6 @@ public class Travel  implements Serializable {
 	@Column(name = "available_places", nullable = false)
 	private Integer availablePlaces;
 
-//	@Column(name = "departure_date_string", nullable = false)
-//	private String departureDateString;
 	
 	@Column(name = "departure_date", nullable = false)
 	private LocalDateTime departureDate;

@@ -84,7 +84,6 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 		Integer id = travel.getId_travel();
 
 		if (!travelRepository.existsById(id)) {
-
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 

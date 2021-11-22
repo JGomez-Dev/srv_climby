@@ -41,8 +41,6 @@ public class User implements Serializable {
 	@Column(name = "experience", nullable = false)
 	private String experience;
 	
-//	@Column(name = "position")
-//	private Integer position;
 	
 	@Column(name = "phone", nullable = false)
 	private String phone;

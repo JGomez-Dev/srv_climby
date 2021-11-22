@@ -1,15 +1,15 @@
 --CREACION TABLAS
 set schema 'core';
 
-create sequence sc_position as integer;
+--create sequence sc_position as integer;
 
-create table core.tb_position(
-	id_position  integer not null default nextval('core.sc_position'),
-	name_position varchar(50) not null,
+--create table core.tb_position(
+	--id_position  integer not null default nextval('core.sc_position'),
+	--name_position varchar(50) not null,
 	
-	constraint pk_core_position primary key (id_position)
-);
-alter sequence sc_position owned by tb_position.id_position;
+	--constraint pk_core_position primary key (id_position)
+--);
+--alter sequence sc_position owned by tb_position.id_position;
 
 --create sequence sc_province as integer;
 
@@ -37,7 +37,6 @@ create table core.tb_user(
 	id_user  integer not null default nextval('core.sc_user'),
 	full_name varchar,
 	experience varchar,
-	id_position integer,
 	phone varchar(9),
 	email varchar,
 	score numeric(18,11),
@@ -47,7 +46,6 @@ create table core.tb_user(
 	
 	
 	constraint pk_core_user primary key (id_user),
-	constraint fk_core_id_posicion foreign key (id_position) references tb_position(id_position),
 	constraint chk_phone check (phone not like '%[^0-9]%')
 	
 );
@@ -166,9 +164,11 @@ VALUES
 INSERT INTO tb_user(full_name,experience,phone,email,score,outputs,user_photo,registration_date)
 VALUES ('Eduardo Gomez',5,'691675453','edu21061991@gmail.com',8,5,'7','2000-01-01 01:01:01');
 	
+INSERT INTO tb_school
+VALUES ('Albarracin');
 
-INSERT INTO tb_travel(id_driver,type,available_places,departure_date,province)
-VALUES (1,'Cuerda',3,'2000-01-01 01:01:01','Madrid');
+INSERT INTO tb_travel(id_driver,school,type,available_places,departure_date,province)
+VALUES (1,'Albarracin','Cuerda',3,'2000-01-01 01:01:01','Madrid');
 --INSERT INTO tb_status
 --VALUES
 --	('1',true,true),
