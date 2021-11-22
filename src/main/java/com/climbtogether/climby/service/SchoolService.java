@@ -9,9 +9,6 @@ public interface SchoolService {
 	
 	SchoolDTO getSchoolById(String name);
 	
-	//SchoolDTO modifySchool(SchoolDTO modifySchoolDTO);
-	
-	//void removeSchool(String id);
 	
 }
 	

@@ -22,15 +22,6 @@ public interface ReservationMapper {
 	@Mapping(target= "reservationDate",source = "customerDate")
 	Reservation reservationDTOToreservation(ReservationDTO reservationDTO);
 
-//	@Named("mapearPasajeros")
-//    default List<String> mapeoIdReserva(List<ReservationDTO> mapearReservas) {
-//		List<String> reservaId = new ArrayList<String>();
-//		for (ReservationDTO id : mapearReservas){
-//			reservaId.add(id.getId());
-//		}
-//		
-//        return reservaId;              
-//    }
 	@Mapping(source= "id_reservation",target = "id")
 	@Mapping(source= "passenger.id_user",target = "userDTO.id")
 	@Mapping(source= "travel.id_travel",target = "travelDTO")

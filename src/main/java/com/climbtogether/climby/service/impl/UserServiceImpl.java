@@ -19,9 +19,6 @@ import com.climbtogether.climby.util.RegularExpression;
 @Service
 public class UserServiceImpl implements UserService {
 
-	private static final String MESSAGE_USER_NOT_FOUND = "User id \"%s\" not found";
-	private static final String MESSAGE_PROVINCE_ID_NULL = "Province id must not be null";
-
 	@Autowired
 	private UserRepository userRepository;
 
@@ -36,8 +33,9 @@ public class UserServiceImpl implements UserService {
 
 		if (!regularExpression.checkPhone(createUserDTO.getPhone())) {
 			throw new ResponseStatusException(HttpStatus.CONFLICT, "Wrong phone number");
-		};
-		
+		}
+		;
+
 		createUserDTO.setRegistrationDate(LocalDateTime.now());
 
 		User user = userMapper.userDTOToUser(createUserDTO);
@@ -65,7 +63,7 @@ public class UserServiceImpl implements UserService {
 
 		User user = userMapper.userDTOToUser(modifyUserDTO);
 		Integer id = user.getId_user();
-		Assert.notNull(id, MESSAGE_PROVINCE_ID_NULL);
+
 		if (!userRepository.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
@@ -77,7 +75,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void removeUser(Integer id) {
-		Assert.notNull(id, MESSAGE_PROVINCE_ID_NULL);
 		Optional<User> attachedUser = userRepository.findById(id);
 		if (attachedUser.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);

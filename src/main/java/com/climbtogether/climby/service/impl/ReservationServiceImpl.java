@@ -17,7 +17,6 @@ import com.climbtogether.climby.service.ReservationService;
 @Service
 public class ReservationServiceImpl implements ReservationService {
 	
-	private static final String MESSAGE_RESERVATION_NOT_FOUND = "Reservation id \"%s\" not found";
 	@Autowired private ReservationRepository reservationRepository;
 	
 	@Autowired

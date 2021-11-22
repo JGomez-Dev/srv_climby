@@ -25,9 +25,6 @@ import com.climbtogether.climby.service.TravelService;
 @Service
 public class TravelServiceImpl implements TravelService, SchoolService {
 
-	private static final String MESSAGE_TRAVEL_NOT_FOUND = "Province id \"%s\" not found";
-	private static final String MESSAGE_TRAVEL_ID_NULL = "Province id must not be null";
-
 	@Autowired
 	private TravelRepository travelRepository;
 	@Autowired
@@ -69,7 +66,7 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 	public TravelDTO getTravelById(Integer id) {
 
 		Optional<Travel> travel = travelRepository.findById(id);
-		
+
 		if (!travelRepository.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
@@ -81,18 +78,16 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 	public TravelDTO modifyTravel(TravelDTO modifyTravelDTO) {
 
 		Travel travel = travelMapper.travelDTOToTravel(modifyTravelDTO);
-		
+
 		Optional<School> school = schoolRepository.findById(modifyTravelDTO.getSchoolDTO().getName());
-		
+
 		Integer id = travel.getId_travel();
-		
-		Assert.notNull(id, MESSAGE_TRAVEL_ID_NULL);
-		
+
 		if (!travelRepository.existsById(id)) {
-			
+
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
-		
+
 		if (school.isEmpty()) {
 			resgisterSchool(modifyTravelDTO.getSchoolDTO());
 		} else {
@@ -106,7 +101,7 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 
 	@Override
 	public void removeTravel(Integer id) {
-		Assert.notNull(id, MESSAGE_TRAVEL_ID_NULL);
+
 		Optional<Travel> attachedTravel = travelRepository.findById(id);
 		if (attachedTravel.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
@@ -117,17 +112,17 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 
 	@Override
 	public SchoolDTO resgisterSchool(SchoolDTO createSchoolDTO) {
-		
+
 		School school = schoolMapper.schoolDTOToSchool(createSchoolDTO);
-		
-		School AttachedSchool =schoolRepository.save(school);
-		
+
+		School AttachedSchool = schoolRepository.save(school);
+
 		return schoolMapper.schoolToSchoolDTO(AttachedSchool);
 	}
 
 	@Override
 	public SchoolDTO getSchoolById(String id) {
-		
+
 		Optional<School> school = schoolRepository.findById(id);
 
 		return schoolMapper.schoolToSchoolDTO(school.get());

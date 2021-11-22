@@ -32,9 +32,6 @@ public class UserDTO implements Serializable {
 	
 	@ApiModelProperty(value = "Experience", example="5")
 	private String experience; 
-	
-//	@ApiModelProperty(value = "Posicion", example = "1")
-//	private Integer position;
 
 	@ApiModelProperty(required = true, value = "Phone", example = "691675453")
 	private String phone;
@@ -44,7 +41,6 @@ public class UserDTO implements Serializable {
 	
 	@ApiModelProperty(required = true, value = "Score", example = "8")
 	private BigDecimal score;
-	
 
 	@ApiModelProperty(value = "Outpust", example="5")
 	private Integer outputs; 
