@@ -92,7 +92,7 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 		} else {
 			getSchoolById(modifyTravelDTO.getSchoolDTO().getName());
 		}
-
+		
 		Travel attachedTravel = travelRepository.save(travel);
 
 		return travelMapper.travelToTravelDTO(attachedTravel);

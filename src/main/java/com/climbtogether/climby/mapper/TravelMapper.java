@@ -22,7 +22,17 @@ public interface TravelMapper {
 	@Mapping(target = "id_travel", source = "id")
 	@Mapping(target = "school", source = "schoolDTO.name")
 	@Mapping(target = "province.name", source = "provinceDTO.name")
+	@Mapping(target = "reservation", source = "reservationDTO", qualifiedByName = "mapearReservasReservationDTOToReservation")
 	Travel travelDTOToTravel(TravelDTO travelDTO);
+	
+
+	@Named("mapearReservasReservationDTOToReservation")
+	default List<Reservation> mapearReservasReservationDTOToReservation(List<ReservationDTO> mapearReservas) {
+		List<Reservation> list = new ArrayList<>();
+		
+		return list;
+
+	}
 	
 
 	@Mapping(source = "driver.id_user", target = "userDTO.id")
