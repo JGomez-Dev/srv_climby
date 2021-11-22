@@ -25,7 +25,7 @@ public class ReservationDTO implements Serializable {
 
 	private static final long serialVersionUID = -3086160475938675275L;
 	
-	//@ApiModelProperty(required = true, value = "Id reservation", example = "1")
+	@ApiModelProperty(required = true, value = "Id reservation", example = "1")
 	private Integer id;
 	
 	@ApiModelProperty(value = "User", example = "1")

@@ -3,7 +3,9 @@ package com.climbtogether.climby.service.impl;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.climbtogether.climby.domain.Reservation;
 import com.climbtogether.climby.dto.ReservationDTO;
@@ -37,7 +39,7 @@ public class ReservationServiceImpl implements ReservationService {
 		Reservation reservation = reservationMapper.reservationDTOToreservation(modifyReservationDTO);
 		Integer id = reservation.getId_reservation();
 		if(!reservationRepository.existsById(id)) {
-			
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 		
 		Reservation attachedReservation = reservationRepository.save(reservation);
@@ -51,7 +53,7 @@ public class ReservationServiceImpl implements ReservationService {
 	public void removeReservation(Integer id) {
 		Optional<Reservation> attachedReservation = reservationRepository.findById(id);
 	if(attachedReservation.isEmpty()) {
-			
+		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 	reservationRepository.deleteById(id);
 			}
@@ -60,7 +62,7 @@ public class ReservationServiceImpl implements ReservationService {
 	public ReservationDTO getReservationById(Integer id) {
 	Optional<Reservation> reservation = reservationRepository.findById(id);
 		if (reservation.isEmpty()) {
-			
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 		return reservationMapper.reservationToReservationDTO(reservation.get());
 	}

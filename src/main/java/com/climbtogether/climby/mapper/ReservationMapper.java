@@ -15,6 +15,8 @@ import com.climbtogether.climby.dto.ReservationDTO;
 public interface ReservationMapper {
 
 	
+	
+	@Mapping(target= "id_reservation",source = "id")
 	@Mapping(target= "passenger.id_user",source = "userDTO.id")
 	@Mapping(target= "travel.id_travel",source = "travelDTO")
 	@Mapping(target= "reservationDate",source = "customerDate")

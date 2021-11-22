@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
 		Optional<User> user = userRepository.findById(id);
 
 		if (user.isEmpty()) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User Not Found");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 
 		return userMapper.userToUserDTO(user.get());
@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
 		Integer id = user.getId_user();
 		Assert.notNull(id, MESSAGE_PROVINCE_ID_NULL);
 		if (!userRepository.existsById(id)) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User Not Found");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 
 		User attachedUser = userRepository.save(user);
@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService {
 		Assert.notNull(id, MESSAGE_PROVINCE_ID_NULL);
 		Optional<User> attachedUser = userRepository.findById(id);
 		if (attachedUser.isEmpty()) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User Not Found");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 		userRepository.deleteById(id);
 

@@ -80,7 +80,7 @@ public class ReservationController {
 			})
 	@ResponseStatus(HttpStatus.OK)
 	@PutMapping
-	public DataDTO<ReservationDTO> modifyReservation(
+	public ReservationDTO modifyReservation(
 		@ApiParam (	name = "Reservation",
 			type = "Reservation",
 			value = "Reservation type entity",
@@ -88,7 +88,7 @@ public class ReservationController {
 	@RequestBody
 	@Validated
 	ReservationDTO modifiedReservationDTO){
-		return new DataDTO<>(reservationService.modifyReservation(modifiedReservationDTO));
+		return new DataDTO<>(reservationService.modifyReservation(modifiedReservationDTO)).getData();
 	}
 	
 	@ApiOperation(value = "Reservation deletion",notes = "Return reservation information deleted")
@@ -97,7 +97,7 @@ public class ReservationController {
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> removeReservation(
 			@ApiParam (	name = "id",
-						type = "String",
+						type = "Integer",
 						value = "Identification code of the reservation to be removed",
 						required = true,
 						example = "1")

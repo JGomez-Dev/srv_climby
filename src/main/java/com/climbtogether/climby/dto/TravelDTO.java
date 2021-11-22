@@ -54,6 +54,10 @@ public class TravelDTO   implements Serializable {
 	@JsonProperty(value = "driver")
 	private  UserDTO userDTO;
 	
+	@ApiModelProperty(value = "Driver",example="1")
+	@JsonProperty(value = "driver")
+	private  SchoolDTO schoolDTO;
+	
 	@ApiModelProperty(required = false,value = "Reservation")
 	@JsonProperty(value = "reservation")
 	private List<ReservationDTO> reservationDTO;
