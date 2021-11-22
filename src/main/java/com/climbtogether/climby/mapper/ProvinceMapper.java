@@ -15,10 +15,8 @@ import com.climbtogether.climby.dto.TravelDTO;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface ProvinceMapper {
 	
-	@Mapping(source = "id", target="id_province")
 	Province provinceDTOToprovince(ProvinceDTO provinceDTO);
 	
-	@Mapping(target="id",source = "id_province")
 	ProvinceDTO provinceToprovinceDTO(Province province);
 
 	List<ProvinceDTO> listProvinceToListProvinceDTO(List<Province> travel);

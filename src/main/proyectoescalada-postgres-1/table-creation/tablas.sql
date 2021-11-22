@@ -11,23 +11,21 @@ create table core.tb_position(
 );
 alter sequence sc_position owned by tb_position.id_position;
 
-create sequence sc_province as integer;
+--create sequence sc_province as integer;
 
 create table core.tb_province(
-	id_province  integer not null default nextval('core.sc_province'),
 	name_province varchar(50) not null,
 	
-	constraint pk_core_province primary key (id_province)
+	constraint pk_core_province primary key (name_province)
 );
 
-alter sequence sc_province owned by tb_province.id_province;
+--alter sequence sc_province owned by tb_province.id_province;
 
 
 --create sequence sc_school as integer;
 
 create table core.tb_school(
 	name_school varchar(50) not null,
-	
 	constraint pk_core_school primary key (name_school)
 );
 
@@ -66,11 +64,11 @@ create table core.tb_travel(
 	type varchar,
 	available_places integer,
 	departure_date timestamp,
-	province integer,
+	province varchar,
 	
 	constraint pk_core_travel primary key (id_travel),
 	constraint fk_core_id_driver foreign key (id_driver) references tb_user(id_user),
-	constraint fk_core_province foreign key (province) references tb_province(id_province),
+	constraint fk_core_province foreign key (province) references tb_province(name_province),
 	constraint fk_core_school foreign key (school) references tb_school(name_school)
 );
 
@@ -170,7 +168,7 @@ VALUES ('Eduardo Gomez',5,'691675453','edu21061991@gmail.com',8,5,'7','2000-01-0
 	
 
 INSERT INTO tb_travel(id_driver,type,available_places,departure_date,province)
-VALUES (1,'Cuerda',3,'2000-01-01 01:01:01',1);
+VALUES (1,'Cuerda',3,'2000-01-01 01:01:01','Madrid');
 --INSERT INTO tb_status
 --VALUES
 --	('1',true,true),

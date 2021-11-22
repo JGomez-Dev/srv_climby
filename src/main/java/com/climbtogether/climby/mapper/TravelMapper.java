@@ -21,15 +21,14 @@ public interface TravelMapper {
 	@Mapping(target = "driver.id_user", source = "userDTO.id")
 	@Mapping(target = "id_travel", source = "id")
 	@Mapping(target = "school", source = "schoolDTO.name")
-	@Mapping(target = "province.id_province", source = "provinceDTO.id")
-	@Mapping(target = "reservation", source = "reservationDTO")
+	@Mapping(target = "province.name", source = "provinceDTO.name")
 	Travel travelDTOToTravel(TravelDTO travelDTO);
 	
 
 	@Mapping(source = "driver.id_user", target = "userDTO.id")
 	@Mapping(source = "id_travel", target = "id")
 	@Mapping(source = "school", target = "schoolDTO.name")
-	@Mapping(source = "province.id_province", target = "provinceDTO.id")
+	@Mapping(source = "province.name", target = "provinceDTO.name")
 	@Mapping(source = "reservation", target = "reservationDTO", qualifiedByName = "mapearReservasReservationToReservationDTO")
 	TravelDTO travelToTravelDTO(Travel travel);
 

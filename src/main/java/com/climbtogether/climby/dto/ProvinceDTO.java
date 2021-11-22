@@ -18,9 +18,6 @@ public class ProvinceDTO implements Serializable {
 
 	private static final long serialVersionUID = -9008106369861307152L;
 	
-	@ApiModelProperty(required = true, value = "Id provincia", example = "1")
-	private String id;
-	
 	@ApiModelProperty(required = true, value = "Nombre provincia", example = "Teruel")
 	private String name;
 
