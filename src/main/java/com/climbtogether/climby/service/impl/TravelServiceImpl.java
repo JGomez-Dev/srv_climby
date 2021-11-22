@@ -6,13 +6,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.climbtogether.climby.domain.Reservation;
+import com.climbtogether.climby.domain.Province;
 import com.climbtogether.climby.domain.School;
 import com.climbtogether.climby.domain.Travel;
-import com.climbtogether.climby.domain.User;
+import com.climbtogether.climby.dto.ProvinceDTO;
 import com.climbtogether.climby.dto.SchoolDTO;
 import com.climbtogether.climby.dto.TravelDTO;
 import com.climbtogether.climby.mapper.SchoolMapper;
@@ -125,6 +124,14 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 		Optional<School> school = schoolRepository.findById(id);
 
 		return schoolMapper.schoolToSchoolDTO(school.get());
+	}
+
+	@Override
+	public List<SchoolDTO> getSchoolFindAll() {
+
+		List<School> school = schoolRepository.findAll();
+
+		return schoolMapper.listSchoolToListSchoolDTO(school);
 	}
 
 }
