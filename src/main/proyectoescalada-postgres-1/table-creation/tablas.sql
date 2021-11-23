@@ -175,7 +175,7 @@ INSERT INTO tb_school
 VALUES ('Albarracin');
 
 INSERT INTO tb_climbing_type
-VALUES ('Default'),
+VALUES ('Boulder, Deportiva, Rocódromo...'),
 		('Clásica'),
 		('Deportiva'),
 		('Boulder'),
