@@ -32,9 +32,9 @@ public class TravelDTO   implements Serializable {
 	@JsonProperty(value = "school")
 	private SchoolDTO schoolDTO;
 	
-	@ApiModelProperty(required = true, value = "Travel type", example = "Cuerda")
+	@ApiModelProperty(required = true, value = "Travel type", example = "Clásica")
 	@JsonProperty(value = "travelType")
-	private String type;
+	private ClimbingTypeDTO type;
 	
 	@ApiModelProperty(value = "Number of seats", example="3")
 	@JsonProperty(value = "numberSeats")
