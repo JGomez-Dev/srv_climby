@@ -14,7 +14,7 @@ public interface TravelService {
 
 	TravelDTO getTravelById(Integer id);
 	
-	List<TravelDTO> getTravelFindAll();
+	List<TravelDTO> getTravelFindAll(Integer id);
 	
 	
 

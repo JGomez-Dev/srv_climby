@@ -1,5 +1,6 @@
 package com.climbtogether.climby.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,10 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.climbtogether.climby.domain.Province;
+import com.climbtogether.climby.domain.Reservation;
 import com.climbtogether.climby.domain.School;
 import com.climbtogether.climby.domain.Travel;
-import com.climbtogether.climby.dto.ProvinceDTO;
+import com.climbtogether.climby.domain.User;
 import com.climbtogether.climby.dto.SchoolDTO;
 import com.climbtogether.climby.dto.TravelDTO;
 import com.climbtogether.climby.mapper.SchoolMapper;
@@ -53,12 +54,22 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 
 	}
 
+	
+	//Modifica este metodo si quieres 
 	@Override
-	public List<TravelDTO> getTravelFindAll() {
-
+	public List<TravelDTO> getTravelFindAll(Integer idUser) {
+		
 		List<Travel> travel = travelRepository.findAll();
+		
+		List<Travel> responseTravels = new ArrayList<>();
+		
+		for(Travel x: travel) {
+			if(x.getDriver().getId_user()!=idUser) {
+				responseTravels.add(x);
+			}
+		}
 
-		return travelMapper.listTravelToListTravelDTO(travel);
+		return travelMapper.listTravelToListTravelDTO(responseTravels);
 	}
 
 	@Override
