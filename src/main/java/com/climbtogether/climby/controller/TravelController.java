@@ -47,8 +47,8 @@ public class TravelController {
 			})
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(value = "/travels", headers = "Accept=application/json")
-	public List<TravelDTO> getTravelFindAll(){
-		return travelService.getTravelFindAll();
+	public List<TravelDTO> getTravelFindAll(Integer id){
+		return travelService.getTravelFindAll(id);
 	}
 	
 	@ApiOperation(
