@@ -48,6 +48,7 @@ public class TravelController {
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(value = "/travels/{id}", headers = "Accept=application/json")
 	public List<TravelDTO> getTravelFindAll(
+
 			@ApiParam(
 					name = "id",
 					type = "Integer",
