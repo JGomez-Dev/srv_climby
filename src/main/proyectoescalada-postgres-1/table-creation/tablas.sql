@@ -176,11 +176,11 @@ VALUES ('Albarracin');
 
 INSERT INTO tb_climbing_type
 VALUES ('Boulder, Deportiva, Rocódromo...'),
-		('Clásica'),
-		('Deportiva'),
 		('Boulder'),
-		('Rocódromo');
-
+		('Deportiva'),
+		('Rocódromo'),
+		('Clásica');
+	
 INSERT INTO tb_travel(id_driver,school,type,available_places,departure_date,province)
 VALUES (1,'Albarracin','Rocódromo',3,'2000-01-01 01:01:01','Madrid');
 --INSERT INTO tb_status
