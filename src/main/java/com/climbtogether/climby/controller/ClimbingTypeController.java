@@ -20,7 +20,7 @@ import io.swagger.annotations.ApiResponses;
 
 @RestController
 @Api(value = "/",tags = "Gestor de tipo de escalada")
-@RequestMapping("/climbingType")
+@RequestMapping("/type")
 public class ClimbingTypeController {
 	
 	
@@ -36,7 +36,7 @@ public class ClimbingTypeController {
 					@ApiResponse(code = 409, message = "conflict")
 			})
 	@ResponseStatus(HttpStatus.OK)
-	@GetMapping(value = "/climbingTypes", headers = "Accept=application/json")
+	@GetMapping(value = "/types", headers = "Accept=application/json")
 	public List<ClimbingTypeDTO> getClimbingTypeFindAll(){
 		return climbingTypeService.getClimbingTypeFindAll();
 	}
