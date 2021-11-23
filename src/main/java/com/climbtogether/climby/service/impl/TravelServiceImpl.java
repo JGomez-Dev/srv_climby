@@ -54,22 +54,12 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 
 	}
 
-	
-	//Modifica este metodo si quieres 
 	@Override
 	public List<TravelDTO> getTravelFindAll(Integer idUser) {
 		
-		List<Travel> travel = travelRepository.findAll();
-		
-		List<Travel> responseTravels = new ArrayList<>();
-		
-		for(Travel x: travel) {
-			if(x.getDriver().getId_user()!=idUser) {
-				responseTravels.add(x);
-			}
-		}
+		List<Travel> travel = travelRepository.findAllTravels(idUser);
 
-		return travelMapper.listTravelToListTravelDTO(responseTravels);
+		return travelMapper.listTravelToListTravelDTO(travel);
 	}
 
 	@Override

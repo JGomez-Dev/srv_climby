@@ -46,7 +46,7 @@ public class TravelController {
 					@ApiResponse(code = 409, message = "conflict")
 			})
 	@ResponseStatus(HttpStatus.OK)
-	@GetMapping(value = "/travels/{id}", headers = "Accept=application/json")
+	@GetMapping(value = "/{id}", headers = "Accept=application/json")
 	public List<TravelDTO> getTravelFindAll(
 
 			@ApiParam(
