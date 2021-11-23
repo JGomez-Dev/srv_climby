@@ -22,6 +22,7 @@ public interface TravelMapper {
 	@Mapping(target = "id_travel", source = "id")
 	@Mapping(target = "school", source = "schoolDTO.name")
 	@Mapping(target = "province.name", source = "provinceDTO.name")
+	@Mapping(target = "type", source = "type.name")
 	@Mapping(target = "reservation", source = "reservationDTO", qualifiedByName = "mapearReservasReservationDTOToReservation")
 	Travel travelDTOToTravel(TravelDTO travelDTO);
 	
@@ -39,6 +40,7 @@ public interface TravelMapper {
 	@Mapping(source = "id_travel", target = "id")
 	@Mapping(source = "school", target = "schoolDTO.name")
 	@Mapping(source = "province.name", target = "provinceDTO.name")
+	@Mapping(source = "type", target = "type.name")
 	@Mapping(source = "reservation", target = "reservationDTO", qualifiedByName = "mapearReservasReservationToReservationDTO")
 	TravelDTO travelToTravelDTO(Travel travel);
 

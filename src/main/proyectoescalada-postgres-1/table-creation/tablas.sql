@@ -13,6 +13,12 @@ set schema 'core';
 
 --create sequence sc_province as integer;
 
+create table core.tb_climbing_type(
+	climbing_type varchar(50) not null,
+	constraint pk_core_climbingtype primary key (climbing_type)
+);
+
+
 create table core.tb_province(
 	name_province varchar(50) not null,
 	
@@ -67,7 +73,8 @@ create table core.tb_travel(
 	constraint pk_core_travel primary key (id_travel),
 	constraint fk_core_id_driver foreign key (id_driver) references tb_user(id_user),
 	constraint fk_core_province foreign key (province) references tb_province(name_province),
-	constraint fk_core_school foreign key (school) references tb_school(name_school)
+	constraint fk_core_school foreign key (school) references tb_school(name_school),
+		constraint fk_core_type foreign key (type) references tb_climbing_type(climbing_type)
 );
 
 alter sequence sc_travel owned by tb_travel.id_travel;
@@ -167,8 +174,15 @@ VALUES ('Eduardo Gomez',5,'691675453','edu21061991@gmail.com',8,5,'7','2000-01-0
 INSERT INTO tb_school
 VALUES ('Albarracin');
 
+INSERT INTO tb_climbing_type
+VALUES ('Default'),
+		('Clásica'),
+		('Deportiva'),
+		('Boulder'),
+		('Rocódromo');
+
 INSERT INTO tb_travel(id_driver,school,type,available_places,departure_date,province)
-VALUES (1,'Albarracin','Cuerda',3,'2000-01-01 01:01:01','Madrid');
+VALUES (1,'Albarracin','Rocódromo',3,'2000-01-01 01:01:01','Madrid');
 --INSERT INTO tb_status
 --VALUES
 --	('1',true,true),
