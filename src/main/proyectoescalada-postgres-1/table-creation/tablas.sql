@@ -169,10 +169,15 @@ VALUES
 	
 	
 INSERT INTO tb_user(full_name,experience,phone,email,score,outputs,user_photo,registration_date)
-VALUES ('Eduardo Gomez',5,'691675453','edu21061991@gmail.com',8,5,'7','2000-01-01 01:01:01');
+VALUES 
+('Eduardo Gomez','Experimentado','691675453','edu21061991@gmail.com',8,5,'https://lh3.googleusercontent.com/a-/AOh14GjTCmciqiAAw9Rd03WIoA07o1rZigH7zZgBx-','2000-01-01 01:01:01'),
+('Javier Gomez','Experimentado','685775928','javiergf1991@gmail.com',0,0,'https://lh3.googleusercontent.com/a-/AOh14GjTCmciqiAAw9Rd03WIoA07o1rZigH7zZgBx-','2000-01-01 01:01:01');
 	
 INSERT INTO tb_school
 VALUES ('Albarracin');
+
+INSERT INTO tb_school
+VALUES ('La Pedriza');
 
 INSERT INTO tb_climbing_type
 VALUES ('Boulder, Deportiva, Rocódromo...'),
@@ -189,5 +194,8 @@ VALUES (1,'Albarracin','Rocódromo',3,'2000-01-01 01:01:01','Madrid');
 --	('2',true,false),
 --	('3',false,false),
 --	('4',false,true);
+
+INSERT INTO tb_reservation(id_user, id_travel, date_reservation, reservation_status, valuation_status)
+VALUES(2, 1, '2000-01-01 01:01:01', false, false);
 
 	
