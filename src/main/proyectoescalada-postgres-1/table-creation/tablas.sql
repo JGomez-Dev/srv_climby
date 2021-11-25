@@ -174,10 +174,12 @@ VALUES
 ('Javier Gomez','Experimentado','685775928','javiergf1991@gmail.com',0,0,'https://lh3.googleusercontent.com/a-/AOh14GjTCmciqiAAw9Rd03WIoA07o1rZigH7zZgBx-','2000-01-01 01:01:01');
 	
 INSERT INTO tb_school
-VALUES ('Albarracin');
+VALUES 
+('Albarracin'),
+('Rodellar'),
+('Chulilla'),
+('La Pedriza');
 
-INSERT INTO tb_school
-VALUES ('La Pedriza');
 
 INSERT INTO tb_climbing_type
 VALUES ('Boulder, Deportiva, Rocódromo...'),
@@ -187,7 +189,13 @@ VALUES ('Boulder, Deportiva, Rocódromo...'),
 		('Clásica');
 	
 INSERT INTO tb_travel(id_driver,school,type,available_places,departure_date,province)
-VALUES (1,'Albarracin','Rocódromo',3,'2000-01-01 01:01:01','Madrid');
+VALUES 
+(1,'Albarracin','Boulder',4,'2000-01-01 01:01:01','Madrid'),
+(1,'Rodellar','Deportiva',1,'2000-01-01 01:01:01','Cuenca'),
+(1,'Chulilla','Deportiva',3,'2000-01-01 01:01:01','Madrid'),
+(1,'Albarracin','Clásica',4,'2021-11-27 01:01:01.000','Madrid'),
+(1,'Albarracin','Clásica',4,'2021-11-27 01:01:01.000','Madrid'),
+(1,'La Pedriza','Boulder',1,'2021-12-04 01:01:01.000','Madrid');
 --INSERT INTO tb_status
 --VALUES
 --	('1',true,true),
