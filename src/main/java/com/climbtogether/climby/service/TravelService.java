@@ -16,6 +16,6 @@ public interface TravelService {
 	
 	List<TravelDTO> getTravelFindAll(Integer id);
 	
-	
+	List<TravelDTO> getTravelsWithUserReservation(Integer id);
 
 }

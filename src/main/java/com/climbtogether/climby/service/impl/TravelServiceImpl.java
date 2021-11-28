@@ -61,6 +61,15 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 
 		return travelMapper.listTravelToListTravelDTO(travel);
 	}
+	
+
+	@Override
+	public List<TravelDTO> getTravelsWithUserReservation(Integer idUser) {
+		
+		List<Travel> travel = travelRepository.getTravelsWithUserReservation(idUser);
+
+		return travelMapper.listTravelToListTravelDTO(travel);
+	}
 
 	@Override
 	public TravelDTO getTravelById(Integer id) {

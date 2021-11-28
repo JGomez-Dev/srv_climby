@@ -12,9 +12,11 @@ import com.climbtogether.climby.domain.Travel;
 @Repository
 public interface TravelRepository extends JpaRepository<Travel, Integer> {
 	
-	
 	@Query("select travel from Travel travel where driver.id_user != :id ")
 	List<Travel> findAllTravels(@Param("id") Integer id);
+	
+	@Query("select travel from Travel travel inner join travel.reservation reservation where reservation.passenger.id_user = :id")
+	List<Travel> getTravelsWithUserReservation(@Param("id") Integer id);
 	
 
 }
