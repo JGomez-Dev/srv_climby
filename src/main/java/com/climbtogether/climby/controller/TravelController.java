@@ -33,7 +33,7 @@ import io.swagger.annotations.ApiResponses;
 @RequestMapping("/travel")
 public class TravelController {
 	
-	
+	//Muestra todos los viajes excepto los del usuario indicado
 @Autowired private TravelService travelService;
 	
 	@ApiOperation(
@@ -110,6 +110,32 @@ public class TravelController {
 			Integer id){
 		travelService.removeTravel(id);
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	
+	
+	@ApiOperation(
+			value = "Get travel",
+			notes = "Return the travel information")
+	
+	@ApiResponses(
+			value = {
+					@ApiResponse(code = 201, message = "success"),
+					@ApiResponse(code = 409, message = "conflict")
+			})
+	@ResponseStatus(HttpStatus.OK)
+	@GetMapping(value = "reservations/idUser/{id}", headers = "Accept=application/json")
+	public List<TravelDTO> getTravelsWithUserReservation(
+
+			@ApiParam(
+					name = "id",
+					type = "Integer",
+					value = "Intake code or CIO that identifies a travel",
+					required = true,
+					example =  "1")
+			@PathVariable
+			Integer id){
+		return travelService.getTravelsWithUserReservation(id);
 	}
 	
 	
