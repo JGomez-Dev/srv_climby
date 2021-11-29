@@ -35,6 +35,32 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 	@Autowired
 	private SchoolMapper schoolMapper;
 
+	// Devuelve todos los viajes
+	@Override
+	public List<TravelDTO> getTravelFindAll() {
+
+		List<Travel> travel = travelRepository.findAll();
+
+		return travelMapper.listTravelToListTravelDTO(travel);
+	}
+
+	//Devuelve todos los viajes de un usuario determinado
+	@Override
+	public List<TravelDTO> getUsersTravels(Integer id) {
+		List<Travel> travel = travelRepository.getUsersTravels(id);
+
+		return travelMapper.listTravelToListTravelDTO(travel);
+	}
+
+	// Muestra los viajes que tengan reservas de un determinado usuario
+	@Override
+	public List<TravelDTO> getTravelsWithUserReservation(Integer idUser) {
+
+		List<Travel> travel = travelRepository.getTravelsWithUserReservation(idUser);
+
+		return travelMapper.listTravelToListTravelDTO(travel);
+	}
+
 	@Override
 	public TravelDTO resgisterTravel(TravelDTO createTravelDTO) {
 
@@ -55,35 +81,6 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 	}
 
 	@Override
-	public List<TravelDTO> getTravelFindAll(Integer idUser) {
-		
-		List<Travel> travel = travelRepository.findAllTravels(idUser);
-
-		return travelMapper.listTravelToListTravelDTO(travel);
-	}
-	
-
-	@Override
-	public List<TravelDTO> getTravelsWithUserReservation(Integer idUser) {
-		
-		List<Travel> travel = travelRepository.getTravelsWithUserReservation(idUser);
-
-		return travelMapper.listTravelToListTravelDTO(travel);
-	}
-
-	@Override
-	public TravelDTO getTravelById(Integer id) {
-
-		Optional<Travel> travel = travelRepository.findById(id);
-
-		if (!travelRepository.existsById(id)) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		}
-
-		return travelMapper.travelToTravelDTO(travel.get());
-	}
-
-	@Override
 	public TravelDTO modifyTravel(TravelDTO modifyTravelDTO) {
 
 		Travel travel = travelMapper.travelDTOToTravel(modifyTravelDTO);
@@ -101,7 +98,7 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 		} else {
 			getSchoolById(modifyTravelDTO.getSchoolDTO().getName());
 		}
-		
+
 		Travel attachedTravel = travelRepository.save(travel);
 
 		return travelMapper.travelToTravelDTO(attachedTravel);
