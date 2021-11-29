@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.climbtogether.climby.domain.Travel;
 import com.climbtogether.climby.dto.DataDTO;
+import com.climbtogether.climby.dto.ProvinceDTO;
 import com.climbtogether.climby.dto.TravelDTO;
 import com.climbtogether.climby.service.TravelService;
 
@@ -35,87 +36,47 @@ public class TravelController {
 	
 	//Muestra todos los viajes excepto los del usuario indicado
 @Autowired private TravelService travelService;
-	
-	@ApiOperation(
-			value = "Get travel",
-			notes = "Return the travel information")
-	
-	@ApiResponses(
-			value = {
-					@ApiResponse(code = 201, message = "success"),
-					@ApiResponse(code = 409, message = "conflict")
-			})
-	@ResponseStatus(HttpStatus.OK)
-	@GetMapping(value = "/{id}", headers = "Accept=application/json")
-	public List<TravelDTO> getTravelFindAll(
 
-			@ApiParam(
-					name = "id",
-					type = "Integer",
-					value = "Intake code or CIO that identifies a travel",
-					required = true,
-					example =  "1")
-			@PathVariable
-			Integer id){
-		return travelService.getTravelFindAll(id);
-	}
-	
+
+@ApiOperation(
+		value = "Get all travels",
+		notes = "Return the travel information")
+
+@ApiResponses(
+		value = {
+				@ApiResponse(code = 201, message = "success"),
+				@ApiResponse(code = 409, message = "conflict")
+		})
+@ResponseStatus(HttpStatus.OK)
+@GetMapping(value = "/travels", headers = "Accept=application/json")
+	public List<TravelDTO> getTravelFindAll(){
+	return travelService.getTravelFindAll();
+}
+@ApiOperation(
+		value = "Get the trips of a user",
+		notes = "Return the travel information")
+
+@ApiResponses(
+		value = {
+				@ApiResponse(code = 201, message = "success"),
+				@ApiResponse(code = 409, message = "conflict")
+		})
+@ResponseStatus(HttpStatus.OK)
+@GetMapping(value = "/UserS/{id}", headers = "Accept=application/json")
+	public List<TravelDTO> getUsersTravels(
+
+		@ApiParam(
+				name = "id",
+				type = "Integer",
+				value = "Intake code or CIO that identifies a travel",
+				required = true,
+				example =  "1")
+		@PathVariable
+		Integer id){
+	return travelService.getUsersTravels(id);
+}
 	@ApiOperation(
-			value = "Travel creation",
-			notes = "Travel creation operation required for the creation of available travel")
-	@ApiResponses(
-			value = {
-					@ApiResponse(code = 201, message = "created"),
-					@ApiResponse(code = 409, message = "conflict")
-			})
-	@ResponseStatus(HttpStatus.CREATED)
-	@PostMapping
-	public DataDTO<TravelDTO> registerTravel(@Validated @RequestBody TravelDTO createTravelDTO){
-		return new DataDTO<>(travelService.resgisterTravel(createTravelDTO));
-	}
-	
-	@ApiOperation(
-			value = "Travel modification",
-			notes = "Return Travel information modificated")
-	
-	@ApiResponses(
-			value = {
-					@ApiResponse(code = 201, message = "success"),
-					@ApiResponse(code = 409, message = "conflict")
-			})
-	@ResponseStatus(HttpStatus.OK)
-	@PutMapping
-	public DataDTO<TravelDTO> modifyTravel(
-		@ApiParam (	name = "Travel",
-			type = "Travel",
-			value = "Travel type entity",
-			required = true)
-	@RequestBody
-	@Validated
-	TravelDTO modifiedTravelDTO){
-		return new DataDTO<>(travelService.modifyTravel(modifiedTravelDTO));
-	}
-	
-	@ApiOperation(value = "Travel deletion",notes = "Return travel information deleted")
-	@ApiResponses(value = {@ApiResponse(code = 200, message = "Accepted")})
-	@ResponseStatus(HttpStatus.OK)
-	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> removeTravel(
-			@ApiParam (	name = "id",
-						type = "Integer",
-						value = "Identification code of the travel to be removed",
-						required = true,
-						example = "1")
-			@PathVariable
-			Integer id){
-		travelService.removeTravel(id);
-		return new ResponseEntity<>(HttpStatus.OK);
-	}
-	
-	
-	
-	@ApiOperation(
-			value = "Get travel",
+			value = "Displays trips booked by a given user",
 			notes = "Return the travel information")
 	
 	@ApiResponses(
@@ -137,9 +98,54 @@ public class TravelController {
 			Integer id){
 		return travelService.getTravelsWithUserReservation(id);
 	}
+	@ApiOperation(
+			value = "Travel creation",
+			notes = "Travel creation operation required for the creation of available travel")
+	@ApiResponses(
+			value = {
+					@ApiResponse(code = 201, message = "created"),
+					@ApiResponse(code = 409, message = "conflict")
+			})
+	@ResponseStatus(HttpStatus.CREATED)
+	@PostMapping
+	public DataDTO<TravelDTO> registerTravel(@Validated @RequestBody TravelDTO createTravelDTO){
+		return new DataDTO<>(travelService.resgisterTravel(createTravelDTO));
+	}
+	@ApiOperation(
+			value = "Travel modification",
+			notes = "Return Travel information modificated")
 	
-	
-
-	
+	@ApiResponses(
+			value = {
+					@ApiResponse(code = 201, message = "success"),
+					@ApiResponse(code = 409, message = "conflict")
+			})
+	@ResponseStatus(HttpStatus.OK)
+	@PutMapping
+	public DataDTO<TravelDTO> modifyTravel(
+		@ApiParam (	name = "Travel",
+			type = "Travel",
+			value = "Travel type entity",
+			required = true)
+	@RequestBody
+	@Validated
+	TravelDTO modifiedTravelDTO){
+		return new DataDTO<>(travelService.modifyTravel(modifiedTravelDTO));
+	}
+	@ApiOperation(value = "Travel deletion",notes = "Return travel information deleted")
+	@ApiResponses(value = {@ApiResponse(code = 200, message = "Accepted")})
+	@ResponseStatus(HttpStatus.OK)
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<Void> removeTravel(
+			@ApiParam (	name = "id",
+						type = "Integer",
+						value = "Identification code of the travel to be removed",
+						required = true,
+						example = "1")
+			@PathVariable
+			Integer id){
+		travelService.removeTravel(id);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 	
 }
