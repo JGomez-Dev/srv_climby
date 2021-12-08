@@ -73,14 +73,14 @@ public class UserServiceImpl implements UserService {
 		return userMapper.userToUserDTO(attachedUser);
 	}
 
-	@Override
-	public void removeUser(Integer id) {
-		Optional<User> attachedUser = userRepository.findById(id);
-		if (attachedUser.isEmpty()) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		}
-		userRepository.deleteById(id);
-
-	}
+//	@Override
+//	public void removeUser(Integer id) {
+//		Optional<User> attachedUser = userRepository.findById(id);
+//		if (attachedUser.isEmpty()) {
+//			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+//		}
+//		userRepository.deleteById(id);
+//
+//	}
 
 }

@@ -94,23 +94,23 @@ public class UserController {
 	UserDTO modifiedUserDTO){
 		return new DataDTO<>(userService.modifyUser(modifiedUserDTO));
 	}
-	
-	@ApiOperation(value = "User deletion",notes = "Return user information deleted")
-	@ApiResponses(value = {@ApiResponse(code = 200, message = "Accepted")})
-	@ResponseStatus(HttpStatus.OK)
-	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> removeUser(
-			@ApiParam (	name = "id",
-						type = "String",
-						value = "Identification code of the user to be removed",
-						required = true,
-						example = "1")
-			@PathVariable
-			Integer id){
-		userService.removeUser(id);
-		return new ResponseEntity<>(HttpStatus.OK);
-	}
-	
+//	
+//	@ApiOperation(value = "User deletion",notes = "Return user information deleted")
+//	@ApiResponses(value = {@ApiResponse(code = 200, message = "Accepted")})
+//	@ResponseStatus(HttpStatus.OK)
+//	@DeleteMapping(value = "/{id}")
+//	public ResponseEntity<Void> removeUser(
+//			@ApiParam (	name = "id",
+//						type = "String",
+//						value = "Identification code of the user to be removed",
+//						required = true,
+//						example = "1")
+//			@PathVariable
+//			Integer id){
+//		userService.removeUser(id);
+//		return new ResponseEntity<>(HttpStatus.OK);
+//	}
+//	
 	
 
 	
