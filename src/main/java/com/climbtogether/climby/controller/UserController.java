@@ -32,31 +32,31 @@ public class UserController {
 	
 @Autowired private UserService userService;
 	
-	@ApiOperation(
-			value = "Get user by id",
-			notes = "Return the user information")
-
-	@ApiResponses(
-			value = {
-					@ApiResponse(code = 200, message = "Ok"),	
-					@ApiResponse(code = 400, message = "Bad request"),	@ApiResponse(code = 401, message = "Unathorized"),
-					@ApiResponse(code = 403, message = "Forbidden"),    @ApiResponse(code = 404, message = "Not found"),
-					@ApiResponse(code = 500, message = "Error")
-			})
-	@ResponseStatus(HttpStatus.OK)
-	@GetMapping(value = "/{id}", headers = "Accept=application/json")
-	public UserDTO getUserById(
-			@ApiParam(
-					name = "id",
-					type = "Integer",
-					value = "Intake code or CIO that identifies a province",
-					required = true,
-					example =  "1")
-			@PathVariable
-			Integer id) throws Exception{
-		return new DataDTO<>(userService.getUserById(id)).getData();
-	}
-	
+//	@ApiOperation(
+//			value = "Get user by id",
+//			notes = "Return the user information")
+//
+//	@ApiResponses(
+//			value = {
+//					@ApiResponse(code = 200, message = "Ok"),	
+//					@ApiResponse(code = 400, message = "Bad request"),	@ApiResponse(code = 401, message = "Unathorized"),
+//					@ApiResponse(code = 403, message = "Forbidden"),    @ApiResponse(code = 404, message = "Not found"),
+//					@ApiResponse(code = 500, message = "Error")
+//			})
+//	@ResponseStatus(HttpStatus.OK)
+//	@GetMapping(value = "/{id}", headers = "Accept=application/json")
+//	public UserDTO getUserById(
+//			@ApiParam(
+//					name = "id",
+//					type = "Integer",
+//					value = "Intake code or CIO that identifies a province",
+//					required = true,
+//					example =  "1")
+//			@PathVariable
+//			Integer id) throws Exception{
+//		return new DataDTO<>(userService.getUserById(id)).getData();
+//	}
+//	
 	@ApiOperation(
 			value = "User creation",
 			notes = "User creation operation required for the creation of available user")

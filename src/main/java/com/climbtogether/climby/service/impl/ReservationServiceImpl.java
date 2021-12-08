@@ -48,23 +48,23 @@ public class ReservationServiceImpl implements ReservationService {
 
 
 
-	@Override
-	public void removeReservation(Integer id) {
-		Optional<Reservation> attachedReservation = reservationRepository.findById(id);
-	if(attachedReservation.isEmpty()) {
-		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		}
-	reservationRepository.deleteById(id);
-			}
-
-	@Override
-	public ReservationDTO getReservationById(Integer id) {
-	Optional<Reservation> reservation = reservationRepository.findById(id);
-		if (reservation.isEmpty()) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		}
-		return reservationMapper.reservationToReservationDTO(reservation.get());
-	}
+//	@Override
+//	public void removeReservation(Integer id) {
+//		Optional<Reservation> attachedReservation = reservationRepository.findById(id);
+//	if(attachedReservation.isEmpty()) {
+//		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+//		}
+//	reservationRepository.deleteById(id);
+//			}
+//
+//	@Override
+//	public ReservationDTO getReservationById(Integer id) {
+//	Optional<Reservation> reservation = reservationRepository.findById(id);
+//		if (reservation.isEmpty()) {
+//			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+//		}
+//		return reservationMapper.reservationToReservationDTO(reservation.get());
+//	}
 
 
 }

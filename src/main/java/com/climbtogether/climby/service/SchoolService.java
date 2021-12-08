@@ -8,7 +8,7 @@ public interface SchoolService {
 
 	SchoolDTO resgisterSchool(SchoolDTO createSchoolDTO);
 	
-	SchoolDTO getSchoolById(String name);
+//	SchoolDTO getSchoolById(String name);
 	
 	List<SchoolDTO> getSchoolFindAll();
 

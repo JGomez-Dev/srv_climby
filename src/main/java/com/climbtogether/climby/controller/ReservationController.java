@@ -32,29 +32,29 @@ public class ReservationController {
 	@Autowired 
 	ReservationService reservationService;
 	
-	@ApiOperation(
-			value = "Get reservation by id",
-			notes = "Return the reservation information")
-	
-	@ApiResponses(
-			value = {
-					@ApiResponse(code = 201, message = "success"),
-					@ApiResponse(code = 409, message = "conflict")
-			})
-	@ResponseStatus(HttpStatus.OK)
-	@GetMapping(value = "/{id}", headers = "Accept=application/json")
-	public ReservationDTO getReservationById(
-			@ApiParam(
-					name = "id",
-					type = "String",
-					value = "Intake code or CIO that identifies a reservation",
-					required = true,
-					example =  "1")
-			@PathVariable
-			Integer id){
-		return new DataDTO<>(reservationService.getReservationById(id)).getData();
-	}
-	
+//	@ApiOperation(
+//			value = "Get reservation by id",
+//			notes = "Return the reservation information")
+//	
+//	@ApiResponses(
+//			value = {
+//					@ApiResponse(code = 201, message = "success"),
+//					@ApiResponse(code = 409, message = "conflict")
+//			})
+//	@ResponseStatus(HttpStatus.OK)
+//	@GetMapping(value = "/{id}", headers = "Accept=application/json")
+//	public ReservationDTO getReservationById(
+//			@ApiParam(
+//					name = "id",
+//					type = "String",
+//					value = "Intake code or CIO that identifies a reservation",
+//					required = true,
+//					example =  "1")
+//			@PathVariable
+//			Integer id){
+//		return new DataDTO<>(reservationService.getReservationById(id)).getData();
+//	}
+//	
 	@ApiOperation(
 			value = "Reservation creation",
 			notes = "Reservation creation operation required for the creation of available reservation")
@@ -91,23 +91,23 @@ public class ReservationController {
 		return new DataDTO<>(reservationService.modifyReservation(modifiedReservationDTO)).getData();
 	}
 	
-	@ApiOperation(value = "Reservation deletion",notes = "Return reservation information deleted")
-	@ApiResponses(value = {@ApiResponse(code = 200, message = "Accepted")})
-	@ResponseStatus(HttpStatus.OK)
-	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> removeReservation(
-			@ApiParam (	name = "id",
-						type = "Integer",
-						value = "Identification code of the reservation to be removed",
-						required = true,
-						example = "1")
-			@PathVariable
-			Integer id){
-		reservationService.removeReservation(id);
-		return new ResponseEntity<>(HttpStatus.OK);
-	}
-	
-	
+//	@ApiOperation(value = "Reservation deletion",notes = "Return reservation information deleted")
+//	@ApiResponses(value = {@ApiResponse(code = 200, message = "Accepted")})
+//	@ResponseStatus(HttpStatus.OK)
+//	@DeleteMapping(value = "/{id}")
+//	public ResponseEntity<Void> removeReservation(
+//			@ApiParam (	name = "id",
+//						type = "Integer",
+//						value = "Identification code of the reservation to be removed",
+//						required = true,
+//						example = "1")
+//			@PathVariable
+//			Integer id){
+//		reservationService.removeReservation(id);
+//		return new ResponseEntity<>(HttpStatus.OK);
+//	}
+//	
+//	
 
 	
 	

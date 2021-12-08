@@ -9,7 +9,7 @@ public interface UserService {
 	
 	UserDTO modifyUser(UserDTO modifyUserDTO);
 	
-	UserDTO getUserById(Integer id);
+	//UserDTO getUserById(Integer id);
 	
 	void removeUser(Integer id);
 	

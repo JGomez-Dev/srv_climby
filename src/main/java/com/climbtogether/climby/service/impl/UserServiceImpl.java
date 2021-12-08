@@ -46,17 +46,17 @@ public class UserServiceImpl implements UserService {
 
 	}
 
-	@Override
-	public UserDTO getUserById(Integer id) {
-
-		Optional<User> user = userRepository.findById(id);
-
-		if (user.isEmpty()) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		}
-
-		return userMapper.userToUserDTO(user.get());
-	}
+//	@Override
+//	public UserDTO getUserById(Integer id) {
+//
+//		Optional<User> user = userRepository.findById(id);
+//
+//		if (user.isEmpty()) {
+//			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+//		}
+//
+//		return userMapper.userToUserDTO(user.get());
+//	}
 
 	@Override
 	public UserDTO modifyUser(UserDTO modifyUserDTO) {
