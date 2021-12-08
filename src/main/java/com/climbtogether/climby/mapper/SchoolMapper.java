@@ -10,7 +10,7 @@ import com.climbtogether.climby.domain.School;
 import com.climbtogether.climby.dto.ProvinceDTO;
 import com.climbtogether.climby.dto.SchoolDTO;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+@Mapper(componentModel = "spring")
 public interface SchoolMapper {
 	
 	School schoolDTOToSchool(SchoolDTO schoolDTO);

@@ -12,7 +12,7 @@ import com.climbtogether.climby.dto.ProvinceDTO;
 import com.climbtogether.climby.dto.TravelDTO;
 
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+@Mapper(componentModel = "spring")
 public interface ProvinceMapper {
 	
 	Province provinceDTOToprovince(ProvinceDTO provinceDTO);

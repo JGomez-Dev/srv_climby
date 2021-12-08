@@ -11,7 +11,7 @@ import org.mapstruct.ReportingPolicy;
 import com.climbtogether.climby.domain.Reservation;
 import com.climbtogether.climby.dto.ReservationDTO;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+@Mapper(componentModel = "spring")
 public interface ReservationMapper {
 
 	
