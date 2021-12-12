@@ -108,8 +108,8 @@ public class TravelController {
 			})
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping
-	public DataDTO<TravelDTO> registerTravel(@Validated @RequestBody TravelDTO createTravelDTO){
-		return new DataDTO<>(travelService.resgisterTravel(createTravelDTO));
+	public TravelDTO registerTravel(@Validated @RequestBody TravelDTO createTravelDTO){
+		return new DataDTO<>(travelService.resgisterTravel(createTravelDTO)).getData();
 	}
 	@ApiOperation(
 			value = "Travel modification",
