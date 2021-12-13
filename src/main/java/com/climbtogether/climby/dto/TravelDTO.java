@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.PastOrPresent;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -42,7 +43,7 @@ public class TravelDTO   implements Serializable {
 	
 	@ApiModelProperty(required = true, value = "Date", example = "2000-01-01 01:01:01")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-	@PastOrPresent
+	@FutureOrPresent
 	@JsonProperty(value = "Date")
 	private LocalDateTime departureDate;
 	
