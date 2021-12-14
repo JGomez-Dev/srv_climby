@@ -61,59 +61,59 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 		return travelMapper.listTravelToListTravelDTO(travel);
 	}
 
-//	@Override
-//	public TravelDTO resgisterTravel(TravelDTO createTravelDTO) {
-//
-//		Travel travel = travelMapper.travelDTOToTravel(createTravelDTO);
-//
-//		Optional<School> school = schoolRepository.findById(createTravelDTO.getSchoolDTO().getName());
-//
-//		if (school.isEmpty()) {
-//			resgisterSchool(createTravelDTO.getSchoolDTO());
-//		} else {
-//			getSchoolById(createTravelDTO.getSchoolDTO().getName());
-//		}
-//
-//		Travel AttachedTravel = travelRepository.save(travel);
-//
-//		return travelMapper.travelToTravelDTO(AttachedTravel);
-//
-//	}
+	@Override
+	public TravelDTO resgisterTravel(TravelDTO createTravelDTO) {
 
-//	@Override
-//	public TravelDTO modifyTravel(TravelDTO modifyTravelDTO) {
-//
-//		Travel travel = travelMapper.travelDTOToTravel(modifyTravelDTO);
-//
-//		Optional<School> school = schoolRepository.findById(modifyTravelDTO.getSchoolDTO().getName());
-//
-//		Integer id = travel.getId_travel();
-//
-//		if (!travelRepository.existsById(id)) {
-//			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-//		}
-//
-//		if (school.isEmpty()) {
-//			resgisterSchool(modifyTravelDTO.getSchoolDTO());
-//		} else {
-//			getSchoolById(modifyTravelDTO.getSchoolDTO().getName());
-//		}
-//
-//		Travel attachedTravel = travelRepository.save(travel);
-//
-//		return travelMapper.travelToTravelDTO(attachedTravel);
-//	}
-//
-//	@Override
-//	public void removeTravel(Integer id) {
-//
-//		Optional<Travel> attachedTravel = travelRepository.findById(id);
-//		if (attachedTravel.isEmpty()) {
-//			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-//		}
-//		travelRepository.deleteById(id);
-//
-//	}
+		Travel travel = travelMapper.travelDTOToTravel(createTravelDTO);
+
+		Optional<School> school = schoolRepository.findById(createTravelDTO.getSchoolDTO().getName());
+
+		if (school.isEmpty()) {
+			resgisterSchool(createTravelDTO.getSchoolDTO());
+		} else {
+			getSchoolById(createTravelDTO.getSchoolDTO().getName());
+		}
+
+		Travel AttachedTravel = travelRepository.save(travel);
+
+		return travelMapper.travelToTravelDTO(AttachedTravel);
+
+	}
+
+	@Override
+	public TravelDTO modifyTravel(TravelDTO modifyTravelDTO) {
+
+		Travel travel = travelMapper.travelDTOToTravel(modifyTravelDTO);
+
+		Optional<School> school = schoolRepository.findById(modifyTravelDTO.getSchoolDTO().getName());
+
+		Integer id = travel.getId_travel();
+
+		if (!travelRepository.existsById(id)) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+
+		if (school.isEmpty()) {
+			resgisterSchool(modifyTravelDTO.getSchoolDTO());
+		} else {
+			getSchoolById(modifyTravelDTO.getSchoolDTO().getName());
+		}
+
+		Travel attachedTravel = travelRepository.save(travel);
+
+		return travelMapper.travelToTravelDTO(attachedTravel);
+	}
+
+	@Override
+	public void removeTravel(Integer id) {
+
+		Optional<Travel> attachedTravel = travelRepository.findById(id);
+		if (attachedTravel.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+		travelRepository.deleteById(id);
+
+	}
 
 	@Override
 	public SchoolDTO resgisterSchool(SchoolDTO createSchoolDTO) {
@@ -125,13 +125,13 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 		return schoolMapper.schoolToSchoolDTO(AttachedSchool);
 	}
 
-//	@Override
-//	public SchoolDTO getSchoolById(String id) {
-//
-//		Optional<School> school = schoolRepository.findById(id);
-//
-//		return schoolMapper.schoolToSchoolDTO(school.get());
-//	}
+	@Override
+	public SchoolDTO getSchoolById(String id) {
+
+		Optional<School> school = schoolRepository.findById(id);
+
+		return schoolMapper.schoolToSchoolDTO(school.get());
+	}
 
 	@Override
 	public List<SchoolDTO> getSchoolFindAll() {

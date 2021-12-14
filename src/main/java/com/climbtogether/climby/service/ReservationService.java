@@ -14,7 +14,7 @@ public interface ReservationService {
 	
 	ReservationDTO modifyReservation(ReservationDTO modifyReservationDTO);
 	
-//	ReservationDTO getReservationById(Integer id);
+	ReservationDTO getReservationById(Integer id);
 	
-//	void removeReservation(Integer id);
+	void removeReservation(Integer id);
 }
