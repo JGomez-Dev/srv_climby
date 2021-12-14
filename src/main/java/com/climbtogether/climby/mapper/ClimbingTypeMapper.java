@@ -9,7 +9,7 @@ import com.climbtogether.climby.domain.ClimbingType;
 import com.climbtogether.climby.dto.ClimbingTypeDTO;
 
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+@Mapper(componentModel = "spring")
 public interface ClimbingTypeMapper {
 	
 	List<ClimbingTypeDTO> listClimbingTypeToListClimbingTypeDTO(List<ClimbingType> ClimbingType);

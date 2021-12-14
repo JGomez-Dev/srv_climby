@@ -8,7 +8,7 @@ import com.climbtogether.climby.domain.User;
 import com.climbtogether.climby.dto.UserDTO;
 
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+@Mapper(componentModel = "spring")
 public interface UserMapper {
 	
 
@@ -19,6 +19,6 @@ public interface UserMapper {
 	@Mapping(source ="id_user",target= "id")
 	UserDTO userToUserDTO(User user);
 
-		
+	
 
 }

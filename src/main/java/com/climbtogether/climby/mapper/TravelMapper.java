@@ -15,7 +15,7 @@ import com.climbtogether.climby.dto.ReservationDTO;
 import com.climbtogether.climby.dto.TravelDTO;
 import com.climbtogether.climby.dto.UserDTO;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+@Mapper(componentModel = "spring")
 public interface TravelMapper {
 
 	@Mapping(target = "driver.id_user", source = "userDTO.id")
@@ -60,6 +60,7 @@ public interface TravelMapper {
 					userDTO.setPhone(reservation.getPassenger().getPhone());
 					userDTO.setScore(reservation.getPassenger().getScore());
 					userDTO.setUserPhoto(reservation.getPassenger().getUserPhoto());
+					userDTO.setRatings(reservation.getPassenger().getRatings());
 					userDTO.setRegistrationDate(reservation.getPassenger().getRegistrationDate());
 					reservationDTO.setUserDTO(userDTO);
 				}else
