@@ -6,11 +6,9 @@ import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
-import org.mapstruct.ReportingPolicy;
 
 import com.climbtogether.climby.domain.Reservation;
 import com.climbtogether.climby.domain.Travel;
-import com.climbtogether.climby.domain.User;
 import com.climbtogether.climby.dto.ReservationDTO;
 import com.climbtogether.climby.dto.TravelDTO;
 import com.climbtogether.climby.dto.UserDTO;
