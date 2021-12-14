@@ -53,7 +53,6 @@ public class UserDTO implements Serializable {
 	
 	@ApiModelProperty(required = true, value = "Registration Date", example = "2000-01-01 01:01:01")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-
 	@JsonProperty(value = "Registration Date")
 	private LocalDateTime registrationDate;
 	
