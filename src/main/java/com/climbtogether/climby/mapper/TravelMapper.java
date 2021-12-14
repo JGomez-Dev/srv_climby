@@ -60,6 +60,7 @@ public interface TravelMapper {
 					userDTO.setPhone(reservation.getPassenger().getPhone());
 					userDTO.setScore(reservation.getPassenger().getScore());
 					userDTO.setUserPhoto(reservation.getPassenger().getUserPhoto());
+					userDTO.setRatings(reservation.getPassenger().getRatings());
 					userDTO.setRegistrationDate(reservation.getPassenger().getRegistrationDate());
 					reservationDTO.setUserDTO(userDTO);
 				}else

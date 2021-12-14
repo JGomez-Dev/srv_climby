@@ -48,6 +48,7 @@ create table core.tb_user(
 	score numeric(18,11),
 	outputs integer,
 	user_photo varchar,
+	ratings integer DEFAULT 0,
 	registration_date timestamp,
 	
 	

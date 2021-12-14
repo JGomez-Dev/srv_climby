@@ -57,13 +57,12 @@ public class User implements Serializable {
 	@Column(name = "user_photo", nullable = false)
 	private String userPhoto;
 	
+	@Column(name = "ratings", nullable = false)
+	private Integer ratings;
+	
 	@Column(name = "registration_date", nullable = false)
 	private LocalDateTime registrationDate;
 	
-	
-//	private List<String> reservation;
-//	
-//	private  List<String> travel;
 	
 	
 	
