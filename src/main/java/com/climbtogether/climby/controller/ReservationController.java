@@ -91,23 +91,23 @@ public class ReservationController {
 		return new DataDTO<>(reservationService.modifyReservation(modifiedReservationDTO)).getData();
 	}
 	
-	@ApiOperation(value = "Reservation deletion",notes = "Return reservation information deleted")
-	@ApiResponses(value = {@ApiResponse(code = 200, message = "Accepted")})
-	@ResponseStatus(HttpStatus.OK)
-	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> removeReservation(
-			@ApiParam (	name = "id",
-						type = "Integer",
-						value = "Identification code of the reservation to be removed",
-						required = true,
-						example = "1")
-			@PathVariable
-			Integer id){
-		reservationService.removeReservation(id);
-		return new ResponseEntity<>(HttpStatus.OK);
-	}
-	
-	
+//	@ApiOperation(value = "Reservation deletion",notes = "Return reservation information deleted")
+//	@ApiResponses(value = {@ApiResponse(code = 200, message = "Accepted")})
+//	@ResponseStatus(HttpStatus.OK)
+//	@DeleteMapping(value = "/{id}")
+//	public ResponseEntity<Void> removeReservation(
+//			@ApiParam (	name = "id",
+//						type = "Integer",
+//						value = "Identification code of the reservation to be removed",
+//						required = true,
+//						example = "1")
+//			@PathVariable
+//			Integer id){
+//		reservationService.removeReservation(id);
+//		return new ResponseEntity<>(HttpStatus.OK);
+//	}
+//	
+//	
 
 	
 	

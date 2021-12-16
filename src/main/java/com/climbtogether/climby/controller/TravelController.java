@@ -98,6 +98,7 @@ public class TravelController {
 			Integer id){
 		return travelService.getTravelsWithUserReservation(id);
 	}
+
 	@ApiOperation(
 			value = "Travel creation",
 			notes = "Travel creation operation required for the creation of available travel")
@@ -146,6 +147,5 @@ public class TravelController {
 			Integer id){
 		travelService.removeTravel(id);
 		return new ResponseEntity<>(HttpStatus.OK);
-	}
-	
+	}	
 }
