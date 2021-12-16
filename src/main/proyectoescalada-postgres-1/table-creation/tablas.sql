@@ -169,11 +169,12 @@ VALUES
 	('Zaragoza');	
 	
 	
-INSERT INTO tb_user(full_name,experience,phone,email,score,outputs,user_photo,registration_date)
+INSERT INTO tb_user(full_name,experience,phone,email,score,outputs,user_photo,registration_date, ratings)
 VALUES 
-('Eduardo Gomez','Experimentado','691675453','edu21061991@gmail.com',8,5,'https://lh3.googleusercontent.com/a-/AOh14GjTCmciqiAAw9Rd03WIoA07o1rZigH7zZgBx-','2000-01-01 01:01:01'),
-('Javier Gomez','Experimentado','685775928','javiergf1991@gmail.com',0,0,'https://lh3.googleusercontent.com/a-/AOh14GjTCmciqiAAw9Rd03WIoA07o1rZigH7zZgBx-','2000-01-01 01:01:01');
-	
+('Eduardo Gomez','Experimentado','691675453','edu21061991@gmail.com',2,5,'https://1.bp.blogspot.com/-wDSq0sy-Lro/YQqbRZ3HboI/AAAAAAAAGKs/uV4K5FhUOsAdn9U2YpmnmyzgqJ_MUYOQgCLcBGAsYHQ/s634/Screenshot_20210804-144347_1.png','2000-01-01 01:01:01',4),
+('Pepito Perez','Experimentado','685775928','javiergf1991@gmail.com',0,0,'https://media.cdnandroid.com/item_images/1068635/imagen-girly-wallpapers-profil-pics-for-girls-0big.jpg','2000-01-01 01:01:01',3),
+('Lolito Fernandez','Principiante','685775928','Lolito@gmail',2.8,5,'https://cdn.autobild.es/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2016/09/569465-whatsapp-que-tus-contactos-ponen-rana-perfil.jpg?itok=tpvHWpeZ','2000-01-01 01:01:01',4);
+
 INSERT INTO tb_school
 VALUES 
 ('Albarracin'),
@@ -192,11 +193,11 @@ VALUES ('Boulder, Deportiva, Rocódromo...'),
 INSERT INTO tb_travel(id_driver,school,type,available_places,departure_date,province)
 VALUES 
 (1,'Albarracin','Boulder',4,'2000-01-01 01:01:01','Madrid'),
-(1,'Rodellar','Deportiva',1,'2000-01-01 01:01:01','Cuenca'),
-(1,'Chulilla','Deportiva',3,'2000-01-01 01:01:01','Madrid'),
+(2,'Rodellar','Deportiva',1,'2000-01-01 01:01:01','Cuenca'),
+(2,'Chulilla','Deportiva',3,'2000-01-01 01:01:01','Madrid'),
+(3,'Albarracin','Clásica',4,'2021-11-27 01:01:01.000','Madrid'),
 (1,'Albarracin','Clásica',4,'2021-11-27 01:01:01.000','Madrid'),
-(1,'Albarracin','Clásica',4,'2021-11-27 01:01:01.000','Madrid'),
-(1,'La Pedriza','Boulder',1,'2021-12-04 01:01:01.000','Madrid');
+(3,'La Pedriza','Boulder',1,'2021-12-04 01:01:01.000','Madrid');
 --INSERT INTO tb_status
 --VALUES
 --	('1',true,true),
@@ -205,6 +206,9 @@ VALUES
 --	('4',false,true);
 
 INSERT INTO tb_reservation(id_user, id_travel, date_reservation, reservation_status, valuation_status)
-VALUES(2, 1, '2000-01-01 01:01:01', false, false);
+VALUES(3, 1, '2000-01-01 01:01:01', false, false),
+VALUES(2, 1, '2000-01-01 01:01:01', false, false),
+VALUES(2, 4, '2000-01-01 01:01:01', false, false);
+
 
 	

@@ -122,7 +122,7 @@ public class TravelController {
 			})
 	@ResponseStatus(HttpStatus.OK)
 	@PutMapping
-	public DataDTO<TravelDTO> modifyTravel(
+	public TravelDTO modifyTravel(
 		@ApiParam (	name = "Travel",
 			type = "Travel",
 			value = "Travel type entity",
@@ -130,7 +130,7 @@ public class TravelController {
 	@RequestBody
 	@Validated
 	TravelDTO modifiedTravelDTO){
-		return new DataDTO<>(travelService.modifyTravel(modifiedTravelDTO));
+		return new DataDTO<>(travelService.modifyTravel(modifiedTravelDTO)).getData();
 	}
 	@ApiOperation(value = "Travel deletion",notes = "Return travel information deleted")
 	@ApiResponses(value = {@ApiResponse(code = 200, message = "Accepted")})
