@@ -207,8 +207,7 @@ VALUES
 
 INSERT INTO tb_reservation(id_user, id_travel, date_reservation, reservation_status, valuation_status)
 VALUES(3, 1, '2000-01-01 01:01:01', false, false),
-VALUES(2, 1, '2000-01-01 01:01:01', false, false),
-VALUES(2, 4, '2000-01-01 01:01:01', false, false);
+VALUES(2, 1, '2000-01-01 01:01:01', false, false);
 
 
 	
