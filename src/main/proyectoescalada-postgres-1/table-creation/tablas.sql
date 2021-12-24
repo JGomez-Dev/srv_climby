@@ -1,5 +1,5 @@
 --CREACION TABLAS
-set schema 'core';
+set schema 'public';
 
 --create sequence sc_position as integer;
 
@@ -13,13 +13,13 @@ set schema 'core';
 
 --create sequence sc_province as integer;
 
-create table core.tb_climbing_type(
+create table public.tb_climbing_type(
 	climbing_type varchar(50) not null,
 	constraint pk_core_climbingtype primary key (climbing_type)
 );
 
 
-create table core.tb_province(
+create table public.tb_province(
 	name_province varchar(50) not null,
 	
 	constraint pk_core_province primary key (name_province)
@@ -30,7 +30,7 @@ create table core.tb_province(
 
 --create sequence sc_school as integer;
 
-create table core.tb_school(
+create table public.tb_school(
 	name_school varchar(50) not null,
 	constraint pk_core_school primary key (name_school)
 );
@@ -39,7 +39,7 @@ create table core.tb_school(
 
 create sequence sc_user as integer;
 
-create table core.tb_user(
+create table public.tb_user(
 	id_user  integer not null default nextval('core.sc_user'),
 	full_name varchar,
 	experience varchar,
@@ -62,7 +62,7 @@ alter sequence sc_user owned by tb_user.id_user;
 
 create sequence sc_travel as integer;
 
-create table core.tb_travel(
+create table public.tb_travel(
 	id_travel integer not null default nextval('core.sc_travel'),
 	id_driver integer,
 	school varchar,
@@ -95,7 +95,7 @@ create sequence sc_status as integer;
 
 create sequence sc_reservation as integer;
 
- create table core.tb_reservation(
+ create table public.tb_reservation(
 	id_reservation integer not null default nextval('core.sc_reservation'),
 	id_user integer,
 	id_travel integer,
@@ -206,8 +206,9 @@ VALUES
 --	('4',false,true);
 
 INSERT INTO tb_reservation(id_user, id_travel, date_reservation, reservation_status, valuation_status)
-VALUES(3, 1, '2000-01-01 01:01:01', false, false),
-VALUES(2, 1, '2000-01-01 01:01:01', false, false);
+VALUES
+(3, 1, '2000-01-01 01:01:01', false, false),
+(2, 1, '2000-01-01 01:01:01', false, false);
 
 
 	
