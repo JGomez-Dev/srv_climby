@@ -2,12 +2,11 @@ package com.climbtogether.climby.service;
 
 import java.util.List;
 
-import com.climbtogether.climby.domain.Travel;
 import com.climbtogether.climby.dto.TravelDTO;
 
 public interface TravelService {
 	
-	
+	//Devuelve todos los viajes sin excepcion 
 	List<TravelDTO> getTravelFindAll();
 	
 	//Devuelve todos los viajes de un usuario en concreto
