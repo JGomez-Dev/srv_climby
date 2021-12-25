@@ -15,6 +15,8 @@ import com.climbtogether.climby.domain.Travel;
 import com.climbtogether.climby.domain.User;
 import com.climbtogether.climby.dto.SchoolDTO;
 import com.climbtogether.climby.dto.TravelDTO;
+import com.climbtogether.climby.exceptions.TravelNotFoundException;
+import com.climbtogether.climby.exceptions.UserNotFoundException;
 import com.climbtogether.climby.mapper.SchoolMapper;
 import com.climbtogether.climby.mapper.TravelMapper;
 import com.climbtogether.climby.repository.SchoolRepository;
@@ -81,7 +83,7 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 	}
 
 	@Override
-	public TravelDTO modifyTravel(TravelDTO modifyTravelDTO) {
+	public TravelDTO modifyTravel(TravelDTO modifyTravelDTO) throws TravelNotFoundException {
 
 		Travel travel = travelMapper.travelDTOToTravel(modifyTravelDTO);
 
@@ -90,7 +92,7 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 		Integer id = travel.getId_travel();
 
 		if (!travelRepository.existsById(id)) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+			throw new TravelNotFoundException(String.format("Viaje no encontrado",id));
 		}
 
 		if (school.isEmpty()) {
@@ -105,11 +107,11 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 	}
 
 	@Override
-	public void removeTravel(Integer id) {
+	public void removeTravel(Integer id) throws TravelNotFoundException {
 
 		Optional<Travel> attachedTravel = travelRepository.findById(id);
 		if (attachedTravel.isEmpty()) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+			throw new TravelNotFoundException(String.format("Viaje no encontrado",id));
 		}
 		travelRepository.deleteById(id);
 

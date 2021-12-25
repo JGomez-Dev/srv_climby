@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.climbtogether.climby.dto.DataDTO;
 import com.climbtogether.climby.dto.UserDTO;
+import com.climbtogether.climby.exceptions.UserNotFoundException;
 import com.climbtogether.climby.service.UserService;
 
 import io.swagger.annotations.Api;
@@ -40,8 +41,7 @@ public class UserController {
 			value = {
 					@ApiResponse(code = 200, message = "Ok"),	
 					@ApiResponse(code = 400, message = "Bad request"),	@ApiResponse(code = 401, message = "Unathorized"),
-					@ApiResponse(code = 403, message = "Forbidden"),    @ApiResponse(code = 404, message = "Not found"),
-					@ApiResponse(code = 500, message = "Error")
+					@ApiResponse(code = 403, message = "Forbidden"),    @ApiResponse(code = 404, message = "Not found")
 			})
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(value = "/{id}", headers = "Accept=application/json")
@@ -53,7 +53,7 @@ public class UserController {
 					required = true,
 					example =  "1")
 			@PathVariable
-			Integer id) throws Exception{
+			Integer id) throws UserNotFoundException {
 		return new DataDTO<>(userService.getUserById(id)).getData();
 	}
 	
@@ -69,7 +69,7 @@ public class UserController {
 			})
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping
-	public UserDTO registerUser(@Validated @RequestBody UserDTO createUserDTO) throws Exception {
+	public UserDTO registerUser(@Validated @RequestBody UserDTO createUserDTO) {
 		return new DataDTO<>(userService.resgisterUser(createUserDTO)).getData();
 	}
 	
@@ -91,7 +91,7 @@ public class UserController {
 			required = true)
 	@RequestBody
 	@Validated
-	UserDTO modifiedUserDTO){
+	UserDTO modifiedUserDTO) throws UserNotFoundException{
 		return new DataDTO<>(userService.modifyUser(modifiedUserDTO)).getData();
 	}
 	
@@ -106,7 +106,7 @@ public class UserController {
 						required = true,
 						example = "1")
 			@PathVariable
-			Integer id){
+			Integer id) throws UserNotFoundException{
 		userService.removeUser(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

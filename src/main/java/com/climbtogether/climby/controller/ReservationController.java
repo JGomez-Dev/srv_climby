@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.climbtogether.climby.dto.DataDTO;
 import com.climbtogether.climby.dto.ReservationDTO;
+import com.climbtogether.climby.exceptions.ReservationNotFoundException;
 import com.climbtogether.climby.service.ReservationService;
 
 import io.swagger.annotations.Api;
@@ -51,7 +52,7 @@ public class ReservationController {
 					required = true,
 					example =  "1")
 			@PathVariable
-			Integer id){
+			Integer id) throws ReservationNotFoundException{
 		return new DataDTO<>(reservationService.getReservationById(id)).getData();
 	}
 	
@@ -87,7 +88,7 @@ public class ReservationController {
 			required = true)
 	@RequestBody
 	@Validated
-	ReservationDTO modifiedReservationDTO){
+	ReservationDTO modifiedReservationDTO) throws ReservationNotFoundException{
 		return new DataDTO<>(reservationService.modifyReservation(modifiedReservationDTO)).getData();
 	}
 	
@@ -102,7 +103,7 @@ public class ReservationController {
 						required = true,
 						example = "1")
 			@PathVariable
-			Integer id){
+			Integer id) throws ReservationNotFoundException{
 		reservationService.removeReservation(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

@@ -10,6 +10,8 @@ import org.springframework.web.server.ResponseStatusException;
 import com.climbtogether.climby.domain.Reservation;
 import com.climbtogether.climby.domain.User;
 import com.climbtogether.climby.dto.ReservationDTO;
+import com.climbtogether.climby.exceptions.ReservationNotFoundException;
+import com.climbtogether.climby.exceptions.UserNotFoundException;
 import com.climbtogether.climby.mapper.ReservationMapper;
 import com.climbtogether.climby.repository.ReservationRepository;
 import com.climbtogether.climby.service.ReservationService;
@@ -35,11 +37,11 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 
 	@Override
-	public ReservationDTO modifyReservation(ReservationDTO modifyReservationDTO) {
+	public ReservationDTO modifyReservation(ReservationDTO modifyReservationDTO) throws ReservationNotFoundException {
 		Reservation reservation = reservationMapper.reservationDTOToreservation(modifyReservationDTO);
 		Integer id = reservation.getId_reservation();
 		if(!reservationRepository.existsById(id)) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+			throw new ReservationNotFoundException(String.format("Reserva no encontrado",id));
 		}
 		
 		Reservation attachedReservation = reservationRepository.save(reservation);
@@ -50,20 +52,20 @@ public class ReservationServiceImpl implements ReservationService {
 
 
 	@Override
-	public void removeReservation(Integer id) {
+	public void removeReservation(Integer id) throws ReservationNotFoundException {
 		Optional<Reservation> attachedReservation = reservationRepository.findById(id);
 		if (attachedReservation.isEmpty()) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+			throw new ReservationNotFoundException(String.format("Reserva no encontrado",id));
 		}
 		reservationRepository.deleteById(id);
 
 	}
 
 	@Override
-	public ReservationDTO getReservationById(Integer id) {
+	public ReservationDTO getReservationById(Integer id) throws ReservationNotFoundException {
 	Optional<Reservation> reservation = reservationRepository.findById(id);
 		if (reservation.isEmpty()) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+			throw new ReservationNotFoundException(String.format("Reserva no encontrado",id));
 		}
 		return reservationMapper.reservationToReservationDTO(reservation.get());
 	}

@@ -1,17 +1,18 @@
 package com.climbtogether.climby.service;
 
 import com.climbtogether.climby.dto.UserDTO;
+import com.climbtogether.climby.exceptions.UserNotFoundException;
 
 
 public interface UserService {
 
 	UserDTO resgisterUser(UserDTO createUserDTO);
 	
-	UserDTO modifyUser(UserDTO modifyUserDTO);
+	UserDTO modifyUser(UserDTO modifyUserDTO) throws UserNotFoundException;
 	
-	UserDTO getUserById(Integer id);
+	UserDTO getUserById(Integer id) throws UserNotFoundException;
 	
-	void removeUser(Integer id);
+	void removeUser(Integer id) throws UserNotFoundException;
 	
 	
 

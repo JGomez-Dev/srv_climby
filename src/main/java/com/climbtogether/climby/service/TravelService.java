@@ -3,6 +3,7 @@ package com.climbtogether.climby.service;
 import java.util.List;
 
 import com.climbtogether.climby.dto.TravelDTO;
+import com.climbtogether.climby.exceptions.TravelNotFoundException;
 
 public interface TravelService {
 	
@@ -17,8 +18,8 @@ public interface TravelService {
 
 	TravelDTO resgisterTravel(TravelDTO createTravelDTO);
 	
-	TravelDTO modifyTravel(TravelDTO modifyTravelDTO);
+	TravelDTO modifyTravel(TravelDTO modifyTravelDTO) throws TravelNotFoundException;
 	
-	void removeTravel(Integer id);
+	void removeTravel(Integer id)  throws TravelNotFoundException;
 	
 }

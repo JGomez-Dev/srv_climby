@@ -20,6 +20,7 @@ import com.climbtogether.climby.domain.Travel;
 import com.climbtogether.climby.dto.DataDTO;
 import com.climbtogether.climby.dto.ProvinceDTO;
 import com.climbtogether.climby.dto.TravelDTO;
+import com.climbtogether.climby.exceptions.TravelNotFoundException;
 import com.climbtogether.climby.service.TravelService;
 
 import io.swagger.annotations.Api;
@@ -130,7 +131,7 @@ public class TravelController {
 			required = true)
 	@RequestBody
 	@Validated
-	TravelDTO modifiedTravelDTO){
+	TravelDTO modifiedTravelDTO) throws TravelNotFoundException{
 		return new DataDTO<>(travelService.modifyTravel(modifiedTravelDTO)).getData();
 	}
 	@ApiOperation(value = "Travel deletion",notes = "Return travel information deleted")
@@ -144,7 +145,7 @@ public class TravelController {
 						required = true,
 						example = "1")
 			@PathVariable
-			Integer id){
+			Integer id) throws TravelNotFoundException{
 		travelService.removeTravel(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}	
