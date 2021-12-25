@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.climbtogether.climby.domain.Reservation;
+import com.climbtogether.climby.domain.User;
 import com.climbtogether.climby.dto.ReservationDTO;
 import com.climbtogether.climby.mapper.ReservationMapper;
 import com.climbtogether.climby.repository.ReservationRepository;
@@ -51,10 +52,11 @@ public class ReservationServiceImpl implements ReservationService {
 	@Override
 	public void removeReservation(Integer id) {
 		Optional<Reservation> attachedReservation = reservationRepository.findById(id);
-		if(attachedReservation.isEmpty()) {
+		if (attachedReservation.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 		reservationRepository.deleteById(id);
+
 	}
 
 	@Override

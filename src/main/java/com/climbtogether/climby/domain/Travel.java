@@ -69,7 +69,7 @@ public class Travel  implements Serializable {
 	private User driver;
 	
 
-	@OneToMany(mappedBy = "travel",fetch = FetchType.EAGER, cascade = {CascadeType.ALL},orphanRemoval = true)
+	@OneToMany(mappedBy = "travel",fetch = FetchType.EAGER,orphanRemoval = true)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Reservation> reservation;
 	

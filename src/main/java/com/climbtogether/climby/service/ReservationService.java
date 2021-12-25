@@ -1,13 +1,7 @@
 package com.climbtogether.climby.service;
 
-
-
-
-import org.springframework.stereotype.Service;
-
 import com.climbtogether.climby.dto.ReservationDTO;
 
-@Service
 public interface ReservationService {
 
 	ReservationDTO resgisterReservation(ReservationDTO createReservationDTO);
