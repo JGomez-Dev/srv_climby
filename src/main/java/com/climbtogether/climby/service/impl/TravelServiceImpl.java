@@ -39,7 +39,7 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 	@Override
 	public List<TravelDTO> getTravelFindAll() {
 
-		List<Travel> travel = travelRepository.findAll();
+		List<Travel> travel = travelRepository.getTravelFindAll();
 
 		return travelMapper.listTravelToListTravelDTO(travel);
 	}

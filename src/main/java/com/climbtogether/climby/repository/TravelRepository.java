@@ -12,6 +12,9 @@ import com.climbtogether.climby.domain.Travel;
 @Repository
 public interface TravelRepository extends JpaRepository<Travel, Integer> {
 	
+	@Query(value="select *  from tb_travel where departure_date >= current_date",nativeQuery = true)
+	List<Travel> getTravelFindAll();
+	
 	@Query("select travel from Travel travel where driver.id_user = :id ")
 	List<Travel> getUsersTravels(@Param("id") Integer id);
 	
