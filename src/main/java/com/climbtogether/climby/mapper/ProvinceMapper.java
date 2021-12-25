@@ -19,7 +19,7 @@ public interface ProvinceMapper {
 	
 	ProvinceDTO provinceToprovinceDTO(Province province);
 
-	List<ProvinceDTO> listProvinceToListProvinceDTO(List<Province> travel);
+	List<ProvinceDTO> listProvinceToListProvinceDTO(List<Province> province);
 		
 
 }

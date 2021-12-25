@@ -20,5 +20,8 @@ public class ProvinceDTO implements Serializable {
 	
 	@ApiModelProperty(required = true, value = "Nombre provincia", example = "Teruel")
 	private String name;
+	
+	@ApiModelProperty(required = true, value = "Numero viajes", example = "1")
+	private Integer numberTravels;
 
 }

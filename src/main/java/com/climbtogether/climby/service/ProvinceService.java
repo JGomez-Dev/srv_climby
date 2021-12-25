@@ -7,5 +7,6 @@ import com.climbtogether.climby.dto.ProvinceDTO;
 public interface ProvinceService {
 	
 	List<ProvinceDTO> getProvinceFindAll();
+		
 
 }

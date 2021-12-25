@@ -30,4 +30,6 @@ public class Province implements Serializable {
 	@Column(name = "name_province", unique = true, nullable = false, length = 50)
 	private String name;
 	
+	private Integer numberTravels;
+
 }
