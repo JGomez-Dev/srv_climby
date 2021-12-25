@@ -51,11 +51,11 @@ public class ReservationServiceImpl implements ReservationService {
 	@Override
 	public void removeReservation(Integer id) {
 		Optional<Reservation> attachedReservation = reservationRepository.findById(id);
-	if(attachedReservation.isEmpty()) {
-		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		if(attachedReservation.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
-	reservationRepository.deleteById(id);
-			}
+		reservationRepository.deleteById(id);
+	}
 
 	@Override
 	public ReservationDTO getReservationById(Integer id) {

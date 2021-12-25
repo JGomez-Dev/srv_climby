@@ -84,7 +84,7 @@ public class UserController {
 			})
 	@ResponseStatus(HttpStatus.OK)
 	@PutMapping
-	public DataDTO<UserDTO> modifyUser(
+	public UserDTO modifyUser(
 		@ApiParam (	name = "User",
 			type = "User",
 			value = "User type entity",
@@ -92,7 +92,7 @@ public class UserController {
 	@RequestBody
 	@Validated
 	UserDTO modifiedUserDTO){
-		return new DataDTO<>(userService.modifyUser(modifiedUserDTO));
+		return new DataDTO<>(userService.modifyUser(modifiedUserDTO)).getData();
 	}
 	
 	@ApiOperation(value = "User deletion",notes = "Return user information deleted")
