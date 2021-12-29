@@ -1,12 +1,14 @@
 package com.climbtogether.climby.service.impl;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.climbtogether.climby.domain.Province;
-import com.climbtogether.climby.domain.Travel;
 import com.climbtogether.climby.dto.ProvinceDTO;
 import com.climbtogether.climby.mapper.ProvinceMapper;
 import com.climbtogether.climby.repository.ProvinceRepository;
@@ -23,15 +25,33 @@ public class ProvinceServiceImpl implements ProvinceService {
 	
 	@Override
 	public List<ProvinceDTO> getProvinceFindAll() {
-
-		List<Province> province = provinceRepository.getProvincesWithTravels();
 		
-		province.add(0,new Province("Seleccione su provincia", 0));
-
+		List<Province> requestProvince = new ArrayList<>();;
+		List<Province> provincesWithTravelsLater = provinceRepository.getProvincesWithTravelsLater();
+		List<Province> provincesWithTravels = provinceRepository.getProvincesWithTravels();
+		 for (Province province: provincesWithTravels) {
+			if(province.getNumberTravels()==0) {
+				requestProvince.add(province);
+			}
+		}
+		 for (Province province2: provincesWithTravelsLater) {
+			 requestProvince.add(province2);
+		 }
+		 ordenarArrayList(requestProvince);
+		 
+		 requestProvince.add(0,new Province("Seleccione su provincia", 0));
 		
-		
-		return provinceMapper.listProvinceToListProvinceDTO(province);
+		return provinceMapper.listProvinceToListProvinceDTO(requestProvince);
 	}
-	
+	private List<Province> ordenarArrayList(List<Province> requestProvince){
+		Collections.sort(requestProvince, new Comparator<Province>() {
+			@Override
+			public int compare(Province p1, Province p2) {
+				return new String(p1.getName()).compareTo(new String(p2.getName()));
+			}
+		});
+		return requestProvince;
+		
+	}
 
 }

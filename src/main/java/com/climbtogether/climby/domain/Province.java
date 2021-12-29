@@ -1,12 +1,12 @@
 package com.climbtogether.climby.domain;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,7 +22,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "tb_province")
-public class Province implements Serializable {
+public class Province implements Serializable{
 
 	private static final long serialVersionUID = -985853124316450362L;
 	
