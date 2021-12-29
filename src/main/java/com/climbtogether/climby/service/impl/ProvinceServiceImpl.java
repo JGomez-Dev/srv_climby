@@ -27,15 +27,21 @@ public class ProvinceServiceImpl implements ProvinceService {
 	public List<ProvinceDTO> getProvinceFindAll() {
 		
 		List<Province> requestProvince = new ArrayList<>();;
+		List<Province> provincesWithTravelsPrevious = provinceRepository.getProvincesWithTravelsprevious();
 		List<Province> provincesWithTravelsLater = provinceRepository.getProvincesWithTravelsLater();
 		List<Province> provincesWithTravels = provinceRepository.getProvincesWithTravels();
-		 for (Province province: provincesWithTravels) {
-			if(province.getNumberTravels()==0) {
-				requestProvince.add(province);
+		 for (Province province1: provincesWithTravels) {
+			if(province1.getNumberTravels()==0) {
+				requestProvince.add(province1);
 			}
 		}
 		 for (Province province2: provincesWithTravelsLater) {
 			 requestProvince.add(province2);
+		 }
+		 
+		 for (Province province3: provincesWithTravelsPrevious) {
+			 province3.setNumberTravels(0);
+			 requestProvince.add(province3);
 		 }
 		 ordenarArrayList(requestProvince);
 		 
