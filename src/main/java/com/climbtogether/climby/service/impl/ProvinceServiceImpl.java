@@ -28,6 +28,11 @@ public class ProvinceServiceImpl implements ProvinceService {
 		List<Province> provincesWithTravelsLater = provinceRepository.getProvincesWithTravelsLater();
 		List<Province> provinces = provinceRepository.findAll();
 
+		for (Province province1 : provinces) {
+			if (province1.getNumberTravels() == null) {
+				province1.setNumberTravels(0);
+			}
+		}
 		for (Province province2 : provinces) {
 			for (Province province3 : provincesWithTravelsLater) {
 				if (province2.equals(province3)) {
