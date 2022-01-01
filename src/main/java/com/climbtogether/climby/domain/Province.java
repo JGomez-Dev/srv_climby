@@ -30,7 +30,7 @@ public class Province implements Serializable{
 	@Column(name = "name_province", unique = true, nullable = false, length = 50)
 	private String name;
 	
-	
+	@Column(name = "number_travels", columnDefinition = "integer default 0")
 	private Integer numberTravels;
 
 }
