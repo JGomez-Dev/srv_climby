@@ -14,42 +14,39 @@ import com.climbtogether.climby.mapper.ProvinceMapper;
 import com.climbtogether.climby.repository.ProvinceRepository;
 import com.climbtogether.climby.service.ProvinceService;
 
-
 @Service
 public class ProvinceServiceImpl implements ProvinceService {
-		
-	@Autowired private ProvinceRepository provinceRepository;
-	
+
+	@Autowired
+	private ProvinceRepository provinceRepository;
+
 	@Autowired
 	private ProvinceMapper provinceMapper;
-	
+
 	@Override
 	public List<ProvinceDTO> getProvinceFindAll() {
-		
-		List<Province> requestProvince = new ArrayList<>();;
-		List<Province> provincesWithTravelsPrevious = provinceRepository.getProvincesWithTravelsprevious();
 		List<Province> provincesWithTravelsLater = provinceRepository.getProvincesWithTravelsLater();
-		List<Province> provincesWithTravels = provinceRepository.getProvincesWithTravels();
-		 for (Province province1: provincesWithTravels) {
-			if(province1.getNumberTravels()==0) {
-				requestProvince.add(province1);
+		List<Province> provinces = provinceRepository.findAll();
+
+		for (Province province1 : provinces) {
+			if (province1.getNumberTravels() == null) {
+				province1.setNumberTravels(0);
 			}
 		}
-		 for (Province province2: provincesWithTravelsLater) {
-			 requestProvince.add(province2);
-		 }
-		 
-		 for (Province province3: provincesWithTravelsPrevious) {
-			 province3.setNumberTravels(0);
-			 requestProvince.add(province3);
-		 }
-		 ordenarArrayList(requestProvince);
-		 
-		 requestProvince.add(0,new Province("Seleccione su provincia", 0));
-		
-		return provinceMapper.listProvinceToListProvinceDTO(requestProvince);
+		for (Province province2 : provinces) {
+			for (Province province3 : provincesWithTravelsLater) {
+				if (province2.equals(province3)) {
+					province2.setNumberTravels(province3.getNumberTravels());
+				}
+			}
+		}
+		ordenarArrayList(provinces);
+		provinces.add(0, new Province("Seleccione su provincia", 0));
+
+		return provinceMapper.listProvinceToListProvinceDTO(provinces);
 	}
-	private List<Province> ordenarArrayList(List<Province> requestProvince){
+
+	private List<Province> ordenarArrayList(List<Province> requestProvince) {
 		Collections.sort(requestProvince, new Comparator<Province>() {
 			@Override
 			public int compare(Province p1, Province p2) {
@@ -57,7 +54,7 @@ public class ProvinceServiceImpl implements ProvinceService {
 			}
 		});
 		return requestProvince;
-		
+
 	}
 
 }
