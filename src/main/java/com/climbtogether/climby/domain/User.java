@@ -60,6 +60,9 @@ public class User implements Serializable {
 	@Column(name = "ratings", nullable = false)
 	private Integer ratings;
 	
+	@Column(name = "token", nullable = false)
+	private String token;
+	
 	@Column(name = "registration_date", nullable = false)
 	private LocalDateTime registrationDate;
 	

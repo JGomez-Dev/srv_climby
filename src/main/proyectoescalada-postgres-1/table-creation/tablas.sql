@@ -40,7 +40,7 @@ create table public.tb_school(
 create sequence sc_user as integer;
 
 create table public.tb_user(
-	id_user  integer not null default nextval('core.sc_user'),
+	id_user  integer not null default nextval('public.sc_user'),
 	full_name varchar,
 	experience varchar,
 	phone varchar(9),
@@ -49,6 +49,7 @@ create table public.tb_user(
 	outputs integer,
 	user_photo varchar,
 	ratings integer DEFAULT 0,
+	token varchar (300),
 	registration_date timestamp,
 	
 	
@@ -63,7 +64,7 @@ alter sequence sc_user owned by tb_user.id_user;
 create sequence sc_travel as integer;
 
 create table public.tb_travel(
-	id_travel integer not null default nextval('core.sc_travel'),
+	id_travel integer not null default nextval('public.sc_travel'),
 	id_driver integer,
 	school varchar,
 	type varchar,
@@ -96,7 +97,7 @@ create sequence sc_status as integer;
 create sequence sc_reservation as integer;
 
  create table public.tb_reservation(
-	id_reservation integer not null default nextval('core.sc_reservation'),
+	id_reservation integer not null default nextval('public.sc_reservation'),
 	id_user integer,
 	id_travel integer,
 	date_reservation timestamp,
