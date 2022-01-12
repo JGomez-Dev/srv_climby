@@ -17,10 +17,12 @@ import com.climbtogether.climby.dto.UserDTO;
 public interface TravelMapper {
 
 	@Mapping(target = "driver.id_user", source = "userDTO.id")
+	@Mapping(target = "driver.token", source = "userDTO.token")
 	@Mapping(target = "id_travel", source = "id")
 	@Mapping(target = "school", source = "schoolDTO.name")
 	@Mapping(target = "province.name", source = "provinceDTO.name")
 	@Mapping(target = "type", source = "type.name")
+	
 	@Mapping(target = "reservation", source = "reservationDTO", qualifiedByName = "mapearReservasReservationDTOToReservation")
 	Travel travelDTOToTravel(TravelDTO travelDTO);
 	
@@ -35,6 +37,7 @@ public interface TravelMapper {
 	
 
 	@Mapping(source = "driver.id_user", target = "userDTO.id")
+	@Mapping(source = "driver.token", target = "userDTO.token")
 	@Mapping(source = "id_travel", target = "id")
 	@Mapping(source = "school", target = "schoolDTO.name")
 	@Mapping(source = "province.name", target = "provinceDTO.name")
@@ -51,6 +54,7 @@ public interface TravelMapper {
 				UserDTO userDTO = new UserDTO();
 				if(reservation.getPassenger()!=null) {
 					userDTO.setId(reservation.getPassenger().getId_user());
+					userDTO.setToken(reservation.getPassenger().getToken());
 					userDTO.setFullName(reservation.getPassenger().getFullName());
 					userDTO.setEmail(reservation.getPassenger().getEmail());
 					userDTO.setExperience(reservation.getPassenger().getExperience());
