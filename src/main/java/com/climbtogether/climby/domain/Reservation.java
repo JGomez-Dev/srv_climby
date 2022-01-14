@@ -1,7 +1,6 @@
 package com.climbtogether.climby.domain;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -15,8 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import com.climbtogether.climby.dto.ReservationDTO;
+import javax.validation.constraints.Null;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -56,6 +54,11 @@ public class Reservation implements Serializable {
 	@Column(name = "valuationStatus")
 	private Boolean valuationStatus;
 	
+	@OneToOne
+	@JoinColumn(name = "id_message", nullable = true)
+	private Message message;
+	
+
 	@Column(name = "date_reservation", nullable = false)
 	private LocalDateTime reservationDate;
 

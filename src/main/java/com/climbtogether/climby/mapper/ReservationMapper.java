@@ -16,8 +16,9 @@ public interface ReservationMapper {
 	@Mapping(target= "passenger.token",source = "userDTO.token")
 	@Mapping(target= "travel.id_travel",source = "travelDTO")
 	@Mapping(target= "reservationDate",source = "customerDate")
-	@Mapping(target= "passenger.ratings",source = "userDTO.ratings")
+	@Mapping(target= "passenger.ratings",source = "userDTO.ratings")	
 	Reservation reservationDTOToreservation(ReservationDTO reservationDTO);
+
 
 	@Mapping(source= "id_reservation",target = "id")
 	@Mapping(source= "passenger.id_user",target = "userDTO.id")
@@ -25,6 +26,7 @@ public interface ReservationMapper {
 	@Mapping(source= "travel.id_travel",target = "travelDTO")
 	@Mapping(source= "reservationDate",target = "customerDate")
 	@Mapping(source= "passenger.ratings",target = "userDTO.ratings")
+	@Mapping(source= "message",target = "messageDTO")
 	ReservationDTO reservationToReservationDTO(Reservation reservation);
 	
 	

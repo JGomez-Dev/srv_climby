@@ -102,14 +102,31 @@ create sequence sc_reservation as integer;
 	id_travel integer,
 	date_reservation timestamp,
 	reservation_status Boolean,
+	id_message integer,
 	valuation_status Boolean,
 	
 	constraint pk_core_reservation primary key (id_reservation),
 	constraint fk_core_id_user foreign key (id_user) references tb_user(id_user),
-	constraint fk_core_id_travel foreign key (id_travel) references tb_travel(id_travel)
+	constraint fk_core_id_travel foreign key (id_travel) references tb_travel(id_travel),
+	constraint fk_core_id_message foreign key (id_message) references tb_message(id_message)
 	);
  	
 	alter sequence sc_reservation owned by tb_reservation.id_reservation;
+
+
+
+
+create sequence sc_message as integer;
+
+create table public.tb_message(
+	id_message integer not null default nextval('public.sc_message'),
+	text_message varchar(300),
+	read Boolean DEFAULT false,
+	
+	constraint pk_core_message primary key (id_message)
+);
+
+alter sequence sc_message owned by tb_message.id_message;
 
 
 --CARGADE DATOS
