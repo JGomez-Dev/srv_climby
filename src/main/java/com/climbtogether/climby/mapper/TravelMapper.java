@@ -7,8 +7,10 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 
+import com.climbtogether.climby.domain.Message;
 import com.climbtogether.climby.domain.Reservation;
 import com.climbtogether.climby.domain.Travel;
+import com.climbtogether.climby.dto.MessageDTO;
 import com.climbtogether.climby.dto.ReservationDTO;
 import com.climbtogether.climby.dto.TravelDTO;
 import com.climbtogether.climby.dto.UserDTO;
@@ -22,7 +24,6 @@ public interface TravelMapper {
 	@Mapping(target = "school", source = "schoolDTO.name")
 	@Mapping(target = "province.name", source = "provinceDTO.name")
 	@Mapping(target = "type", source = "type.name")
-	
 	@Mapping(target = "reservation", source = "reservationDTO", qualifiedByName = "mapearReservasReservationDTOToReservation")
 	Travel travelDTOToTravel(TravelDTO travelDTO);
 	
@@ -42,6 +43,7 @@ public interface TravelMapper {
 	@Mapping(source = "school", target = "schoolDTO.name")
 	@Mapping(source = "province.name", target = "provinceDTO.name")
 	@Mapping(source = "type", target = "type.name")
+	
 	@Mapping(source = "reservation", target = "reservationDTO", qualifiedByName = "mapearReservasReservationToReservationDTO")
 	TravelDTO travelToTravelDTO(Travel travel);
 
@@ -73,7 +75,8 @@ public interface TravelMapper {
 				reservationDTO.setCustomerDate(reservation.getReservationDate());
 				reservationDTO.setReservationStatus(reservation.getReservationStatus());
 				reservationDTO.setValuationStatus(reservation.getValuationStatus());
-				
+				MessageDTO messageDTO = messageToMessageDTO(reservation.getMessage());
+				reservationDTO.setMessageDTO(messageDTO);
 				list.add(reservationDTO);
 			}
 			return list;
@@ -82,5 +85,6 @@ public interface TravelMapper {
 
 	}
 	List<TravelDTO> listTravelToListTravelDTO(List<Travel> travel);
-
+	
+	MessageDTO messageToMessageDTO(Message message);
 }
