@@ -143,4 +143,16 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 		return schoolMapper.listSchoolToListSchoolDTO(school);
 	}
 
+	@Override
+	public TravelDTO getTravelById(Integer id) throws TravelNotFoundException {
+
+		Optional<Travel> travel = travelRepository.findById(id);
+		
+		if (travel.isEmpty()) {
+			throw new TravelNotFoundException(String.format("Viaje no encontrado",id));
+		}
+
+		return travelMapper.travelToTravelDTO(travel.get());
+	}
+
 }

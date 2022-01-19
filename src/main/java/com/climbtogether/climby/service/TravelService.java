@@ -4,11 +4,15 @@ import java.util.List;
 
 import com.climbtogether.climby.dto.TravelDTO;
 import com.climbtogether.climby.exceptions.TravelNotFoundException;
+import com.climbtogether.climby.exceptions.UserNotFoundException;
 
 public interface TravelService {
 	
 	//Devuelve todos los viajes sin excepcion 
 	List<TravelDTO> getTravelFindAll();
+	
+	//Devuelve un viaje por ID
+	TravelDTO getTravelById(Integer id) throws TravelNotFoundException;
 	
 	//Devuelve todos los viajes de un usuario en concreto
 	List<TravelDTO> getUsersTravels(Integer id);
