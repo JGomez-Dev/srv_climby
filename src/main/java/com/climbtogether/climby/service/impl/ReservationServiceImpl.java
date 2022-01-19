@@ -52,9 +52,11 @@ public class ReservationServiceImpl implements ReservationService, MessageServic
 		if (!reservationRepository.existsById(id)) {
 			throw new ReservationNotFoundException(String.format("Reserva no encontrado", id));
 		}
-		MessageDTO messageDTO = resgisterMessage(modifyReservationDTO.getMessageDTO());
-		Message message = messageMapper.messageDTOToMessage(messageDTO);
-		reservation.setMessage(message);
+		if(modifyReservationDTO.getMessageDTO() != null) {
+			MessageDTO messageDTO = resgisterMessage(modifyReservationDTO.getMessageDTO());
+			Message message = messageMapper.messageDTOToMessage(messageDTO);		
+			reservation.setMessage(message);
+		}
 		Reservation attachedReservation = reservationRepository.save(reservation);
 		return reservationMapper.reservationToReservationDTO(attachedReservation);
 	}
