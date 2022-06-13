@@ -88,7 +88,7 @@ public class TravelController {
 	@ResponseStatus(HttpStatus.OK)
 	@PutMapping
 	public TravelDTO modifyTravel(@ApiParam(name = "Travel", type = "Travel", value = "Travel type entity", required = true) @RequestBody @Validated TravelDTO modifiedTravelDTO)throws TravelNotFoundException {
-		
+		//test
 		return new DataDTO<>(travelService.modifyTravel(modifiedTravelDTO)).getData();
 	}
 
