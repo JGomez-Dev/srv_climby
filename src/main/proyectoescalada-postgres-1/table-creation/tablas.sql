@@ -22,7 +22,7 @@ create table public.tb_climbing_type(
 create table public.tb_province(
 	name_province varchar(50) not null,
 	number_travels int,
-	constraint pk_core_province primary key (5)
+	constraint pk_core_province primary key (name_province)
 );
 
 --alter sequence sc_province owned by tb_province.id_province;

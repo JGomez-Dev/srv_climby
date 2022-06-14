@@ -15,7 +15,17 @@ jobs:
         -   uses: actions/setup-java@v3
             with:
                 java-version: '11'
-                distribution: 'adopt'
+                distribution: 'adopt'      
+        -   services:
+                postgres:
+                    image: postgres:latest
+                    env:
+                        BBDD_HOST_WRITER: postgres
+                        POSTGRES_PASSWORD: postgres
+                        BBDD_NAME: postgres
+
+                    ports:
+                        - "5000:5432"
         -   name: Install dependencies
             run: mvn clean install
           
