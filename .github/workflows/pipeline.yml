@@ -17,5 +17,5 @@ jobs:
                 java-version: '11'
                 distribution: 'adopt'
         -   name: Install dependencies
-            run: npm install
+            run: mvn clean install
           
