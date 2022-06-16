@@ -20,8 +20,8 @@ jobs:
             run: mvn clean install
             uses: akhileshns/heroku-deploy@v3.12.12
             with:
-                heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-                heroku_app_name: "climby-ci-ga"
-                heroku_email: "edu21061991@gmail.com"
+                heroku_api_key: ${{secrets.HEROKU_API_EMAIL}}
+                heroku_app_name: ${{secrets.HEROKU_API_KEY}}
+                heroku_email: ${{secrets.HEROKU_APP}}
                 dontuseforce: true
                 dontautocreate: true
