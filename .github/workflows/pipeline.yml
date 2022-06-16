@@ -1,32 +1,19 @@
 name: Deployment Pipeline
-
 on:
     push:
         branches:
         - main
-
 jobs:
     deploy:
         runs-on: ubuntu-18.04
-#        services:
         steps:
         -   uses: actions/checkout@v3
-#            postgres:
             with:
-#                env:
                 fetch-depth: 0
-#                image: postgres:latest
         -   uses: actions/setup-java@v3
             with:
                 java-version: '11'
                 distribution: adopt
-#                    BBDD_HOST_WRITER: postgres
-#                    POSTGRES_PASSWORD: postgres
-#                    BBDD_NAME: postgres
-#                volumes:
-#                - ./src/main/proyectoescalada-postgres-1/table-creation/tablas.sql:/docker-entrypoint-initdb.d/tablas.sql
-#                ports:
-#                - 5000:5432
         -   name: Install dependencies
             run: mvn clean install
         -   name: Deploy to heroku
@@ -35,3 +22,12 @@ jobs:
                 heroku_api_key: ${{secrets.HEROKU_API_KEY}}
                 heroku_app_name: ${{secrets.HEROKU_APP}}
                 heroku_email: ${{secrets.HEROKU_API_EMAIL}}
+                
+                
+                
+                
+                
+                
+                
+                
+                
