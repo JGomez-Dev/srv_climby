@@ -13,11 +13,13 @@ jobs:
         -   uses: actions/checkout@v3
 #            postgres:
             with:
+#                env:
                 fetch-depth: 0
 #                image: postgres:latest
         -   uses: actions/setup-java@v3
             with:
-#                env:
+                java-version: '11'
+                distribution: adopt
 #                    BBDD_HOST_WRITER: postgres
 #                    POSTGRES_PASSWORD: postgres
 #                    BBDD_NAME: postgres
@@ -25,7 +27,11 @@ jobs:
 #                - ./src/main/proyectoescalada-postgres-1/table-creation/tablas.sql:/docker-entrypoint-initdb.d/tablas.sql
 #                ports:
 #                - 5000:5432
-                java-version: '11'
-                distribution: adopt
         -   name: Install dependencies
             run: mvn clean install
+        -   name: Deploy to heroku
+        -   uses: akhileshns/heroku-deploy@v3.12.12
+            with:
+                heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+                heroku_app_name: ${{secrets.HEROKU_APP}}
+                heroku_email: ${{secrets.HEROKU_API_EMAIL}}
