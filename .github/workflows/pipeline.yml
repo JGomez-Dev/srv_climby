@@ -15,6 +15,9 @@ jobs:
                     BBDD_HOST_WRITER: postgres
                     POSTGRES_PASSWORD: postgres
                     BBDD_NAME: postgres
+                volumes:
+                ##Datos 
+                   - ./src/main/proyectoescalada-postgres-1/table-creation/tablas.sql:/docker-entrypoint-initdb.d/tablas.sql
                 ports:
                     - "5000:5432"
         steps:

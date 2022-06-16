@@ -1,3 +1,6 @@
+
+CREATE SCHEMA IF NOT exists public ;
+
 --CREACION TABLAS
 set schema 'public';
 
@@ -76,12 +79,28 @@ create table public.tb_travel(
 	constraint fk_core_id_driver foreign key (id_driver) references tb_user(id_user),
 	constraint fk_core_province foreign key (province) references tb_province(name_province),
 	constraint fk_core_school foreign key (school) references tb_school(name_school),
-		constraint fk_core_type foreign key (type) references tb_climbing_type(climbing_type)
+	constraint fk_core_type foreign key (type) references tb_climbing_type(climbing_type)
 );
 
 alter sequence sc_travel owned by tb_travel.id_travel;
+
+
+
+
+
+
+create sequence sc_message as integer;
+
+create table public.tb_message(
+	id_message integer not null default nextval('public.sc_message'),
+	text_message varchar(300),
+	read Boolean DEFAULT false,
 	
-create sequence sc_status as integer;
+	constraint pk_core_message primary key (id_message)
+);
+
+alter sequence sc_message owned by tb_message.id_message;	
+--create sequence sc_status as integer;
 
 --create table core.tb_status(
 --	id_status integer not null default nextval('core.sc_status'),
@@ -112,21 +131,6 @@ create sequence sc_reservation as integer;
 	);
  	
 	alter sequence sc_reservation owned by tb_reservation.id_reservation;
-
-
-
-
-create sequence sc_message as integer;
-
-create table public.tb_message(
-	id_message integer not null default nextval('public.sc_message'),
-	text_message varchar(300),
-	read Boolean DEFAULT false,
-	
-	constraint pk_core_message primary key (id_message)
-);
-
-alter sequence sc_message owned by tb_message.id_message;
 
 
 --CARGADE DATOS
