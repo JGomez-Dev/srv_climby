@@ -9,8 +9,14 @@ jobs:
     deploy:
         runs-on: ubuntu-18.04
 #        services:
+        steps:
+        -   uses: actions/checkout@v3
 #            postgres:
+            with:
+                fetch-depth: 0
 #                image: postgres:latest
+        -   uses: actions/setup-java@v3
+            with:
 #                env:
 #                    BBDD_HOST_WRITER: postgres
 #                    POSTGRES_PASSWORD: postgres
@@ -19,13 +25,9 @@ jobs:
 #                - ./src/main/proyectoescalada-postgres-1/table-creation/tablas.sql:/docker-entrypoint-initdb.d/tablas.sql
 #                ports:
 #                - 5000:5432
-        steps:
-        -   uses: actions/checkout@v3
-            with:
-                fetch-depth: 0
-        -   uses: actions/setup-java@v3
-            with:
                 java-version: '11'
                 distribution: adopt
         -   name: Install dependencies
-            run: mvn clean install
+            run: mvn clean install --no-audit --no-fund --no-optional
+        -   name: Build
+            run: mvn run build
