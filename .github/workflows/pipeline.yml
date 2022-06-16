@@ -28,6 +28,6 @@ jobs:
                 java-version: '11'
                 distribution: adopt
         -   name: Install dependencies
-            run: mvn clean install --no-audit --no-fund --no-optional
+            run: mvn clean install
         -   name: Build
             run: mvn run build
