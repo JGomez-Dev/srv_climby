@@ -8,17 +8,17 @@ on:
 jobs:
     deploy:
         runs-on: ubuntu-18.04
-        services:
-            postgres:
-                image: postgres:latest
-                env:
-                    BBDD_HOST_WRITER: postgres
-                    POSTGRES_PASSWORD: postgres
-                    BBDD_NAME: postgres
-                volumes:
-                - ./src/main/proyectoescalada-postgres-1/table-creation/tablas.sql:/docker-entrypoint-initdb.d/tablas.sql
-                ports:
-                - 5000:5432
+#        services:
+#            postgres:
+#                image: postgres:latest
+#                env:
+#                    BBDD_HOST_WRITER: postgres
+#                    POSTGRES_PASSWORD: postgres
+#                    BBDD_NAME: postgres
+#                volumes:
+#                - ./src/main/proyectoescalada-postgres-1/table-creation/tablas.sql:/docker-entrypoint-initdb.d/tablas.sql
+#                ports:
+#                - 5000:5432
         steps:
         -   uses: actions/checkout@v3
             with:
