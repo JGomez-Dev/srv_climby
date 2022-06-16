@@ -1,3 +1,5 @@
+[![Deployment Pipeline](https://github.com/JavierGF1991/srv_climby/actions/workflows/pipeline.yml/badge.svg)](https://github.com/JavierGF1991/srv_climby/actions/workflows/pipeline.yml)
+
 ## Data base
 	La base de datos debe ejecutarse antes del proyecto. De este modo se podran crear/actualizar tablas y datos antes de arrancar el resto del sistema
 		Host: localhost
