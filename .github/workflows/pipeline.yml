@@ -16,10 +16,9 @@ jobs:
                     POSTGRES_PASSWORD: postgres
                     BBDD_NAME: postgres
                 volumes:
-                ##Datos 
-                   - ./src/main/proyectoescalada-postgres-1/table-creation/tablas.sql:/docker-entrypoint-initdb.d/tablas.sql
+                - ./src/main/proyectoescalada-postgres-1/table-creation/tablas.sql:/docker-entrypoint-initdb.d/tablas.sql
                 ports:
-                    - "5000:5432"
+                - 5000:5432
         steps:
         -   uses: actions/checkout@v3
             with:
@@ -27,7 +26,6 @@ jobs:
         -   uses: actions/setup-java@v3
             with:
                 java-version: '11'
-                distribution: 'adopt'      
+                distribution: adopt
         -   name: Install dependencies
             run: mvn clean install
-          
