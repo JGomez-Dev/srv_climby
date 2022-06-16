@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiResponses;
 
 
 @RestController
-@Api(value = "/",tags = "Gestor de escuelasss")
+@Api(value = "/",tags = "Gestor de escuelas")
 @RequestMapping("/school")
 public class SchoolController {
 	
