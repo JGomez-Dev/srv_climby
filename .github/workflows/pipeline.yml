@@ -29,5 +29,3 @@ jobs:
                 distribution: adopt
         -   name: Install dependencies
             run: mvn clean install
-        -   name: Build
-            run: mvn run build
