@@ -26,90 +26,74 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
-@Api(value = "/",tags = "Gestor de reservas")
+@Api(value = "/", tags = "Gestor de reservas")
 @RequestMapping("/reservation")
 public class ReservationController {
-	
-	@Autowired 
+
+	@Autowired
 	ReservationService reservationService;
-	
-	@ApiOperation(
-			value = "Get reservation by id",
-			notes = "Return the reservation information")
-	
-	@ApiResponses(
-			value = {
-					@ApiResponse(code = 201, message = "success"),
-					@ApiResponse(code = 409, message = "conflict")
-			})
+
+	@ApiOperation(value = "Get reservation by id", notes = "Return the reservation information")
+	@ApiResponses(value = {@ApiResponse(code = 201, message = "success"),
+			@ApiResponse(code = 409, message = "conflict")})
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(value = "/{id}", headers = "Accept=application/json")
 	public ReservationDTO getReservationById(
-			@ApiParam(
-					name = "id",
-					type = "String",
-					value = "Intake code or CIO that identifies a reservation",
-					required = true,
-					example =  "1")
-			@PathVariable
-			Integer id) throws ReservationNotFoundException{
-		return new DataDTO<>(reservationService.getReservationById(id)).getData();
+			@ApiParam(name = "id", type = "String", value = "Intake code or CIO that identifies a reservation", required = true, example = "1") @PathVariable Integer id)
+			throws ReservationNotFoundException {
+		return new DataDTO<>(reservationService.getReservationById(id))
+				.getData();
 	}
-	
-	@ApiOperation(
-			value = "Reservation creation",
-			notes = "Reservation creation operation required for the creation of available reservation")
-	@ApiResponses(
-			value = {
-					@ApiResponse(code = 201, message = "created"),
-					@ApiResponse(code = 409, message = "conflict")
-			})
+
+	@ApiOperation(value = "Reservation creation", notes = "Reservation creation operation required for the creation of available reservation")
+	@ApiResponses(value = {@ApiResponse(code = 201, message = "created"),
+			@ApiResponse(code = 409, message = "conflict")})
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping
-	public ReservationDTO registerReservation(@Validated @RequestBody ReservationDTO createReservationDTO){
-		return new DataDTO<>(reservationService.resgisterReservation(createReservationDTO)).getData();
+	public ReservationDTO registerReservation(
+			@Validated @RequestBody ReservationDTO createReservationDTO) {
+		return new DataDTO<>(
+				reservationService.resgisterReservation(createReservationDTO))
+				.getData();
 	}
-	
-	@ApiOperation(
-			value = "Reservation modification",
-			notes = "Return Reservation information modificated")
-	
-	@ApiResponses(
-			value = {
-					@ApiResponse(code = 201, message = "success"),
-					@ApiResponse(code = 409, message = "conflict")
-			})
+
+	@ApiOperation(value = "Reservation modification", notes = "Return Reservation information modificated")
+	@ApiResponses(value = {@ApiResponse(code = 201, message = "success"),
+			@ApiResponse(code = 409, message = "conflict")})
 	@ResponseStatus(HttpStatus.OK)
 	@PutMapping
 	public ReservationDTO modifyReservation(
-		@ApiParam (	name = "Reservation",
-			type = "Reservation",
-			value = "Reservation type entity",
-			required = true)
-	@RequestBody
-	@Validated
-	ReservationDTO modifiedReservationDTO) throws ReservationNotFoundException{
-		return new DataDTO<>(reservationService.modifyReservation(modifiedReservationDTO)).getData();
+			@ApiParam(name = "Reservation", type = "Reservation", value = "Reservation type entity", required = true) @RequestBody @Validated ReservationDTO modifiedReservationDTO)
+			throws ReservationNotFoundException {
+		return new DataDTO<>(
+				reservationService.modifyReservation(modifiedReservationDTO))
+				.getData();
 	}
-	
-	@ApiOperation(value = "Reservation deletion",notes = "Return reservation information deleted")
+
+	@ApiOperation(value = "Reservation deletion", notes = "Return reservation information deleted")
 	@ApiResponses(value = {@ApiResponse(code = 200, message = "Accepted")})
 	@ResponseStatus(HttpStatus.OK)
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> removeReservation(
-			@ApiParam (	name = "id",
-						type = "Integer",
-						value = "Identification code of the reservation to be removed",
-						required = true,
-						example = "1")
-			@PathVariable
-			Integer id) throws ReservationNotFoundException{
+			@ApiParam(name = "id", type = "Integer", value = "Identification code of the reservation to be removed", required = true, example = "1") @PathVariable Integer id)
+			throws ReservationNotFoundException {
 		reservationService.removeReservation(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-//	
-//	
+	
+	
+	@ApiOperation(value = "Unread messages", notes = "Returns true if you have unread messages")
+	@ApiResponses(value = {@ApiResponse(code = 201, message = "success"),
+			@ApiResponse(code = 409, message = "conflict")})
+	@ResponseStatus(HttpStatus.OK)
+	@GetMapping(value = "/travel/{id}", headers = "Accept=application/json")
+	public Boolean unreadMessages(
+			@ApiParam(name = "id", type = "Integer", value = "Intake code or CIO that identifies a travel", required = true, example = "1") @PathVariable Integer id)
+			throws ReservationNotFoundException {
+		return new DataDTO<>(reservationService.unreadMessages(id))
+				.getData();
+	}
+	
+	
 
-	
-	
 }
