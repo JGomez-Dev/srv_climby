@@ -206,7 +206,7 @@ VALUES
 
 
 INSERT INTO tb_climbing_type
-VALUES ('Boulder, Deportiva, Rocódromo...'),
+VALUES ('Selecciona el tipo de Escalada'),
 		('Boulder'),
 		('Deportiva'),
 		('Rocódromo'),
@@ -232,5 +232,10 @@ VALUES
 (3, 1, '2000-01-01 01:01:01', false, false),
 (2, 1, '2000-01-01 01:01:01', false, false);
 
+
+INSERT INTO tb_message(text_message, read)
+VALUES
+('Mensaje numero 1 ', false),
+('Mensaje numero 2 ', false);
 
 	
