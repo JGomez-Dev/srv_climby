@@ -81,7 +81,7 @@ public class ReservationServiceImpl implements ReservationService{
 	
 	public Integer unreadMessages(Integer id) throws ReservationNotFoundException {
 		int numNotifications = 0;
-		List<Reservation> reservations = reservationRepository.getByIdTravel(id);
+		List<Reservation> reservations = reservationRepository.getByIdUser(id);
 		
 		if (reservations.isEmpty()) {
 			throw new ReservationNotFoundException(String.format("Ese viaje no existe", id));

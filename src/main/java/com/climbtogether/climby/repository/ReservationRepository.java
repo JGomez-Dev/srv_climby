@@ -13,8 +13,8 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 	
 	boolean existsById(Integer id);
 	
-	@Query(value="select *  from tb_reservation tr inner join tb_travel tt on tr.id_travel = tt.id_travel where tt.departure_date<now() and tr.reservation_status = true and tt.id_travel = :id ",nativeQuery = true)
-	List<Reservation> getByIdTravel(Integer id);
+	@Query(value="select *  from tb_reservation tr inner join tb_travel tt on tr.id_travel = tt.id_travel where tt.departure_date<now() and tr.reservation_status = true and tr.id_user = :id ",nativeQuery = true)
+	List<Reservation> getByIdUser(Integer id);
 
 }
 
