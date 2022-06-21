@@ -11,7 +11,7 @@ public interface ReservationService {
 	
 	ReservationDTO getReservationById(Integer id) throws ReservationNotFoundException;
 	
-	Boolean unreadMessages(Integer id) throws ReservationNotFoundException;;
+	Integer unreadMessages(Integer id) throws ReservationNotFoundException;;
 	
 	void removeReservation(Integer id) throws ReservationNotFoundException;
 }

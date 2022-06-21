@@ -87,7 +87,7 @@ public class ReservationController {
 			@ApiResponse(code = 409, message = "conflict")})
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(value = "/travel/{id}", headers = "Accept=application/json")
-	public Boolean unreadMessages(
+	public Integer unreadMessages(
 			@ApiParam(name = "id", type = "Integer", value = "Intake code or CIO that identifies a travel", required = true, example = "1") @PathVariable Integer id)
 			throws ReservationNotFoundException {
 		return new DataDTO<>(reservationService.unreadMessages(id))

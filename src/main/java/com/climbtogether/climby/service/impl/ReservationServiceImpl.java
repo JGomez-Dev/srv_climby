@@ -79,20 +79,22 @@ public class ReservationServiceImpl implements ReservationService{
 		return reservationMapper.reservationToReservationDTO(reservation.get());
 	}
 	
-	public Boolean unreadMessages(Integer id) throws ReservationNotFoundException {
-		
+	public Integer unreadMessages(Integer id) throws ReservationNotFoundException {
+		int numNotifications = 0;
 		List<Reservation> reservations = reservationRepository.getByIdTravel(id);
 		
 		if (reservations.isEmpty()) {
 			throw new ReservationNotFoundException(String.format("Ese viaje no existe", id));
 		}
 		for(Reservation reservation: reservations) {
-			if(reservation.getValuationStatus()==false||reservation.getMessage().getRead()==false) {
-				return true;
+			if(reservation.getValuationStatus()==false) {
+				numNotifications++;
+			}if(reservation.getMessage().getRead()==false) {
+				numNotifications++;
 			}
 		}
 
-		return false;
+		return numNotifications;
 		
 	}
 
