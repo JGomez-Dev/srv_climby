@@ -95,4 +95,16 @@ public class UserServiceImpl implements UserService {
 		return userMapper.userToUserDTO(user.get());
 	}
 
+	@Override
+	public Boolean hasReservations(Integer id) throws UserNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+//	@Override
+//	public Boolean hasReservations(Integer id) throws UserNotFoundException {
+//		List<Reservation> reservation = 
+//		return ;
+//	}
+
 }

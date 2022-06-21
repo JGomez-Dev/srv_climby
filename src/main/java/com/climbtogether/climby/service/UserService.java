@@ -12,6 +12,8 @@ public interface UserService {
 	UserDTO getUserById(Integer id) throws UserNotFoundException;
 
 	UserDTO getUserByEmail(String email) throws UserNotFoundException;
+	
+	Boolean hasReservations(Integer id)throws UserNotFoundException;;
 
 	void removeUser(Integer id) throws UserNotFoundException;
 

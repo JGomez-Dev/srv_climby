@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.climbtogether.climby.controller.MessageController;
+import com.climbtogether.climby.controller.UserController;
 import com.climbtogether.climby.domain.Message;
 import com.climbtogether.climby.domain.Reservation;
 import com.climbtogether.climby.dto.MessageDTO;
 import com.climbtogether.climby.dto.ReservationDTO;
 import com.climbtogether.climby.exceptions.ReservationNotFoundException;
+import com.climbtogether.climby.exceptions.UserNotFoundException;
 import com.climbtogether.climby.mapper.MessageMapper;
 import com.climbtogether.climby.mapper.ReservationMapper;
 import com.climbtogether.climby.repository.ReservationRepository;
@@ -31,6 +33,9 @@ public class ReservationServiceImpl implements ReservationService{
 
 	@Autowired
 	private MessageMapper messageMapper;
+	
+	@Autowired
+	UserController userController;
 
 	@Override
 	public ReservationDTO resgisterReservation(ReservationDTO createReservationDTO) {
@@ -79,13 +84,19 @@ public class ReservationServiceImpl implements ReservationService{
 		return reservationMapper.reservationToReservationDTO(reservation.get());
 	}
 	
-	public Integer unreadMessages(Integer id) throws ReservationNotFoundException {
+	public Integer unreadMessages(Integer id) throws ReservationNotFoundException{
 		int numNotifications = 0;
+
+		if(reservationRepository.findByIdUser(id).size()<=0){
+			throw new ReservationNotFoundException(String.format("Ese usuario no tiene reservas", id));
+		}
+
 		List<Reservation> reservations = reservationRepository.getByIdUser(id);
 		
 		if (reservations.isEmpty()) {
-			throw new ReservationNotFoundException(String.format("Ese viaje no existe", id));
+			return numNotifications;
 		}
+
 		for(Reservation reservation: reservations) {
 			if(reservation.getValuationStatus()==false) {
 				numNotifications++;
