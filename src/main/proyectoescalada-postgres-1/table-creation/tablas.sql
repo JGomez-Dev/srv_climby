@@ -193,15 +193,28 @@ VALUES
 	
 INSERT INTO tb_user(full_name,experience,phone,email,score,outputs,user_photo,registration_date, ratings)
 VALUES 
-('Eduardo Gomez','Experimentado','691675453','edu21061991@gmail.com',2,5,'https://1.bp.blogspot.com/-wDSq0sy-Lro/YQqbRZ3HboI/AAAAAAAAGKs/uV4K5FhUOsAdn9U2YpmnmyzgqJ_MUYOQgCLcBGAsYHQ/s634/Screenshot_20210804-144347_1.png','2000-01-01 01:01:01',4),
-('Pepito Perez','Experimentado','685775928','javiergf1991@gmail.com',0,0,'https://media.cdnandroid.com/item_images/1068635/imagen-girly-wallpapers-profil-pics-for-girls-0big.jpg','2000-01-01 01:01:01',3),
-('Lolito Fernandez','Principiante','685775928','Lolito@gmail',2.8,5,'https://cdn.autobild.es/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2016/09/569465-whatsapp-que-tus-contactos-ponen-rana-perfil.jpg?itok=tpvHWpeZ','2000-01-01 01:01:01',4);
+('Eduardo Gomez','Experimentado','691234453','edu21061991@gmail.com',2,0,'https://1.bp.blogspot.com/-wDSq0sy-Lro/YQqbRZ3HboI/AAAAAAAAGKs/uV4K5FhUOsAdn9U2YpmnmyzgqJ_MUYOQgCLcBGAsYHQ/s634/Screenshot_20210804-144347_1.png','2000-01-01 01:01:01',4),
+('Pepito Perez','Principiante','685771234','javiergf1991@gmail.com',3,0,'https://media.cdnandroid.com/item_images/1068635/imagen-girly-wallpapers-profil-pics-for-girls-0big.jpg','2000-01-01 01:01:01',5),
+('Juanito Fernandez','Principiante','685333928','javiergf1991@gmail.com',2,0,'https://media.cdnandroid.com/item_images/1068635/imagen-girly-wallpapers-profil-pics-for-girls-0big.jpg','2000-01-01 01:01:01',1),
+('Lucas Garcia','Intermedio','644331928','javiergf1991@gmail.com',2.1,0,'https://media.cdnandroid.com/item_images/1068635/imagen-girly-wallpapers-profil-pics-for-girls-0big.jpg','2000-01-01 01:01:01',5),
+('Marcos Lopez','Principiante','643475928','javiergf1991@gmail.com',3,0,'https://media.cdnandroid.com/item_images/1068635/imagen-girly-wallpapers-profil-pics-for-girls-0big.jpg','2000-01-01 01:01:01',3),
+('Daniel Aran','Intermedio','685776568','javiergf1991@gmail.com',2,0,'https://media.cdnandroid.com/item_images/1068635/imagen-girly-wallpapers-profil-pics-for-girls-0big.jpg','2000-01-01 01:01:01',2),
+('Sergio Garraf','Experimentado','685776668','javiergf1991@gmail.com',2,0,'https://media.cdnandroid.com/item_images/1068635/imagen-girly-wallpapers-profil-pics-for-girls-0big.jpg','2000-01-01 01:01:01',3),
+('Isabel Noguera','Principiante','685779928','javiergf1991@gmail.com',3,0,'https://media.cdnandroid.com/item_images/1068635/imagen-girly-wallpapers-profil-pics-for-girls-0big.jpg','2000-01-01 01:01:01',5),
+('Maria Delito','Intermedio','685770928','javiergf1991@gmail.com',1.5,0,'https://media.cdnandroid.com/item_images/1068635/imagen-girly-wallpapers-profil-pics-for-girls-0big.jpg','2000-01-01 01:01:01',1),
+('Conchi Galan','Experimentado','685771111','javiergf1991@gmail.com',3,0,'https://media.cdnandroid.com/item_images/1068635/imagen-girly-wallpapers-profil-pics-for-girls-0big.jpg','2000-01-01 01:01:01',2),
+('Lolito Priorat','Principiante','622775928','lolito@gmail',2.8,0,'https://cdn.autobild.es/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2016/09/569465-whatsapp-que-tus-contactos-ponen-rana-perfil.jpg?itok=tpvHWpeZ','2000-01-01 01:01:01',4);
 
 INSERT INTO tb_school
 VALUES 
 ('Albarracin'),
 ('Rodellar'),
 ('Chulilla'),
+('Sella'),
+('Arbolí'),
+('El Vellón'),
+('Alcañiz'),
+('Mula'),
 ('La Pedriza');
 
 
@@ -214,12 +227,18 @@ VALUES ('Selecciona el tipo de Escalada'),
 	
 INSERT INTO tb_travel(id_driver,school,type,available_places,departure_date,province)
 VALUES 
-(1,'Albarracin','Boulder',4,'2000-01-01 01:01:01','Madrid'),
-(2,'Rodellar','Deportiva',1,'2000-01-01 01:01:01','Cuenca'),
-(2,'Chulilla','Deportiva',3,'2000-01-01 01:01:01','Madrid'),
-(3,'Albarracin','Clásica',4,'2021-11-27 01:01:01.000','Madrid'),
-(1,'Albarracin','Clásica',4,'2021-11-27 01:01:01.000','Madrid'),
-(3,'La Pedriza','Boulder',1,'2021-12-04 01:01:01.000','Madrid');
+(11,'Sella','Clásica',1,'2023-11-27 01:01:01.000','Madrid'),
+(1,'Albarracin','Deportiva',2,'2021-11-27 01:01:01.000','Toledo'),
+(2,'Chulilla','Boulder',3,'2022-11-27 01:01:01.000','Cádiz'),
+(10,'Mula','Rocódromo',2,'2022-11-27 01:01:01.000','Melilla'),
+(1,'Sella','Clásica',1,'2020-11-27 01:01:01.000','Murcia'),
+(2,'La Pedriza','Rocódromo',4,'2023-11-27 01:01:01.000','Ourense'),
+(9,'Alcañiz','Clásica',1,'2020-11-27 01:01:01.000','Asturias'),
+(8,'El Vellón','Deportiva',3,'2021-11-27 01:01:01.000','Cuenca'),
+(3,'Albarracin','Rocódromo',1,'2021-11-27 01:01:01.000','Pontevedra'),
+(8,'Rodellar','Boulder',2,'2022-11-27 01:01:01.000','Girona'),
+(2,'Albarracin','Rocódromo',1,'2023-11-27 01:01:01.000','Tarragona'),
+(1,'Arbolí','Boulder',4,'2022-11-27 01:01:01.000','Teruel');
 --INSERT INTO tb_status
 --VALUES
 --	('1',true,true),
@@ -227,15 +246,35 @@ VALUES
 --	('3',false,false),
 --	('4',false,true);
 
-INSERT INTO tb_reservation(id_user, id_travel, date_reservation, reservation_status, valuation_status)
+INSERT INTO tb_reservation(id_user, id_travel, date_reservation, reservation_status,id_message, valuation_status)
 VALUES
-(3, 1, '2000-01-01 01:01:01', false, false),
-(2, 1, '2000-01-01 01:01:01', false, false);
+(2, 1, '2000-01-01 01:01:01', true,1,false),
+(4, 2, '2000-01-01 01:01:01', false,2,false),
+(5, 2, '2000-01-01 01:01:01', false,3,true),
+(6, 2, '2000-01-01 01:01:01', true,4,false),
+(5, 3, '2000-01-01 01:01:01', true,5,false),
+(7, 4, '2000-01-01 01:01:01', false,6,false),
+(1, 5, '2000-01-01 01:01:01', true,7,true),
+(9, 5, '2000-01-01 01:01:01', false,8,false),
+(3, 6, '2000-01-01 01:01:01', true,9,false),
+(4, 7, '2000-01-01 01:01:01', false,10,true),
+(4, 8, '2000-01-01 01:01:01', false,11,true),
+(1, 9, '2000-01-01 01:01:01', true,12,false);
 
 
 INSERT INTO tb_message(text_message, read)
 VALUES
 ('Mensaje numero 1 ', false),
-('Mensaje numero 2 ', false);
+('Mensaje numero 2 ', true),
+('Mensaje numero 3 ', false),
+('Mensaje numero 4 ', false),
+('Mensaje numero 5 ', true),
+('Mensaje numero 6 ', true),
+('Mensaje numero 7 ', true),
+('Mensaje numero 8 ', false),
+('Mensaje numero 9 ', true),
+('Mensaje numero 10 ', true),
+('Mensaje numero 11 ', false),
+('Mensaje numero 12 ', true);
 
 	

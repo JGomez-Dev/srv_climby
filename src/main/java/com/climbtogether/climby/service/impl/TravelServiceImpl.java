@@ -1,22 +1,17 @@
 package com.climbtogether.climby.service.impl;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
-import com.climbtogether.climby.domain.Reservation;
 import com.climbtogether.climby.domain.School;
 import com.climbtogether.climby.domain.Travel;
-import com.climbtogether.climby.domain.User;
 import com.climbtogether.climby.dto.SchoolDTO;
 import com.climbtogether.climby.dto.TravelDTO;
 import com.climbtogether.climby.exceptions.TravelNotFoundException;
-import com.climbtogether.climby.exceptions.UserNotFoundException;
 import com.climbtogether.climby.mapper.SchoolMapper;
 import com.climbtogether.climby.mapper.TravelMapper;
 import com.climbtogether.climby.repository.SchoolRepository;
@@ -54,7 +49,7 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 		return travelMapper.listTravelToListTravelDTO(travel);
 	}
 
-	// Muestra los viajes que tengan reservas de un determinado usuario
+	// Muestra los viajes que tengan reservas de un determinado usuario o el usuario sea el creador del viaje
 	@Override
 	public List<TravelDTO> getTravelsWithUserReservation(Integer idUser) {
 
