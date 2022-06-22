@@ -1,8 +1,8 @@
 package com.climbtogether.climby.service.impl;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,7 +41,7 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 		return travelMapper.listTravelToListTravelDTO(travel);
 	}
 
-	//Devuelve todos los viajes de un usuario determinado
+	// Devuelve todos los viajes de un usuario determinado
 	@Override
 	public List<TravelDTO> getUsersTravels(Integer id) {
 		List<Travel> travel = travelRepository.getUsersTravels(id);
@@ -49,13 +49,17 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 		return travelMapper.listTravelToListTravelDTO(travel);
 	}
 
-	// Muestra los viajes que tengan reservas de un determinado usuario o el usuario sea el creador del viaje
+	// Muestra los viajes que tengan reservas de un determinado usuario o el
+	// usuario sea el creador del viaje
 	@Override
 	public List<TravelDTO> getTravelsWithUserReservation(Integer idUser) {
 
-		List<Travel> travel = travelRepository.getTravelsWithUserReservation(idUser);
+		List<Travel> travels = travelRepository
+				.getTravelsWithUserReservation(idUser);
 
-		return travelMapper.listTravelToListTravelDTO(travel);
+		travels = travels.stream().distinct().collect(Collectors.toList());
+		
+		return travelMapper.listTravelToListTravelDTO(travels);
 	}
 
 	@Override
@@ -63,7 +67,8 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 
 		Travel travel = travelMapper.travelDTOToTravel(createTravelDTO);
 
-		Optional<School> school = schoolRepository.findById(createTravelDTO.getSchoolDTO().getName());
+		Optional<School> school = schoolRepository
+				.findById(createTravelDTO.getSchoolDTO().getName());
 
 		if (school.isEmpty()) {
 			resgisterSchool(createTravelDTO.getSchoolDTO());
@@ -78,16 +83,19 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 	}
 
 	@Override
-	public TravelDTO modifyTravel(TravelDTO modifyTravelDTO) throws TravelNotFoundException {
+	public TravelDTO modifyTravel(TravelDTO modifyTravelDTO)
+			throws TravelNotFoundException {
 
 		Travel travel = travelMapper.travelDTOToTravel(modifyTravelDTO);
 
-		Optional<School> school = schoolRepository.findById(modifyTravelDTO.getSchoolDTO().getName());
+		Optional<School> school = schoolRepository
+				.findById(modifyTravelDTO.getSchoolDTO().getName());
 
 		Integer id = travel.getId_travel();
 
 		if (!travelRepository.existsById(id)) {
-			throw new TravelNotFoundException(String.format("Viaje no encontrado",id));
+			throw new TravelNotFoundException(
+					String.format("Viaje no encontrado", id));
 		}
 
 		if (school.isEmpty()) {
@@ -106,7 +114,8 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 
 		Optional<Travel> attachedTravel = travelRepository.findById(id);
 		if (attachedTravel.isEmpty()) {
-			throw new TravelNotFoundException(String.format("Viaje no encontrado",id));
+			throw new TravelNotFoundException(
+					String.format("Viaje no encontrado", id));
 		}
 		travelRepository.deleteById(id);
 
@@ -142,9 +151,10 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 	public TravelDTO getTravelById(Integer id) throws TravelNotFoundException {
 
 		Optional<Travel> travel = travelRepository.findById(id);
-		
+
 		if (travel.isEmpty()) {
-			throw new TravelNotFoundException(String.format("Viaje no encontrado",id));
+			throw new TravelNotFoundException(
+					String.format("Viaje no encontrado", id));
 		}
 
 		return travelMapper.travelToTravelDTO(travel.get());
