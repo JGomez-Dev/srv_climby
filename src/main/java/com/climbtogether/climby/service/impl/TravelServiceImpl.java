@@ -1,8 +1,8 @@
 package com.climbtogether.climby.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,12 +54,18 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 	@Override
 	public List<TravelDTO> getTravelsWithUserReservation(Integer idUser) {
 
-		List<Travel> travels = travelRepository
+		List<Travel> allTravel = new ArrayList<Travel>();
+		List<Travel> travel1 = travelRepository
 				.getTravelsWithUserReservation(idUser);
+		List<Travel> travel2 = travelRepository.getUsersTravels(idUser);
+		for (Travel travel : travel1) {
+			allTravel.add(travel);
+		}
+		for (Travel travel : travel2) {
+			allTravel.add(travel);
+		}
 
-		travels = travels.stream().distinct().collect(Collectors.toList());
-		
-		return travelMapper.listTravelToListTravelDTO(travels);
+		return travelMapper.listTravelToListTravelDTO(allTravel);
 	}
 
 	@Override

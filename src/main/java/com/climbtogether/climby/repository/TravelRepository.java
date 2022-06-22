@@ -15,7 +15,7 @@ public interface TravelRepository extends JpaRepository<Travel, Integer> {
 	@Query("select travel from Travel travel where driver.id_user = :id ")
 	List<Travel> getUsersTravels(@Param("id") Integer id);
 	
-	@Query("select travel from Travel travel inner join travel.reservation reservation where reservation.passenger.id_user = :id or reservation.travel.driver = :id")
+	@Query("select travel from Travel travel inner join travel.reservation reservation where reservation.passenger.id_user = :id ")
 	List<Travel> getTravelsWithUserReservation(@Param("id") Integer id);
 	
 
