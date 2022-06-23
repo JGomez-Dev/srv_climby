@@ -106,19 +106,31 @@ public class ReservationServiceImpl implements ReservationService {
 	public Integer unreadMessages(Integer id)
 			throws ReservationNotFoundException {
 		int numNotifications = 0;
-
+		boolean existsReservation = false;
 		List<Travel> travels = travelRepository.getUsersTravels(id);
 
 		for (Travel travel : travels) {
-			for (Reservation reservation : travel.getReservation()) {
-				if (reservation.getValuationStatus() == false) {
-					numNotifications++;
-				}
-				if (reservation.getMessage().getRead() == false) {
-					numNotifications++;
+			if (travel.getReservation().size() != 0) {
+				existsReservation = true;
+			}
+			if (existsReservation == true) {
+				for (Reservation reservation : travel.getReservation()) {
+					if (reservation.getValuationStatus() != null) {
+						if (reservation.getValuationStatus() == false) {
+							numNotifications++;
+						}
+					}
+
+					if (reservation.getMessage() != null) {
+						if (reservation.getMessage().getRead() == false) {
+							numNotifications++;
+						}
+					}
 				}
 			}
+			existsReservation = false;
 		}
+
 		return numNotifications;
 	}
 }
