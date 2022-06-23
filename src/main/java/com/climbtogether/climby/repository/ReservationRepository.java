@@ -16,8 +16,6 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 	@Query(value="select *  from tb_reservation tr inner join tb_travel tt on tr.id_travel = tt.id_travel where tt.departure_date<now() and tr.reservation_status = true and tr.id_user = :id ",nativeQuery = true)
 	List<Reservation> getByIdUser(Integer id);
 
-	@Query(value="select *  from tb_reservation tr where tr.id_user = :id ",nativeQuery = true)
-	List<Reservation> findByIdUser(Integer  id);
 }
 
 
