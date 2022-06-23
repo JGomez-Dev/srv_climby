@@ -13,7 +13,6 @@ import com.climbtogether.climby.domain.Reservation;
 import com.climbtogether.climby.dto.MessageDTO;
 import com.climbtogether.climby.dto.ReservationDTO;
 import com.climbtogether.climby.exceptions.ReservationNotFoundException;
-import com.climbtogether.climby.exceptions.UserNotFoundException;
 import com.climbtogether.climby.mapper.MessageMapper;
 import com.climbtogether.climby.mapper.ReservationMapper;
 import com.climbtogether.climby.repository.ReservationRepository;
