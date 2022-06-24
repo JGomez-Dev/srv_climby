@@ -52,7 +52,7 @@ public class TravelDTO   implements Serializable {
 	@ApiModelProperty(required = false,value = "Reservation")
 	@JsonProperty(value = "reservation")
 	private List<ReservationDTO> reservationDTO;
-	
+
 
 	
 	
