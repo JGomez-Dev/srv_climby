@@ -71,7 +71,7 @@ public interface TravelMapper {
 					reservationDTO.setUserDTO(null);
 				
 				reservationDTO.setId(reservation.getId_reservation());
-				reservationDTO.setTravelDTO(travelToTravelDTO(reservation.getTravel()));
+				reservationDTO.setTravelDTO(reservation.getTravel().getId_travel());
 				reservationDTO.setCustomerDate(reservation.getReservationDate());
 				reservationDTO.setReservationStatus(reservation.getReservationStatus());
 				reservationDTO.setValuationStatus(reservation.getValuationStatus());

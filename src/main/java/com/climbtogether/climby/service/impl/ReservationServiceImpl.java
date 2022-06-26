@@ -112,8 +112,8 @@ public class ReservationServiceImpl implements ReservationService {
 			}
 			if (existsReservation == true) {
 				for (Reservation reservation : travel.getReservation()) {
-					if (reservation.getValuationStatus() != null) {
-						if (reservation.getValuationStatus() == false) {
+					if (reservation.getReservationStatus() != null) {
+						if (reservation.getReservationStatus() == false) {
 							numNotifications++;
 						}
 					}

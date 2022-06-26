@@ -87,13 +87,14 @@ public class ReservationServiceImplTest {
 
 	}
 
-	@Test
-	public void testRemoveReservation() throws ReservationNotFoundException {
-		Reservation creationRequest = ReservationMapperUtil
-				.generateTestCreationReservation();
-		reservationServiceImpl.removeReservation(creationRequest.getId_reservation());
-		
-
-	}
+//	@Test
+//	public void testRemoveReservation() throws ReservationNotFoundException {
+//		Reservation creationRequest = ReservationMapperUtil
+//				.generateTestCreationReservation();
+//		reservationServiceImpl.removeReservation(creationRequest.getId_reservation());
+//		reservationRepository.deleteById(creationRequest.getId_reservation());
+//		
+//
+//	}
 
 }

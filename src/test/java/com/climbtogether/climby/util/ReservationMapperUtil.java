@@ -32,7 +32,7 @@ public class ReservationMapperUtil {
 		reservationDTO.setId(1);
 		reservationDTO.setMessageDTO(generateTestCreationMessageDTO());
 		reservationDTO.setReservationStatus(false);
-		reservationDTO.setTravelDTO(generateTestCreationTravelDTO());
+		reservationDTO.setTravelDTO(1);
 		reservationDTO.setUserDTO(generateTestCreationUserDTO());
 		reservationDTO.setValuationStatus(true);
 
