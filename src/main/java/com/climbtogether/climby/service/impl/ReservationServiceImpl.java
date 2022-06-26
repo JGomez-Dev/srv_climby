@@ -1,6 +1,5 @@
 package com.climbtogether.climby.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,7 +41,6 @@ public class ReservationServiceImpl implements ReservationService {
 	@Autowired
 	UserController userController;
 
-	@Override
 	public ReservationDTO resgisterReservation(
 			ReservationDTO createReservationDTO) {
 
@@ -68,8 +66,7 @@ public class ReservationServiceImpl implements ReservationService {
 					String.format("Reserva no encontrado", id));
 		}
 		if (modifyReservationDTO.getMessageDTO() != null) {
-			MessageDTO messageDTO = messageController
-					.registerMessage(modifyReservationDTO.getMessageDTO());
+			MessageDTO messageDTO = messageController.registerMessage(modifyReservationDTO.getMessageDTO());
 			Message message = messageMapper.messageDTOToMessage(messageDTO);
 			reservation.setMessage(message);
 		}

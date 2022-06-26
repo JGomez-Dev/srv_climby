@@ -21,9 +21,9 @@ public interface TravelMapper {
 	@Mapping(target = "driver.id_user", source = "userDTO.id")
 	@Mapping(target = "driver.token", source = "userDTO.token")
 	@Mapping(target = "id_travel", source = "id")
-	@Mapping(target = "school", source = "schoolDTO.name")
+	@Mapping(target = "school", source = "schoolDTO")
 	@Mapping(target = "province.name", source = "provinceDTO.name")
-	@Mapping(target = "type", source = "type.name")
+	@Mapping(target = "type", source = "type")
 	@Mapping(target = "reservation", source = "reservationDTO", qualifiedByName = "mapearReservasReservationDTOToReservation")
 	Travel travelDTOToTravel(TravelDTO travelDTO);
 	
@@ -40,9 +40,9 @@ public interface TravelMapper {
 	@Mapping(source = "driver.id_user", target = "userDTO.id")
 	@Mapping(source = "driver.token", target = "userDTO.token")
 	@Mapping(source = "id_travel", target = "id")
-	@Mapping(source = "school", target = "schoolDTO.name")
+	@Mapping(source = "school", target = "schoolDTO")
 	@Mapping(source = "province.name", target = "provinceDTO.name")
-	@Mapping(source = "type", target = "type.name")
+	@Mapping(source = "type", target = "type")
 	
 	@Mapping(source = "reservation", target = "reservationDTO", qualifiedByName = "mapearReservasReservationToReservationDTO")
 	TravelDTO travelToTravelDTO(Travel travel);
@@ -71,7 +71,7 @@ public interface TravelMapper {
 					reservationDTO.setUserDTO(null);
 				
 				reservationDTO.setId(reservation.getId_reservation());
-				reservationDTO.setTravelDTO(reservation.getTravel().getId_travel());
+				reservationDTO.setTravelDTO(travelToTravelDTO(reservation.getTravel()));
 				reservationDTO.setCustomerDate(reservation.getReservationDate());
 				reservationDTO.setReservationStatus(reservation.getReservationStatus());
 				reservationDTO.setValuationStatus(reservation.getValuationStatus());

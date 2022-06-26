@@ -1,9 +1,11 @@
 package com.climbtogether.climby.service;
 
+import org.springframework.stereotype.Service;
+
 import com.climbtogether.climby.dto.ReservationDTO;
 import com.climbtogether.climby.exceptions.ReservationNotFoundException;
-import com.climbtogether.climby.exceptions.UserNotFoundException;
 
+@Service
 public interface ReservationService {
 
 	ReservationDTO resgisterReservation(ReservationDTO createReservationDTO);
