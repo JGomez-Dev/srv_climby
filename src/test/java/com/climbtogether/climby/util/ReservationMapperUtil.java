@@ -134,8 +134,8 @@ public class ReservationMapperUtil {
 		travel.setId_travel(1);
 		travel.setProvince(generateTestCreationProvince());
 		travel.setReservation(listReservation);
-		travel.setSchool(generateTestCreationSchool());
-		travel.setType(generateTestCreationClimbingType());
+		travel.setSchool("Albarracin");
+		travel.setType("Cuerda");
 		travel.setDriver(generateTestCreationUser());
 
 		return travel;
