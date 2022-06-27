@@ -48,10 +48,10 @@ public class Travel  implements Serializable {
 	private Integer id_travel;
 	
 	@Column(name = "school", nullable = false)
-	private School school;
+	private String school;
 	
 	@Column(name = "type", nullable = false)
-	private ClimbingType type;
+	private String type;
 	
 	@Column(name = "available_places", nullable = false)
 	private Integer availablePlaces;
