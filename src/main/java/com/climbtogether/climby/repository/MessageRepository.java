@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.climbtogether.climby.domain.Message;
 
 @Repository
-public interface MessageRepository extends JpaRepository<Message, String> {
+public interface MessageRepository extends JpaRepository<Message, Integer> {
+
 
 }

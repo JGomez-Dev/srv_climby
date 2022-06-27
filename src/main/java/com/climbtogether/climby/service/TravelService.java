@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.climbtogether.climby.dto.TravelDTO;
 import com.climbtogether.climby.exceptions.TravelNotFoundException;
-import com.climbtogether.climby.exceptions.UserNotFoundException;
 
 public interface TravelService {
 	
@@ -25,5 +24,6 @@ public interface TravelService {
 	TravelDTO modifyTravel(TravelDTO modifyTravelDTO) throws TravelNotFoundException;
 	
 	void removeTravel(Integer id)  throws TravelNotFoundException;
+
 	
 }

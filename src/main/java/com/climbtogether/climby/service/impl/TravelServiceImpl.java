@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.climbtogether.climby.domain.School;
 import com.climbtogether.climby.domain.Travel;
+import com.climbtogether.climby.dto.MessageDTO;
 import com.climbtogether.climby.dto.SchoolDTO;
 import com.climbtogether.climby.dto.TravelDTO;
 import com.climbtogether.climby.exceptions.TravelNotFoundException;
@@ -165,5 +166,6 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 
 		return travelMapper.travelToTravelDTO(travel.get());
 	}
+
 
 }

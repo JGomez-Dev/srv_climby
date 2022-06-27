@@ -16,12 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.climbtogether.climby.domain.Travel;
 import com.climbtogether.climby.dto.DataDTO;
-import com.climbtogether.climby.dto.ProvinceDTO;
+import com.climbtogether.climby.dto.MessageDTO;
 import com.climbtogether.climby.dto.TravelDTO;
 import com.climbtogether.climby.exceptions.TravelNotFoundException;
-import com.climbtogether.climby.exceptions.UserNotFoundException;
 import com.climbtogether.climby.service.TravelService;
 
 import io.swagger.annotations.Api;
@@ -101,4 +99,13 @@ public class TravelController {
 		
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+
+	
+	
+	
+	
+	
+	
+	
 }
