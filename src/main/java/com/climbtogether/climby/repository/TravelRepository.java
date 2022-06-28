@@ -12,10 +12,10 @@ import com.climbtogether.climby.domain.Travel;
 @Repository
 public interface TravelRepository extends JpaRepository<Travel, Integer> {
 	
-	@Query("select travel from Travel travel where driver.id_user = :id  and departure_date>now()")
+	@Query("select travel from Travel travel where driver.id_user = :id  and departure_date>now() or date(departure_date)=date(now())")
 	List<Travel> getUsersTravels(@Param("id") Integer id);
 	
-	@Query("select travel from Travel travel inner join travel.reservation reservation where reservation.passenger.id_user = :id and departure_date>now()")
+	@Query("select travel from Travel travel inner join travel.reservation reservation where reservation.passenger.id_user = :id and departure_date>now() or date(departure_date)=date(now())")
 	List<Travel> getTravelsWithUserReservation(@Param("id") Integer id);
 	
 
