@@ -1,6 +1,9 @@
 package com.climbtogether.climby.service.impl;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import com.climbtogether.climby.domain.School;
 import com.climbtogether.climby.domain.Travel;
-import com.climbtogether.climby.dto.MessageDTO;
 import com.climbtogether.climby.dto.SchoolDTO;
 import com.climbtogether.climby.dto.TravelDTO;
 import com.climbtogether.climby.exceptions.TravelNotFoundException;
@@ -65,6 +67,7 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 		for (Travel travel : travel2) {
 			allTravel.add(travel);
 		}
+		ordenarArrayList(allTravel);
 
 		return travelMapper.listTravelToListTravelDTO(allTravel);
 	}
@@ -165,6 +168,17 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 		}
 
 		return travelMapper.travelToTravelDTO(travel.get());
+	}
+	
+	private List<Travel> ordenarArrayList(List<Travel> requestTravel) {
+		Collections.sort(requestTravel, new Comparator<Travel>() {
+			@Override
+			 public int compare(Travel t1, Travel t2) {
+	            return t1.getDepartureDate().compareTo(t2.getDepartureDate());
+	        }
+		});
+		return requestTravel;
+
 	}
 
 
