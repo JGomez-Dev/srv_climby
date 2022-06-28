@@ -1,9 +1,6 @@
 package com.climbtogether.climby.service.impl;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +18,7 @@ import com.climbtogether.climby.repository.SchoolRepository;
 import com.climbtogether.climby.repository.TravelRepository;
 import com.climbtogether.climby.service.SchoolService;
 import com.climbtogether.climby.service.TravelService;
+import com.climbtogether.climby.util.OrdenarArrayList;
 
 @Service
 public class TravelServiceImpl implements TravelService, SchoolService {
@@ -40,6 +38,8 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 	public List<TravelDTO> getTravelFindAll() {
 
 		List<Travel> travel = travelRepository.findAll();
+		
+		OrdenarArrayList.ordenarArrayListForDate(travel);
 
 		return travelMapper.listTravelToListTravelDTO(travel);
 	}
@@ -48,6 +48,8 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 	@Override
 	public List<TravelDTO> getUsersTravels(Integer id) {
 		List<Travel> travel = travelRepository.getUsersTravels(id);
+		
+		OrdenarArrayList.ordenarArrayListForDate(travel);
 
 		return travelMapper.listTravelToListTravelDTO(travel);
 	}
@@ -67,7 +69,8 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 		for (Travel travel : travel2) {
 			allTravel.add(travel);
 		}
-		ordenarArrayList(allTravel);
+		
+		OrdenarArrayList.ordenarArrayListForDate(allTravel);
 
 		return travelMapper.listTravelToListTravelDTO(allTravel);
 	}
@@ -170,16 +173,7 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 		return travelMapper.travelToTravelDTO(travel.get());
 	}
 	
-	private List<Travel> ordenarArrayList(List<Travel> requestTravel) {
-		Collections.sort(requestTravel, new Comparator<Travel>() {
-			@Override
-			 public int compare(Travel t1, Travel t2) {
-	            return t1.getDepartureDate().compareTo(t2.getDepartureDate());
-	        }
-		});
-		return requestTravel;
-
-	}
+	
 
 
 }
