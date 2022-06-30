@@ -47,32 +47,24 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 	// Devuelve todos los viajes de un usuario determinado
 	@Override
 	public List<TravelDTO> getUsersTravels(Integer id) {
-		List<Travel> travel = travelRepository.getUsersTravels(id);
 		
-		OrdenarArrayList.ordenarArrayListForDate(travel);
-
-		return travelMapper.listTravelToListTravelDTO(travel);
+//		List<Travel> travel = travelRepository.getUsersTravels(id);
+//		
+//		OrdenarArrayList.ordenarArrayListForDate(travel);
+//
+		return null;/*travelMapper.listTravelToListTravelDTO(travel);*/
 	}
 
 	// Muestra los viajes que tengan reservas de un determinado usuario o el
 	// usuario sea el creador del viaje
 	@Override
 	public List<TravelDTO> getTravelsWithUserReservation(Integer idUser) {
+	
+		List<Travel> travel1 = travelRepository.getTravelsWithUserReservation(idUser);
 
-		List<Travel> allTravel = new ArrayList<Travel>();
-		List<Travel> travel1 = travelRepository
-				.getTravelsWithUserReservation(idUser);
-		List<Travel> travel2 = travelRepository.getUsersTravels(idUser);
-		for (Travel travel : travel1) {
-			allTravel.add(travel);
-		}
-		for (Travel travel : travel2) {
-			allTravel.add(travel);
-		}
-		
-		OrdenarArrayList.ordenarArrayListForDate(allTravel);
+		OrdenarArrayList.ordenarArrayListForDate(travel1);
 
-		return travelMapper.listTravelToListTravelDTO(allTravel);
+		return travelMapper.listTravelToListTravelDTO(travel1);
 	}
 
 	@Override
