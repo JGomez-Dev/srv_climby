@@ -12,8 +12,8 @@ import com.climbtogether.climby.domain.Travel;
 @Repository
 public interface TravelRepository extends JpaRepository<Travel, Integer> {
 	
-	//TODO Tienen que ser viajes de 2 meses hacia atras reutilizar este para Proximas salidas y hacer el Mis Salidas.
-	@Query("select travel from Travel travel where driver.id_user = :id and date(departure_date)=date(now())")
+
+	@Query(value="select * from tb_travel where id_driver = :id and date(departure_date)>=(select date(current_date - interval '2 month'))",nativeQuery = true)
 	List<Travel> getUsersTravels(@Param("id") Integer id);
 	
 	@Query("select travel from Travel travel left join travel.reservation reservation on travel.id_travel=reservation.travel.id_travel where (reservation.passenger.id_user = :id or travel.driver.id_user = :id) and (departure_date>now() or date(departure_date)=date(now()))")

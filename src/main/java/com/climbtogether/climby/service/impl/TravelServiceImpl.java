@@ -48,11 +48,11 @@ public class TravelServiceImpl implements TravelService, SchoolService {
 	@Override
 	public List<TravelDTO> getUsersTravels(Integer id) {
 		
-//		List<Travel> travel = travelRepository.getUsersTravels(id);
-//		
-//		OrdenarArrayList.ordenarArrayListForDate(travel);
-//
-		return null;/*travelMapper.listTravelToListTravelDTO(travel);*/
+		List<Travel> travel = travelRepository.getUsersTravels(id);
+		
+		OrdenarArrayList.ordenarArrayListForDate(travel);
+
+		return travelMapper.listTravelToListTravelDTO(travel);
 	}
 
 	// Muestra los viajes que tengan reservas de un determinado usuario o el
